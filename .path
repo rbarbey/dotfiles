@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Go path
+export GOPATH="${HOME}/Development/golang"
+
+# I don't like to install Node modules globally so add local modules to PATH
+export PATH=./node_modules/.bin:~/bin:$PATH

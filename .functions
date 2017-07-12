@@ -2,7 +2,7 @@
 
 # Find stuff in Maven POM files within this directory
 findpom() {
-    find . -name pom.xml | xargs grep $1
+    find . -name pom.xml | xargs grep $@
 }
 
 # Generate a random string which can serve as the basis for a password

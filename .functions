@@ -4,3 +4,8 @@
 findpom() {
     find . -name pom.xml | xargs grep $1
 }
+
+# Generate a random string which can serve as the basis for a password
+genpasswd() {
+  cat /dev/urandom | head -c 100 | base64
+}

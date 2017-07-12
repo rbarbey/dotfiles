@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Find stuff in Maven POM files within this directory
+findpom() {
+    find . -name pom.xml | xargs grep $1
+}

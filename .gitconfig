@@ -1,0 +1,22 @@
+[alias]
+
+  # View abbreviated SHA, desc, and history graph of latest 100 commits
+  l = log --pretty=oneline -n 100 --graph --abbrev-commit
+
+  # View current working tree status in short format
+  s = status -s
+
+  # What have I done since yesterday
+  standup = log --author=robert.barbey --oneline --since 'yesterday'
+
+[core]
+  # make `git rebase` safe on macOS (e.g. if )
+  trustctime = false
+
+[diff]
+  # Detect copied as well as renames
+  renames = copies
+
+[merge]
+  # include summaries of merged commits in newly created merge commit messages
+  log = true

@@ -3,5 +3,6 @@
 if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
   __GIT_PROMPT_DIR="$(brew --prefix)/opt/bash-git-prompt/share"
   GIT_PROMPT_END_USER='\n\u@\h \$ '
+  GIT_PROMPT_FETCH_REMOTE_STATUS=0
   source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi

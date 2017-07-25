@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export EDITOR=emacs
+
+export HISTSIZE=50000
+export HISTFILESIZE=$HISTSIZE

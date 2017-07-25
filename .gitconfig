@@ -7,7 +7,7 @@
   s = status -s
 
   # What have I done since yesterday
-  standup = log --pretty='format:%C(yellow)%h %Cblue%>(15)%ad %C(auto)%d %Creset%s' --date=relative --graph --author=robert.barbey --since 'yesterday'
+  standup = log --pretty='format:%C(yellow)%h %Cblue%>(14)%ad%C(auto)%d %Creset%s' --date=relative --graph --author=robert.barbey --since 'yesterday'
 
 [core]
   # make `git rebase` safe on macOS (e.g. if )

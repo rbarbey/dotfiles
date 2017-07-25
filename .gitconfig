@@ -1,13 +1,13 @@
 [alias]
 
   # View abbreviated SHA, desc, and history graph of latest 100 commits
-  l = log --pretty='format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%C(auto)%d %Creset%s' --date=relative --graph
+  l = log --pretty='format:%C(yellow)%h %Cblue%>(15)%ad %Cgreen%<(7)%aN%C(auto)%d %Creset%s' --date=relative --graph
 
   # View current working tree status in short format
   s = status -s
 
   # What have I done since yesterday
-  standup = log --author=robert.barbey --oneline --since 'yesterday'
+  standup = log --pretty='format:%C(yellow)%h %Cblue%>(15)%ad %C(auto)%d %Creset%s' --date=relative --graph --author=robert.barbey --since 'yesterday'
 
 [core]
   # make `git rebase` safe on macOS (e.g. if )

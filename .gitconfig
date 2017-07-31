@@ -1,7 +1,7 @@
 [alias]
 
   # View abbreviated SHA, desc, and history graph of latest 100 commits
-  l = log --pretty='format:%C(yellow)%h %Cblue%>(14)%ad %Cgreen%<(20,trunc)%aN%C(auto)%d %Creset%s' --date=relative --graph
+  l = log --pretty='format:%C(yellow)%h %Cblue%>(16,trunc)%ad %Cgreen%<(20,trunc)%aN%C(auto)%d %Creset%s' --date=relative --graph
 
   # View current working tree status in short format
   s = status -s

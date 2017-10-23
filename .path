@@ -1,7 +1,10 @@
 #!/bin/sh
 
 # Go path
-export GOPATH="${HOME}/Development/golang"
+export GOPATH="${HOME}/devel/golang"
 
 # I don't like to install Node modules globally so add local modules to PATH
-export PATH=./node_modules/.bin:~/bin:$PATH
+export PATH=./node_modules/.bin:~/bin:$GOPATH/bin:$PATH
+
+# JAVA_HOME
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`

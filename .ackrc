@@ -1,5 +1,6 @@
 # no JavaScript dependencies
 --ignore-dir=node_modules
+--ignore-dir=tmp
 
 # no Maven build dir
 --ignore-dir=target

@@ -3,3 +3,6 @@
 
 # Mac spotlight files
 .DS_Store
+
+# extra file containing secrets and stuff
+.extra

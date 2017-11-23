@@ -4,3 +4,5 @@ export EDITOR=emacs
 
 export HISTSIZE=50000
 export HISTFILESIZE=$HISTSIZE
+
+export LC_ALL=en_US.UTF-8

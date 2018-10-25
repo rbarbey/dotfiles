@@ -14,3 +14,8 @@ shopt -s histappend
 if [ -f /usr/local/etc/bash_completion ]; then
   source /usr/local/etc/bash_completion
 fi
+
+# new bash-completion v2.0
+if [ -f /usr/local/share/bash-completion/bash_completion ]; then
+    source /usr/local/share/bash-completion/bash_completion
+fi

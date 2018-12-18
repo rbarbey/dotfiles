@@ -2,5 +2,8 @@
 --ignore-dir=node_modules
 --ignore-dir=tmp
 
+# no Ember build
+--ignore-dir=dist
+
 # no Maven build dir
 --ignore-dir=target

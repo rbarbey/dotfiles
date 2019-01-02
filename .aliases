@@ -1,1 +1,3 @@
+# Maximises a window on macOS
 alias m='echo -e "\u001b[3;0;0t\u001b[8;500;500t"'
+

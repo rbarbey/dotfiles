@@ -7,7 +7,7 @@ findpom() {
 
 # Generate a random string which can serve as the basis for a password
 genpasswd() {
-  cat /dev/urandom | head -c 100 | base64 | cut -c 1-12
+  cat /dev/urandom | head -c 100 | base64 | cut -c -${1:-12}
 }
 
 # Determine disk usage for all files, also dotdirs

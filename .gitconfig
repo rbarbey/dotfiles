@@ -28,3 +28,5 @@
 	program = gpg
 [commit]
 	gpgsign = true
+[color]
+	ui = auto

@@ -31,3 +31,9 @@ server() {
 eclipse() {
   open -n /Applications/Eclipse.app
 }
+
+jwt() {
+  local header=`echo $1 | cut -d '.' -f 1 | base64 -D`
+  local payload=`echo $1 | cut -d '.' -f 2 | base64 -D`
+  printf "Header\t%s\nPayload\t%s\n" "$header", "$payload"
+}

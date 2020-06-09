@@ -4,7 +4,7 @@
 export GOPATH="${HOME}/devel/golang"
 
 # I don't like to install Node modules globally so add local modules to PATH
-export PATH=/usr/local/opt/openssl/bin:/usr/local/opt/node@10/bin:./node_modules/.bin:~/bin:$GOPATH/bin:~/Library/Python/3.6/bin/:$PATH
+export PATH=/usr/local/opt/openssl/bin:./node_modules/.bin:~/bin:$GOPATH/bin:~/Library/Python/3.6/bin/:~/Library/Python/3.7/bin/:/usr/local/opt/postgresql@9.6/bin:$PATH
 
 # JAVA_HOME
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`

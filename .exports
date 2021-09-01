@@ -7,5 +7,8 @@ export HISTFILESIZE=$HISTSIZE
 
 export LC_ALL=en_US.UTF-8
 
+# coloured output for ls
+export CLICOLOR=1
+
 # set GPG environment variable (cf https://stackoverflow.com/a/42265848/117912)
 export GPG_TTY=$(tty)

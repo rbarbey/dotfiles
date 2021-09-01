@@ -1,7 +1,9 @@
 #!/bin/bash
 
+# real programmers
 export EDITOR=emacs
 
+# history!
 export HISTSIZE=50000
 export HISTFILESIZE=$HISTSIZE
 

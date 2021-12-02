@@ -25,3 +25,8 @@ if [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
   source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
 fi
 
+if minikube status > /dev/null ; then
+  eval $(minikube docker-env)
+else
+  echo 'Minikube is not running so in case you need Docker, start Minikube and run eval $(minikube docker-env)'
+fi

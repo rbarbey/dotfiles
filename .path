@@ -8,3 +8,13 @@ export PATH=/usr/local/opt/openssl/bin:./node_modules/.bin:~/bin:$GOPATH/bin:~/L
 
 # JAVA_HOME
 export JAVA_HOME=`/usr/libexec/java_home -v 11`
+
+# Update PATH if Google Cloud SDK is installed
+if [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc ]; then
+  source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+fi
+
+# Add krew to path if installed
+if [ -d ${HOME}/.krew/bin ]; then
+  export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+fi

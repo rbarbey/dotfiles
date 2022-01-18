@@ -37,3 +37,7 @@ jwt() {
   local payload=`echo $1 | cut -d '.' -f 2 | base64 -D | jq`
   printf "Header\t%s\nPayload\t%s\n" "$header", "$payload"
 }
+
+mcd() {
+  mkdir -p $1; cd $1;
+}

@@ -1,5 +1,7 @@
 # Emacs backup files
 *~
+.emacs.d/elpa
+.emacs.d/transient
 
 # Mac spotlight files
 .DS_Store

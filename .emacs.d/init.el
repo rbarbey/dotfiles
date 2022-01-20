@@ -25,6 +25,10 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
 
+(require 'flycheck)
+(global-flycheck-mode 1)
+(setq flycheck-checker-error-threshold 1000)
+
 (require 'git-commit)
 
 (custom-set-variables

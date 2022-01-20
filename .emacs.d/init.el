@@ -29,6 +29,10 @@
 (global-flycheck-mode 1)
 (setq flycheck-checker-error-threshold 1000)
 
+;; Project mgmt capabilities
+(require 'projectile)
+(projectile-mode "1.0")
+
 (require 'git-commit)
 
 (custom-set-variables

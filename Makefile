@@ -4,7 +4,7 @@ all: dotfiles
 
 dotfiles:
 	# add aliases
-	for file in $(shell find $(CURDIR) -type f -name ".*" -not -name "*.gitignore"); do \
+	for file in $(shell find $(CURDIR) -name ".*" -not -name "*.git*"); do \
 		f=$$(basename $$file); \
 		ln -sfn $$file $(HOME)/$$f; \
 	done;

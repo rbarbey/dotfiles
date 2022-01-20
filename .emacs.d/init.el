@@ -1,7 +1,24 @@
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;; PRODUCTIVITY
+
+;; Show current column in status bar
+(column-number-mode 't)
+
+;; Whitespaces
+(global-whitespace-mode)
+(setq
+ whitespace-style
+ '(face
+   trailing
+   lines-tail
+   space-before-tab
+   space-after-tab
+   newline
+   indentation
+   empty
+   )
+ whitespace-line-column 100)
+
+;; PACKAGES
 (package-initialize)
 
 (require 'package)

@@ -48,6 +48,10 @@
 (menu-bar-mode 0)
 (show-paren-mode t)
 
+;; Markdown mode
+(add-hook 'markdown-mode-hook
+ (lambda () (setq whitespace-line-column 80)))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

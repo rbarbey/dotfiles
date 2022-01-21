@@ -43,6 +43,12 @@
 (helm-mode 1)
 (helm-projectile-on)
 
+;; Preferences
+
+(menu-bar-mode 0)
+(show-paren-mode t)
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

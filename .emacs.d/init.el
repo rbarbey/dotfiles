@@ -46,6 +46,7 @@
 
 (menu-bar-mode 0)
 (show-paren-mode t)
+(setq frame-background-mode 'dark)
 
 ;; Markdown mode
 (add-hook 'markdown-mode-hook

@@ -19,11 +19,10 @@
  whitespace-line-column 100)
 
 ;; PACKAGES
-(package-initialize)
-
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
 
 (require 'flycheck)
 (global-flycheck-mode 1)

@@ -52,7 +52,11 @@
 
 (menu-bar-mode 0)
 (show-paren-mode t)
-(setq frame-background-mode 'dark)
+
+;; Adjust colors
+(custom-set-faces
+ '(font-lock-function-name-face ((t (:bold t :foreground "#0123f5"))))
+)
 
 ;; Markdown mode
 (add-hook 'markdown-mode-hook

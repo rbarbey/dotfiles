@@ -41,6 +41,11 @@
 
 (require 'git-commit)
 
+;; Set pinentry mode to loopback to be able to enter signing key
+;; passphrase in minibuffer. For this to work, the GPG agent needs to
+;; be configured to allow this as well.
+(setq epa-pintenry-mode 'loopback)
+
 ;; Helm
 (require 'helm)
 (require 'helm-config)
@@ -69,12 +74,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+   '(pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit)))
+
 
 ;;; init.el ends here

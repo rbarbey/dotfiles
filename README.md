@@ -1,2 +1,3 @@
 # dotfiles
-Dotfiles and config
+
+Dotfiles and Emacs config

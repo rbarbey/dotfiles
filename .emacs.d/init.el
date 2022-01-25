@@ -9,8 +9,10 @@
 ;; Show current column in status bar
 (column-number-mode 't)
 
+
+
 ;; Whitespaces
-(global-whitespace-mode)
+(global-whitespace-mode 1)
 (setq
  whitespace-style
  '(face

@@ -55,6 +55,9 @@
 (helm-mode 1)
 (helm-projectile-on)
 
+(require 'yasnippet)
+(yas-global-mode 1)
+
 ;; Preferences
 
 (menu-bar-mode 0)
@@ -82,7 +85,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit)))
+   '(yasnippet pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit)))
 
 
 ;;; init.el ends here

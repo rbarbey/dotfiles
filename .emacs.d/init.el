@@ -9,8 +9,6 @@
 ;; Show current column in status bar
 (column-number-mode 't)
 
-
-
 ;; Whitespaces
 (global-whitespace-mode 1)
 (setq
@@ -58,6 +56,15 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
+(require 'lsp-mode)
+
+;; Go mode
+(require 'go-mode)
+(add-hook 'go-mode-hook #'lsp)
+(add-hook 'go-mode-hook (lambda ()
+			  (setq tab-width 4)))
+
+
 ;; Preferences
 
 (menu-bar-mode 0)
@@ -85,7 +92,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit)))
+   '(lsp-mode yasnippet pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit)))
 
 
 ;;; init.el ends here

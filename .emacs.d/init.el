@@ -53,6 +53,7 @@
 (helm-mode 1)
 (helm-projectile-on)
 
+(require 'company)
 (require 'yasnippet)
 (yas-global-mode 1)
 
@@ -64,6 +65,12 @@
 (add-hook 'go-mode-hook (lambda ()
 			  (setq tab-width 4)))
 
+;; Terraform
+(add-hook 'terraform-mode-hook
+	  (lambda ()
+	    (company-mode)
+	    (require 'company-terraform)
+	    (company-terraform-init)))
 
 ;; Preferences
 
@@ -92,7 +99,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(lsp-mode yasnippet pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit)))
+   '(company-terraform company terraform-mode lsp-mode yasnippet pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit)))
 
 
 ;;; init.el ends here

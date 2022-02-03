@@ -19,7 +19,7 @@
    space-before-tab
    space-after-tab
    newline
-   indentation
+   ; indentation
    empty
    )
  whitespace-line-column 100)

@@ -40,6 +40,8 @@
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 (require 'git-commit)
+(transient-append-suffix 'magit-push "-u"
+  '(1 "-o" "Skip GitLab pipeline" "-o ci.skip"))
 
 ;; Set pinentry mode to loopback to be able to enter signing key
 ;; passphrase in minibuffer. For this to work, the GPG agent needs to

@@ -40,6 +40,7 @@
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 (require 'git-commit)
+(require 'magit)
 (transient-append-suffix 'magit-push "-u"
   '(1 "-o" "Skip GitLab pipeline" "-o ci.skip"))
 

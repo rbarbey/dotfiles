@@ -62,6 +62,11 @@
 
 (require 'lsp-mode)
 
+;; Org mode
+;; have an additional state for DOING
+(setq org-todo-keywords
+      (quote ((sequence "TODO(t)" "DOING(g)" "|" "DONE(d)"))))
+
 ;; Go mode
 (require 'go-mode)
 (add-hook 'go-mode-hook #'lsp)

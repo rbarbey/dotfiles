@@ -30,6 +30,8 @@
 	     '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+(require 'use-package)
+
 (require 'flycheck)
 (global-flycheck-mode 1)
 (setq flycheck-checker-error-threshold 1000)
@@ -100,7 +102,7 @@
  '(blink-cursor-mode nil)
  '(custom-enabled-themes '(tango-dark))
  '(package-selected-packages
-   '(company-terraform company terraform-mode lsp-mode yasnippet pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit))
+   '(use-package company-terraform company terraform-mode lsp-mode yasnippet pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit))
  '(tool-bar-mode nil))
 
 

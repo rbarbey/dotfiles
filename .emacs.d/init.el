@@ -65,7 +65,7 @@
 ;; Org mode
 ;; have an additional state for DOING
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "DOING(g)" "|" "DONE(d)"))))
+      (quote ((sequence "TODO(t)" "DOING(g)" "ON-HOLD(o)" "|" "DONE(d)"))))
 
 ;; Go mode
 (require 'go-mode)

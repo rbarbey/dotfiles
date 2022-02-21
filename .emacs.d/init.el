@@ -24,6 +24,9 @@
    )
  whitespace-line-column 100)
 
+;; configure tabs to be 4 spaces in nXML
+(setq nxml-child-indent 4 nxml-attribute-indent 4)
+
 ;; PACKAGES
 (require 'package)
 (add-to-list 'package-archives

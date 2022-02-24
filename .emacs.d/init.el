@@ -38,6 +38,9 @@
 (use-package toml-mode
   :ensure t)
 
+(use-package dockerfile-mode
+  :ensure t)
+
 (require 'flycheck)
 (global-flycheck-mode 1)
 (setq flycheck-checker-error-threshold 1000)
@@ -108,7 +111,7 @@
  '(blink-cursor-mode nil)
  '(custom-enabled-themes '(tango-dark))
  '(package-selected-packages
-   '(toml-mode use-package company-terraform company terraform-mode lsp-mode yasnippet pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit))
+   '(dockerfile-mode toml-mode use-package company-terraform company terraform-mode lsp-mode yasnippet pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit))
  '(tool-bar-mode nil))
 
 

@@ -2,6 +2,7 @@
 
 # real programmers
 export EDITOR=emacs
+export GIT_EDITOR="emacs -nw"
 
 # history!
 export HISTSIZE=50000

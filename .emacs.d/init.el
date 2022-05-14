@@ -29,6 +29,7 @@
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
+  :hook (go-mode . lsp-deferred)
   :config (progn
 	    ;; use flycheck, not flymake
 	    (setq lsp-prefer-flymake nil)
@@ -61,16 +62,14 @@
 (use-package go-mode
   :mode ("\\.go" . go-mode)
   :init
+  :hook (go-mode . yas-minor-mode)
   :config
   (defun rb-go-mode-hook ()
-    ;;(setq gofmt-command "goimports")
-    ;;(setq godoc-command "godoc")
-    (setq tab-width 4))
-  :hook ((go-mode . lsp-deferred)
-	 (go-mode . yas-minor-mode)
-	 )
-  (add-hook 'go-mode-hook 'rb-go-mode-hook)
-  )
+    "Basic Go mode setup"
+    (setq tab-width 4)
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook 'rb-go-mode-hook))
 
 ;; (use-package go-mode
 ;;   :ensure t

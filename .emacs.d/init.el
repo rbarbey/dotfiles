@@ -67,7 +67,10 @@
     ;;(setq gofmt-command "goimports")
     ;;(setq godoc-command "godoc")
     (setq tab-width 4))
-  (add-hook 'go-mode-hook 'rb-go-mode-hook))
+  (add-hook 'go-mode-hook 'rb-go-mode-hook)
+  (add-hook 'go-mode-hook #'lsp-deferred)
+  (add-hook 'go-mode-hook #'yas-minor-mode)
+  )
 
 ;; (use-package go-mode
 ;;   :ensure t

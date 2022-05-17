@@ -142,9 +142,8 @@
 
 (use-package projectile
   :ensure t
-  ;;:bind-keymap
-  ;;("C-c p" . projectile-command-map)
-  )
+  :init (projectile-mode +1)
+  :config (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))
 
 ;;(require 'projectile)
 ;;(projectile-mode "1.0")

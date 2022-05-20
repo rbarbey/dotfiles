@@ -145,11 +145,20 @@
 
 
 ;; Terraform
-(add-hook 'terraform-mode-hook
-	  (lambda ()
-	    (company-mode)
-	    (require 'company-terraform)
-	    (company-terraform-init)))
+(use-package terraform-mode
+  :ensure t)
+
+(use-package company-terraform
+  :ensure t
+  :after company-mode terraform-mode
+  :init (company-terraform-init))
+
+
+;; (add-hook 'terraform-mode-hook
+;;	  (lambda ()
+;;	    (company-mode)
+;;	    (require 'company-terraform)
+;;	    (company-terraform-init)))
 
 ;; Preferences
 

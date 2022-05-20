@@ -71,29 +71,6 @@
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
   (add-hook 'go-mode-hook 'rb-go-mode-hook))
 
-;; (use-package go-mode
-;;   :ensure t
-;;   :after(company-mode)
-;;   :hook ((go-mode . lsp-deferred)
-;; 	 (before-save . lsp-format-buffer)
-;; 	 (before-save . lsp-organize-imports))
-;;   :config
-;;   (add-hook 'go-mode-hook 'lsp-deferred)
-;;   (defun rb-go-mode-hook ()
-;;     (setq tab-width 4)
-;;     ;; (company-mode)
-;;     (setq comment-auto-fill-only-comments t)
-;;     (auto-fill-mode t)
-;;     (lsp)
-;;     (add-hook 'go-mode-hook 'flycheck-mode))
-
-;;   (defun lsp-go-before-save-hooks ()
-;;     (add-hook 'before-save-hook #'lsp-format-buffer t t)
-;;     (add-hook 'before-save-hook #'lsp-organize-imports t t))
-
-;;   (add-hook 'go-mode-hook 'rb-go-mode-hook)
-;;   (add-hook 'before-save-hook #'lsp-go-before-save-hooks))
-
 ;; Show current column in status bar
 (column-number-mode 't)
 
@@ -133,11 +110,6 @@
   :init
   (gitlab-ci-mode-flycheck-enable))
 
-
-;;(require 'flycheck)
-;;(global-flycheck-mode 1)
-;;(setq flycheck-checker-error-threshold 1000)
-
 ;; Project mgmt capabilities
 
 (use-package projectile
@@ -166,27 +138,11 @@
 (helm-mode 1)
 (helm-projectile-on)
 
-;;(require 'company)
-;;(require 'yasnippet)
-;; (yas-global-mode 1)
-
-;; (require 'lsp-mode)
-
 ;; Org mode
 ;; have an additional state for DOING
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "DOING(g)" "ON-HOLD(o)" "|" "DONE(d)"))))
 
-;; Go mode
-;; (require 'go-mode)
-;; (add-hook 'go-mode-hook #'lsp)
-;; (add-hook 'go-mode-hook
-;;	  (lambda ()
-;;	    (setq tab-width 4)
-;;	    (company-mode)
-;;	    (setq comment-auto-fill-only-comments t)
-;;	    (auto-fill-mode t)
-;;	    ))
 
 ;; Terraform
 (add-hook 'terraform-mode-hook

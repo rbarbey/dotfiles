@@ -1,8 +1,17 @@
 # Emacs backup files
 *~
+
+# Emacs working dirs
 .emacs.d/elpa
 .emacs.d/transient
 .emacs.d/projectile-bookmarks.eld
+.emacs.d/.cache/
+
+# Emacs Java LSP
+.emacs.d/.dap-breakpoints
+.emacs.d/.lsp-session-v1
+.emacs.d/eclipse.jdt.ls/
+.emacs.d/workspace/
 
 # Mac spotlight files
 .DS_Store

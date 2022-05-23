@@ -92,8 +92,13 @@
 (when window-system
   (set-frame-size (selected-frame) 103 63))
 
-;; configure tabs to be 4 spaces in nXML
-(setq nxml-child-indent 4 nxml-attribute-indent 4)
+(use-package nxml-mode
+  :mode (("\\.xml$" . nxml-mode)
+	 ("\\.xslt$" . nxml-mode)
+	 ("\\.xsd$" . nxml-mode)
+	 ("\\.plist$" . nxml-mode))
+  :config
+  (setq nxml-child-indent 4 nxml-attribute-indent 4))
 
 ;; PACKAGES
 

@@ -153,13 +153,6 @@
   :after company-mode terraform-mode
   :init (company-terraform-init))
 
-
-;; (add-hook 'terraform-mode-hook
-;;	  (lambda ()
-;;	    (company-mode)
-;;	    (require 'company-terraform)
-;;	    (company-terraform-init)))
-
 ;; Preferences
 
 (show-paren-mode t)

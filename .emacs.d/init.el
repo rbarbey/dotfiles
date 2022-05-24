@@ -49,6 +49,10 @@
 	    (setq lsp-ui-imenu-kind-position 'top))
   )
 
+(use-package lsp-java
+  :ensure t
+  :config (add-hook 'java-mode-hook 'lsp))
+
 (use-package company
   :ensure t
   :config (progn

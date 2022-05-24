@@ -24,6 +24,8 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 (use-package yasnippet
+  :ensure t
+  :config (yas-global-mode))
   :ensure t)
 
 (use-package lsp-mode

@@ -143,11 +143,23 @@
 (setq epa-pintenry-mode 'loopback)
 
 ;; Helm
-(require 'helm)
-(require 'helm-config)
-(require 'helm-projectile)
-(helm-mode 1)
-(helm-projectile-on)
+(use-package helm
+  :ensure t
+  :config (helm-mode))
+
+(use-package helm-projectile
+  :ensure t
+  :after helm
+  :config (helm-projectile-on))
+
+(use-package helm-lsp
+  :ensure t
+  :after helm)
+
+;;(require 'helm-config)
+;;(require 'helm-projectile)
+;;(helm-mode 1)
+;;(helm-projectile-on)
 
 ;; Org mode
 ;; have an additional state for DOING

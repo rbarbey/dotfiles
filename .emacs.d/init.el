@@ -127,6 +127,7 @@
 
 (use-package projectile
   :ensure t
+  :diminish (projectile-mode . "Proj")
   :init (projectile-mode +1)
   :config (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))
 

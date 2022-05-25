@@ -23,6 +23,9 @@
 (add-hook 'after-init-hook 'global-flycheck-mode)
 (add-hook 'after-init-hook 'global-company-mode)
 
+(use-package diminish
+  :ensure t)
+
 (use-package yasnippet
   :ensure t
   :config (yas-global-mode))

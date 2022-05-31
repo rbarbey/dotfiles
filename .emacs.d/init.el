@@ -167,8 +167,10 @@
 
 ;; Org mode
 ;; have an additional state for DOING
-(setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "DOING(g)" "ON-HOLD(o)" "|" "DONE(d)"))))
+(use-package org
+  :ensure t
+  :config (setq org-todo-keywords
+      (quote ((sequence "TODO(t)" "DOING(g)" "ON-HOLD(o)" "|" "DONE(d)")))))
 
 
 ;; Terraform

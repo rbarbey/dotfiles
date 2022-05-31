@@ -187,6 +187,9 @@
 (use-package paren
   :config (show-paren-mode t))
 
+(use-package frame
+  :config (blink-cursor-mode nil))
+
 ;; Markdown mode
 (use-package markdown-mode
   :ensure t

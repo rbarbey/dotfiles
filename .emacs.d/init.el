@@ -182,8 +182,8 @@
   :init (company-terraform-init))
 
 ;; Preferences
-
-(show-paren-mode t)
+(use-package paren
+  :config (show-paren-mode t))
 
 ;; Markdown mode
 (add-hook 'markdown-mode-hook
@@ -203,7 +203,6 @@
  '(lsp-ui-imenu-enable t)
  '(package-selected-packages
    '(gitlab-ci-mode-flycheck company-go dockerfile-mode toml-mode use-package company-terraform company terraform-mode lsp-mode yasnippet pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit))
- '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(url-debug t))
 

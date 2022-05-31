@@ -210,7 +210,6 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(tango-dark))
  '(inhibit-startup-screen t)
- '(lsp-ui-imenu-enable t)
  '(package-selected-packages
    '(gitlab-ci-mode-flycheck company-go dockerfile-mode toml-mode use-package company-terraform company terraform-mode lsp-mode yasnippet pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit))
  '(url-debug t))

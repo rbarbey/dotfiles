@@ -80,7 +80,8 @@
   (add-hook 'go-mode-hook 'rb-go-mode-hook))
 
 ;; Show current column in status bar
-(column-number-mode 't)
+(use-package simple
+  :config (column-number-mode 't))
 
 ;; Whitespaces
 (global-whitespace-mode 1)
@@ -197,8 +198,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(blink-cursor-mode nil)
- '(column-number-mode t)
  '(custom-enabled-themes '(tango-dark))
  '(inhibit-startup-screen t)
  '(lsp-ui-imenu-enable t)

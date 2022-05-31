@@ -190,6 +190,9 @@
 (use-package frame
   :config (blink-cursor-mode nil))
 
+(use-package tool-bar
+  :config (tool-bar-mode nil))
+
 ;; Markdown mode
 (use-package markdown-mode
   :ensure t
@@ -210,7 +213,6 @@
  '(lsp-ui-imenu-enable t)
  '(package-selected-packages
    '(gitlab-ci-mode-flycheck company-go dockerfile-mode toml-mode use-package company-terraform company terraform-mode lsp-mode yasnippet pinentry helm helm-projectile flycheck-golangci-lint flycheck-projectile go-mode go-projectile restclient restclient-test markdown-mode gitlab-ci-mode magit))
- '(tool-bar-mode nil)
  '(url-debug t))
 
 

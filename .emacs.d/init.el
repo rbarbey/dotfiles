@@ -191,7 +191,7 @@
   :config (blink-cursor-mode nil))
 
 (use-package tool-bar
-  :config (tool-bar-mode nil))
+  :config (tool-bar-mode -1))
 
 ;; Markdown mode
 (use-package markdown-mode

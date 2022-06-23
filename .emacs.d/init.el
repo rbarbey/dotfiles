@@ -204,6 +204,11 @@
 		      (setq whitespace-line-column 80)
 		      (setq fill-column 80))))
 
+;; Groovy mode for Gradle files
+(use-package groovy-mode
+  :ensure t
+  :mode ("\\.gradle$" . groovy-mode))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

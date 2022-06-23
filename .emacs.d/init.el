@@ -33,7 +33,9 @@
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
-  :hook (go-mode . lsp-deferred)
+  :hook
+  (go-mode . lsp-deferred)
+  (nxml-mode . lsp-deferred)
   :config (progn
 	    ;; use flycheck, not flymake
 	    (setq lsp-prefer-flymake nil)

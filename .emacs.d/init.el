@@ -55,7 +55,12 @@
 
 (use-package lsp-java
   :ensure t
-  :config (add-hook 'java-mode-hook 'lsp))
+  :config
+  (add-hook 'java-mode-hook 'lsp)
+  (add-hook 'java-mode-hook (lambda()
+			      (setq c-basic-offset 4
+				    tab-width 4
+				    indent-tabs-mode nil))))
 
 (use-package company
   :ensure t

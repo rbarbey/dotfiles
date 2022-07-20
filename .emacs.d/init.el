@@ -167,11 +167,6 @@
   :ensure t
   :after helm)
 
-;;(require 'helm-config)
-;;(require 'helm-projectile)
-;;(helm-mode 1)
-;;(helm-projectile-on)
-
 ;; Org mode
 ;; have an additional state for DOING
 (use-package org

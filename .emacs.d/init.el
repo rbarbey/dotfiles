@@ -13,11 +13,9 @@
 (package-initialize)
 
 ;; update package list
-(when (not package-archive-contents) (package-refresh-contents))
-
-;; install use-package if not there
-(when (not (package-installed-p 'use-package))
-  (package-installt 'use-package))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (add-hook 'after-init-hook 'global-flycheck-mode)
 (add-hook 'after-init-hook 'global-company-mode)

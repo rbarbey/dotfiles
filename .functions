@@ -41,3 +41,9 @@ jwt() {
 mcd() {
   mkdir -p $1; cd $1;
 }
+
+rurl() {
+    # follow redirect but print what's going on
+    # redirect stderr to be able to grep curl output
+    curl -L "$1" 2>&1 | egrep "^[<>] (Location:|Host:|GET)"
+}

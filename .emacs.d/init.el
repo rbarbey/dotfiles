@@ -9,7 +9,6 @@
 (when (not (assoc "melpa" package-archives))
   (setq package-archives (append '(("stable" . "https://stable.melpa.org/packages/")) package-archives))
   (setq package-archives (append '(("melpa" . "https://melpa.org/packages/")) package-archives))
-  (setq package-archives (append '(("gnu" . "https://elpa..gnu.org/packages/")) package-archives))
   )
 (package-initialize)
 

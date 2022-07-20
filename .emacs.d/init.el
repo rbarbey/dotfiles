@@ -140,10 +140,13 @@
   :ensure t
   :after projectile)
 
-(require 'git-commit)
-(require 'magit)
-(transient-append-suffix 'magit-push "-u"
-  '(1 "-o" "Skip GitLab pipeline" "-o ci.skip"))
+(use-package git-commit
+  :ensure t)
+
+(use-package magit
+  :ensure t)
+;; (transient-append-suffix 'magit-push "-u"
+;;   '(1 "-o" "Skip GitLab pipeline" "-o ci.skip"))
 
 ;; Set pinentry mode to loopback to be able to enter signing key
 ;; passphrase in minibuffer. For this to work, the GPG agent needs to

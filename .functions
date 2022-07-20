@@ -45,5 +45,5 @@ mcd() {
 rurl() {
     # follow redirect but print what's going on
     # redirect stderr to be able to grep curl output
-    curl -L "$1" 2>&1 | egrep "^[<>] (Location:|Host:|GET)"
+    (set -o pipefail && curl -L "$1" 2>&1 | egrep "^[<>] (Location:|Host:|GET)")
 }

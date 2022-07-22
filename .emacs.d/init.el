@@ -168,11 +168,18 @@
   :after helm)
 
 ;; Org mode
+
+(defun rb/org-mode-setup ()
+  (org-indent-mode)
+  (auto-fill-mode 1))
+
 ;; have an additional state for DOING
 (use-package org
   :ensure t
-  :config (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "DOING(g)" "ON-HOLD(o)" "|" "DONE(d)")))))
+  :hook (org-mode . rb/org-mode-setup)
+  :config
+  (setq org-todo-keywords
+	(quote ((sequence "TODO(t)" "DOING(g)" "ON-HOLD(o)" "|" "DONE(d)")))))
 
 
 ;; Terraform

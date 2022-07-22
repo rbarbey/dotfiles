@@ -156,7 +156,7 @@
 ;; Helm
 (use-package helm
   :ensure t
-  :config (helm-mode))
+  :config (helm-mode 0))
 
 (use-package helm-projectile
   :ensure t

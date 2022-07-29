@@ -144,7 +144,11 @@
   :ensure t)
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :config
+  (transient-append-suffix 'magit-push "-u"
+    '(1 "-o" "Skip GitLab pipeline" "-o ci.skip")))
+
 ;; (transient-append-suffix 'magit-push "-u"
 ;;   '(1 "-o" "Skip GitLab pipeline" "-o ci.skip"))
 

@@ -220,9 +220,9 @@
   :ensure t
   :mode ("\\.gradle$" . groovy-mode))
 
-;; create backup file in the Trash
+;; create backup file in the tmp
 (setq backup-directory-alist
-      '((".*" . "~/.Trash")))
+      '((".*" . "/tmp")))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

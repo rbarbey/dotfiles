@@ -48,6 +48,12 @@
   :diminish
   :config (ivy-mode 1))
 
+(use-package counsel
+  :bind (("M-x" . counsel-M-x)))
+
+(use-package ivy-rich
+  :init (ivy-rich-mode 1))
+
 ;; Have a nice mode line
 (use-package doom-modeline
   :init (doom-modeline-mode 1)

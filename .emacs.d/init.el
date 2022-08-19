@@ -52,3 +52,9 @@
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 20)))
+
+;; Rainbow delimiters: display matching parens according to their
+;; level of nesting in slightly different colours
+;; not sure yet if I want to keep this
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))

@@ -46,6 +46,7 @@
 ;; set up Ivy
 (use-package ivy
   :diminish
+  :bind (("C-s" . swiper))
   :config (ivy-mode 1))
 
 (use-package counsel

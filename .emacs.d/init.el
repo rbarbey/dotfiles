@@ -92,3 +92,6 @@
 
 ;; follow compilation buffer
 (setq compilation-scroll-output 1)
+
+;; It's Magit!
+(use-package magit)

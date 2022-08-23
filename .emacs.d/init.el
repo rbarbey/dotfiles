@@ -81,9 +81,13 @@
 
 ;; Project management using Projectile
 (use-package projectile
-  :diminish
-  :init (projectile-mode 1)
-  :config (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :bind-keymap ("s-p" . projectile-command-map)
+  :init
+  (when (file-directory-p "~/devel")
+	(setq projectile-search-path '("~/devel")))
+  (setq projectile-switch-project-action #'projectile-dired))
 
 ;; follow compilation buffer
 (setq compilation-scroll-output 1)

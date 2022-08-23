@@ -84,3 +84,6 @@
   :diminish
   :init (projectile-mode 1)
   :config (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))
+
+;; follow compilation buffer
+(setq compilation-scroll-output 1)

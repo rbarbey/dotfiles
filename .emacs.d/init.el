@@ -95,3 +95,7 @@
 
 ;; It's Magit!
 (use-package magit)
+
+;; Programming languages
+(use-package go-mode
+  :config (setq tab-width 4))

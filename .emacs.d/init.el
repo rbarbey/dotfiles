@@ -78,3 +78,9 @@
   :init (which-key-mode)
   :diminish which-key-mode
   :config (setq which-key-idle-delay 1))
+
+;; Project management using Projectile
+(use-package projectile
+  :diminish
+  :init (projectile-mode 1)
+  :config (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))

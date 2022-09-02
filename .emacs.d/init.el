@@ -1,3 +1,11 @@
+(defun rb/display-startup-time ()
+  (message "Emacs loaded in %s with %d gcs"
+	   (format "%.2f seconds"
+		   (float-time
+		    (time-subtract after-init-time before-init-time)))
+	   gcs-done))
+(add-hook 'emacs-startup-hook #'rb/display-startup-time)
+
 ;; Basic visual setting
 
 (setq inhibit-startup-message t) ;; No startup screen please

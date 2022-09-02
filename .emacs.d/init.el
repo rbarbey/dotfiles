@@ -104,4 +104,13 @@
 
 ;; Programming languages
 (use-package go-mode
-  :config (setq tab-width 4))
+  :mode ("\\.go" . go-mode)
+  :init
+  :hook (go-mode . yas-minor-mode)
+  :config
+  (defun rb-go-mode-hook ()
+    "Basic Go mode setup"
+    (setq tab-width 4)
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook 'rb-go-mode-hook))

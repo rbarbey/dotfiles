@@ -94,8 +94,6 @@
   :custom ((projectile-completion-system 'ivy))
   :bind-keymap ("s-p" . projectile-command-map)
   :init
-  (when (file-directory-p "~/devel")
-	(setq projectile-search-path '("~/devel")))
   (setq projectile-switch-project-action #'projectile-dired))
 
 ;; follow compilation buffer

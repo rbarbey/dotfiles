@@ -103,6 +103,13 @@
 (use-package magit)
 
 ;; Programming languages
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :hook
+  (go-mode . lsp-deferred))
+(use-package lsp-ui)
+(use-package company)
+(use-package flycheck)
 (use-package go-mode
   :mode ("\\.go" . go-mode)
   :init

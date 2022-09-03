@@ -33,10 +33,23 @@ eclipse() {
 }
 
 jwt() {
-  local header=`echo $1 | cut -d '.' -f 1 | base64 -D | jq`
-  local payload=`echo $1 | cut -d '.' -f 2 | base64 -D | jq`
-  printf "Header\t%s\nPayload\t%s\n" "$header", "$payload"
+    local part=`echo $1 | cut -d '.' -f 1`
+    pad
+    local json=`echo $part | base64 -D | jq`
+    printf "Header\t%s\n" "$json"
+    part=`echo $1 | cut -d '.' -f 2`
+    pad
+    json=`echo $part | base64 -D | jq`
+    printf "Payload\t%s\n" "$json"
 }
+
+pad () {
+    #size=${#part}
+    while [ $((${#part} % 4)) -ne 0 ]; do
+	part+="="
+    done
+}
+
 
 mcd() {
   mkdir -p $1; cd $1;

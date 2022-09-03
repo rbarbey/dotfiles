@@ -32,12 +32,14 @@ eclipse() {
   open -n /Applications/Eclipse.app
 }
 
+# Decode Header and Payload of a JWT
 jwt() {
     header=`parseJwtPart $1 1`
     payload=`parseJwtPart $1 2`
     printf "\nHeader\t%s\nPayload\t%s\n" "$header" "$payload"
 }
 
+# Pad string from stdin so that it can be base64 decoded
 pad () {
     while read str; do
 	while [ $((${#str} % 4)) -ne 0 ]; do

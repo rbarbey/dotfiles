@@ -34,20 +34,19 @@ eclipse() {
 
 jwt() {
     local part=`echo $1 | cut -d '.' -f 1`
-    pad
-    local json=`echo $part | base64 -D | jq`
-    printf "Header\t%s\n" "$json"
+    padToJson
+    printf "Header\t%s\n" "$part"
     part=`echo $1 | cut -d '.' -f 2`
-    pad
-    json=`echo $part | base64 -D | jq`
-    printf "Payload\t%s\n" "$json"
+    padToJson
+    printf "Payload\t%s\n" "$part"
 }
 
-pad () {
+padToJson () {
     #size=${#part}
     while [ $((${#part} % 4)) -ne 0 ]; do
 	part+="="
     done
+    part=`echo $part | base64 -D | jq`
 }
 
 

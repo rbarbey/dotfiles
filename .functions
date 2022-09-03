@@ -33,18 +33,22 @@ eclipse() {
 }
 
 jwt() {
-    header=`echo $1 | cut -d '.' -f 1 | padToJson | base64 -D | jq -C`
-    payload=`echo $1 | cut -d '.' -f 2 | padToJson | base64 -D | jq -C`
-    printf "Header\t%s\nPayload\t%s\n" "$header" "$payload"
+    header=`parseJwtPart $1 1`
+    payload=`parseJwtPart $1 2`
+    printf "\nHeader\t%s\nPayload\t%s\n" "$header" "$payload"
 }
 
-padToJson () {
+pad () {
     while read str; do
 	while [ $((${#str} % 4)) -ne 0 ]; do
 	    str+="="
 	done
 	printf "$str"
     done
+}
+
+parseJwtPart() {
+    echo "$1" | cut -d '.' -f "$2" | pad | base64 -D | jq -C
 }
 
 

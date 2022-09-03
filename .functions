@@ -45,7 +45,7 @@ padToJson () {
     while [ $((${#part} % 4)) -ne 0 ]; do
 	part+="="
     done
-    part=`echo $part | base64 -D | jq`
+    part=`echo $part | base64 -D | jq -C`
 }
 
 

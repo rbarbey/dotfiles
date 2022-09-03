@@ -42,7 +42,6 @@ jwt() {
 }
 
 padToJson () {
-    #size=${#part}
     while [ $((${#part} % 4)) -ne 0 ]; do
 	part+="="
     done

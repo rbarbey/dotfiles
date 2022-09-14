@@ -110,6 +110,15 @@
 (use-package lsp-ui)
 (use-package company)
 (use-package flycheck)
+
+(use-package lsp-java
+  :config
+  (add-hook 'java-mode-hook 'lsp)
+  (add-hook 'java-mode-hook (lambda()
+			      (setq c-basic-offset 4
+				    tab-width 4
+				    indent-tabs-mode nil))))
+
 (use-package go-mode
   :mode ("\\.go" . go-mode)
   :init

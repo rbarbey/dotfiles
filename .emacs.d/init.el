@@ -105,10 +105,25 @@
 ;; Programming languages
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-(use-package lsp-ui)
-(use-package company)
   :config
   (lsp-enable-which-key-integration t))
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode))
+
+(use-package company
+  :after lsp-mode
+  :hook (prog-mode . company-mode)
+  :bind
+  (:map company-active-map
+	("<tab>" . company-complete-selection)
+	("<escape>" . company-abort))
+  (:map lsp-mode-map
+	("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
+
 (use-package flycheck)
 
 (use-package lsp-java

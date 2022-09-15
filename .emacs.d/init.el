@@ -107,6 +107,8 @@
   :commands (lsp lsp-deferred)
 (use-package lsp-ui)
 (use-package company)
+  :config
+  (lsp-enable-which-key-integration t))
 (use-package flycheck)
 
 (use-package lsp-java

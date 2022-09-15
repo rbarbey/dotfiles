@@ -105,8 +105,6 @@
 ;; Programming languages
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-  :hook
-  (go-mode . lsp-deferred))
 (use-package lsp-ui)
 (use-package company)
 (use-package flycheck)

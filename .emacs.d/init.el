@@ -149,5 +149,12 @@
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
   (add-hook 'go-mode-hook 'rb-go-mode-hook))
 
+(use-package terraform-mode
+  :hook (terraform-mode . lsp-deferred)
+  :init (company-terraform-init))
+
+(use-package company-terraform
+  :defer t)
+
 ;; Restclient
 (use-package restclient)

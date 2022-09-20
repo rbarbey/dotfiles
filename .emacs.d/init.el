@@ -111,6 +111,9 @@
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode))
 
+(use-package lsp-ivy
+  :after lsp-mode)
+
 (use-package company
   :after lsp-mode
   :hook (prog-mode . company-mode)

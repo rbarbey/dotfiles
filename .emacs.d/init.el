@@ -130,12 +130,11 @@
 (use-package flycheck)
 
 (use-package lsp-java
+  :hook (java-mode . lsp-deferred)
   :config
-  (add-hook 'java-mode-hook 'lsp)
-  (add-hook 'java-mode-hook (lambda()
-			      (setq c-basic-offset 4
-				    tab-width 4
-				    indent-tabs-mode nil))))
+  (setq c-basic-offset 4
+	tab-width 4
+	indent-tabs-mode nil))
 
 (use-package go-mode
   :mode ("\\.go" . go-mode)
@@ -158,3 +157,16 @@
 
 ;; Restclient
 (use-package restclient)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(company-terraform terraform-mode lsp-ivy which-key use-package restclient rainbow-delimiters projectile magit lsp-ui lsp-java ivy-rich go-mode flycheck doom-modeline diminish counsel company all-the-icons)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

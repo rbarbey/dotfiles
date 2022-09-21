@@ -139,7 +139,7 @@
 (use-package go-mode
   :mode ("\\.go" . go-mode)
   :init
-  :hook (go-mode . yas-minor-mode)
+  :hook (go-mode . lsp-deferred)
   :config
   (defun rb-go-mode-hook ()
     "Basic Go mode setup"

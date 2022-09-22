@@ -141,10 +141,11 @@
   :mode ("\\.go" . go-mode)
   :init
   :hook (go-mode . lsp-deferred)
+  :custom
+  (tab-width 4)
   :config
   (defun rb-go-mode-hook ()
     "Basic Go mode setup"
-    (setq tab-width 4)
     (add-hook 'before-save-hook #'lsp-format-buffer t t)
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
   (add-hook 'go-mode-hook 'rb-go-mode-hook))

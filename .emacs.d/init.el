@@ -131,10 +131,11 @@
 
 (use-package lsp-java
   :hook (java-mode . lsp-deferred)
+  :custom
+  (tab-width 4)
+  (indent-tabs-mode nil)
   :config
-  (setq c-basic-offset 4
-	tab-width 4
-	indent-tabs-mode nil))
+  (setq c-basic-offset 4))
 
 (use-package go-mode
   :mode ("\\.go" . go-mode)

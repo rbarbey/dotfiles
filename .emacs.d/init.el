@@ -1,9 +1,9 @@
 (defun rb/display-startup-time ()
   (message "Emacs loaded in %s with %d gcs"
-	   (format "%.2f seconds"
-		   (float-time
-		    (time-subtract after-init-time before-init-time)))
-	   gcs-done))
+           (format "%.2f seconds"
+                   (float-time
+                    (time-subtract after-init-time before-init-time)))
+           gcs-done))
 (add-hook 'emacs-startup-hook #'rb/display-startup-time)
 
 ;; Basic visual setting
@@ -40,8 +40,8 @@
 
 ;; Add package repositories
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-			 ("org" .  "https://orgmode.org/elpa/")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("org" .  "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 (unless package-archive-contents
@@ -124,10 +124,10 @@
   :hook (prog-mode . company-mode)
   :bind
   (:map company-active-map
-	("<tab>" . company-complete-selection)
-	("<escape>" . company-abort))
+        ("<tab>" . company-complete-selection)
+        ("<escape>" . company-abort))
   (:map lsp-mode-map
-	("<tab>" . company-indent-or-complete-common))
+        ("<tab>" . company-indent-or-complete-common))
   :custom
   (company-minimum-prefix-length 1)
   (company-idle-delay 0.0))

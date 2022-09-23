@@ -138,7 +138,6 @@
   :hook (java-mode . lsp-deferred)
   :custom
   (tab-width 4)
-  (indent-tabs-mode nil)
   :config
   (setq c-basic-offset 4))
 
@@ -148,6 +147,7 @@
   :hook (go-mode . lsp-deferred)
   :custom
   (tab-width 4)
+  (indent-tabs-mode t)
   :config
   (defun rb-go-mode-hook ()
     "Basic Go mode setup"

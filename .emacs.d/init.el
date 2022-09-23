@@ -8,6 +8,10 @@
 
 ;; Basic visual setting
 
+(global-whitespace-mode 1)
+(setq whitespace-style
+  '(spaces tabs newline space-mark tab-mark face trailing empty))
+
 (setq inhibit-startup-message t) ;; No startup screen please
 (scroll-bar-mode -1)             ;; no scroll bar
 (tool-bar-mode -1)               ;; no tool bar

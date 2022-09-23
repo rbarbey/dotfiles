@@ -15,6 +15,7 @@
 (set-fringe-mode 10)             ;; ?
 (menu-bar-mode -1)               ;; no menu bar
 (setq visible-bell nil)          ;; no visual bell
+(setq-default indent-tabs-mode nil)
 
 ;; show column numbers
 (column-number-mode)

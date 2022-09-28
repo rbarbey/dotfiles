@@ -38,10 +38,10 @@ jwt() {
 # Pad string from stdin so that it can be base64 decoded
 pad () {
     while read str; do
-	while [ $((${#str} % 4)) -ne 0 ]; do
-	    str+="="
-	done
-	printf "$str"
+        while [ $((${#str} % 4)) -ne 0 ]; do
+            str+="="
+        done
+        printf "$str"
     done
 }
 

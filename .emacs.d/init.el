@@ -27,6 +27,8 @@
 ;; use nice SF
 (set-face-attribute 'default nil :font "SF Mono Light" :height 120)
 
+(global-set-key (kbd "s-/") 'comment-or-uncomment-region)
+
 ;; A nice theme is Tango Dark
 ;; (load-theme 'tango-dark)
 ;; Another nice theme is wombat

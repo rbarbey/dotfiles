@@ -171,4 +171,5 @@
   :defer t)
 
 ;; Restclient
-(use-package restclient)
+(use-package restclient
+  :mode ("\\.http" . restclient-mode))

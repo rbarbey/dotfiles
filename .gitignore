@@ -18,3 +18,4 @@
 
 # extra file containing secrets and stuff
 .extra
+/.emacs.d/custom.el

@@ -155,7 +155,6 @@
   :hook (go-mode . lsp-deferred)
   :custom
   (tab-width 4)
-  (indent-tabs-mode t)
   :config
   (defun rb-go-mode-hook ()
     "Basic Go mode setup"

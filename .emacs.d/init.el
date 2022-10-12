@@ -162,6 +162,12 @@
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
   (add-hook 'go-mode-hook 'rb-go-mode-hook))
 
+(use-package nxml-mode
+  :ensure nil
+  :config
+  (setq nxml-attribute-indent 4
+        nxml-child-indent 4))
+
 (use-package terraform-mode
   :hook (terraform-mode . lsp-deferred)
   :init (company-terraform-init))

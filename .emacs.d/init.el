@@ -117,6 +117,16 @@
 ;; It's Magit!
 (use-package magit)
 
+;; Org mode
+(use-package org
+  :config
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  (setq org-log-into-drawer t)
+  (setq org-qagenda-files
+        '("~/Documents/journal"))
+  )
+
 ;; Programming languages
 (use-package lsp-mode
   :commands (lsp lsp-deferred)

@@ -166,6 +166,7 @@
 
 (use-package nxml-mode
   :ensure nil
+  :hook (nxml-mode . lsp-deferred)
   :config
   (setq nxml-attribute-indent 4
         nxml-child-indent 4))

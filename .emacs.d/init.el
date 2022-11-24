@@ -183,6 +183,11 @@
   (setq nxml-attribute-indent 4
         nxml-child-indent 4))
 
+(use-package yaml-mode
+  :bind
+  (:map yaml-mode-map
+        ("\C-m" . 'newline-and-indent)))
+
 (use-package terraform-mode
   :hook (terraform-mode . lsp-deferred)
   :init (company-terraform-init))

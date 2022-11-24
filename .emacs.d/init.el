@@ -20,6 +20,8 @@
 (menu-bar-mode -1)               ;; no menu bar
 (setq visible-bell nil)          ;; no visual bell
 (setq-default indent-tabs-mode nil)
+(setq initial-major-mode 'fundamental-mode) ; changes *scratch* buffer mode
+(setq initial-scratch-message "# This buffer is for notes you don't want to save")
 
 ;; show column numbers
 (column-number-mode)

@@ -1,3 +1,5 @@
+(setq gc-cons-threshold 100000000)
+
 (defun rb/display-startup-time ()
   (message "Emacs loaded in %s with %d gcs"
            (format "%.2f seconds"

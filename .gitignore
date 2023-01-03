@@ -19,3 +19,6 @@
 # extra file containing secrets and stuff
 .extra
 /.emacs.d/custom.el
+/.emacs.d/projectile.cache
+/.emacs.d/projects
+/.emacs.d/url/

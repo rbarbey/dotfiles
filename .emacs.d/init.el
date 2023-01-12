@@ -158,6 +158,9 @@
 
 (use-package flycheck)
 
+(use-package yasnippet
+  :config (yas-global-mode))
+
 (use-package lsp-java
   :hook (java-mode . lsp-deferred)
   :custom

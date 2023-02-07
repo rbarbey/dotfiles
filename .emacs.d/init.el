@@ -119,7 +119,10 @@
 (setq compilation-scroll-output 1)
 
 ;; It's Magit!
-(use-package magit)
+(use-package magit
+  :config
+  (transient-append-suffix 'magit-push "-u"
+                           '(1 "-o" "Skip CI pipeline" "-o ci.skip")))
 
 ;; Org mode
 (use-package org

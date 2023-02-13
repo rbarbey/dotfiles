@@ -127,6 +127,8 @@
 ;; Org mode
 (use-package org
   :config
+  (setq org-todo-keywords
+        (quote ((sequence "TODO" "DOING" "|" "DONE"))))
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)

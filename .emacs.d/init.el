@@ -166,6 +166,7 @@
 
 (use-package lsp-java
   :hook (java-mode . lsp-deferred)
+  :bind (:map lsp-mode-map ("s-l h t" . lsp-java-type-hierarchy))
   :custom
   (tab-width 4)
   :config

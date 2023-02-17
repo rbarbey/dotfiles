@@ -209,3 +209,7 @@
 ;; Restclient
 (use-package restclient
   :mode ("\\.http" . restclient-mode))
+
+;; MMorph programming
+(add-to-list 'auto-coding-alist
+             '("\\.mmo\\(rph\\)?$" . latin-9))

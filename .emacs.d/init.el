@@ -31,6 +31,18 @@
 ;; use nice SF
 (set-face-attribute 'default nil :font "SF Mono Light" :height 120)
 
+;; initial size
+(when window-system
+  ;; position frame slightly off center
+  (let* ((workarea (frame-monitor-workarea (selected-frame)))
+         (width (caddr workarea))
+         (height (cadddr workarea)))
+  (set-frame-position (selected-frame)
+                      (* (/ width 100) 50)
+                      (* (/ height 5) 1)))
+  ;; set initial size of frame
+  (set-frame-size (selected-frame) 96 56))
+
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
 
 ;; A nice theme is Tango Dark

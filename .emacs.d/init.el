@@ -39,7 +39,8 @@
          (height (cadddr workarea)))
   (set-frame-position (selected-frame)
                       (* (/ width 100) 50)
-                      (* (/ height 5) 1)))
+                      (/ (- height (frame-pixel-height (selected-frame))) 3)))
+
   ;; set initial size of frame
   (set-frame-size (selected-frame) 96 56))
 

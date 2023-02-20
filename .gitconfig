@@ -20,10 +20,14 @@
 [merge]
   # include summaries of merged commits in newly created merge commit messages
   log = true
+
+[include]
+    path = ~/.git/signingkey.conf
+
 [user]
 	name = Robert Barbey
 	email = robert.barbey@acrolinx.com
-	signingkey = 5FCC06C585EF615BD66A9828F0F326284F9C7BF6
+
 [gpg]
 	program = gpg
 [commit]

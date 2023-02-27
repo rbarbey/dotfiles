@@ -30,7 +30,6 @@
 
 ;; use nice SF
 (set-face-attribute 'default nil :font "SF Mono Light" :height 120)
-(set-face-attribute 'markdown-code-face nil :font "SF Mono Light" :height 120)
 
 ;; initial size
 (when window-system
@@ -230,6 +229,12 @@
 ;; Restclient
 (use-package restclient
   :mode ("\\.http" . restclient-mode))
+
+;; Markdown
+(use-package markdown-mode
+  :ensure nil
+  :config
+  (add-hook 'markdown-mode-hook '(lambda () (set-face-attribute 'markdown-code-face nil :font "SF Mono Light" :height 120))))
 
 ;; MMorph programming
 (add-to-list 'auto-coding-alist

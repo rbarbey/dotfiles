@@ -30,6 +30,7 @@
 
 ;; use nice SF
 (set-face-attribute 'default nil :font "SF Mono Light" :height 120)
+(set-face-attribute 'markdown-code-face nil :font "SF Mono Light" :height 120)
 
 ;; initial size
 (when window-system

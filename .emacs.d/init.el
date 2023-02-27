@@ -47,6 +47,13 @@
 
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
 
+;; delete until beginning of line
+(defun rb/kill-to-beginning-of-line ()
+  (interactive)
+  (kill-region (point-at-bol) (point)))
+
+(global-set-key (kbd "s-<backspace>") #'rb/kill-to-beginning-of-line)
+
 ;; A nice theme is Tango Dark
 ;; (load-theme 'tango-dark)
 ;; Another nice theme is wombat

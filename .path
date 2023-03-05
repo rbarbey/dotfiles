@@ -6,6 +6,11 @@ export GOPATH="${HOME}/devel/golang"
 # I don't like to install Node modules globally so add local modules to PATH
 export PATH=/usr/local/opt/openssl/bin:./node_modules/.bin:~/bin:$GOPATH/bin:~/Library/Python/3.8/bin/:~/Library/Python/3.7/bin/:/usr/local/opt/postgresql@9.6/bin:$PATH
 
+# on Apple Silicon Macs, Homebrew installs everything in /opt/homebre/bin
+if [ -d /opt/homebrew/bin ]; then
+   export PATH=/opt/homebrew/bin:$PATH
+fi
+
 # JAVA_HOME
 export JAVA_HOME=`/usr/libexec/java_home -v 11`
 

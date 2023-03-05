@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Load shell dotfiles previously "installed" via Makefile
-for file in ~/.{bash_prompt,aliases,functions,path,extra,exports}; do
+for file in ~/.{path,bash_prompt,aliases,functions,extra,exports}; do
     if [[ -r "$file" ]] && [[ -f "$file" ]]; then
       source "$file"
     fi

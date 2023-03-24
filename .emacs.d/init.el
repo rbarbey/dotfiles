@@ -42,7 +42,7 @@
                       (/ (- height (frame-pixel-height (selected-frame))) 3)))
 
   ;; set initial size of frame
-  (set-frame-size (selected-frame) 96 56))
+  (set-frame-size (selected-frame) 99 60))
 
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
 

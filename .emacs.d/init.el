@@ -196,7 +196,8 @@
   (company-minimum-prefix-length 1)
   (company-idle-delay 0.0))
 
-(use-package flycheck)
+(use-package flycheck
+  :config (global-flycheck-mode))
 
 (use-package yasnippet
   :config (yas-global-mode))

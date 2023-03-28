@@ -29,8 +29,7 @@
 (use-package simple
   :ensure nil
   :config
-  (column-number-mode 1)
-  (auto-fill-mode 1))
+  (column-number-mode 1))
 
 ;; no tool bar
 (use-package tool-bar
@@ -267,7 +266,10 @@
 (use-package markdown-mode
   :ensure nil
   :config
-  (add-hook 'markdown-mode-hook '(lambda () (set-face-attribute 'markdown-code-face nil :font "SF Mono Light" :height 120))))
+  (add-hook 'markdown-mode-hook
+            (lambda ()
+              (set-face-attribute 'markdown-code-face nil :font "SF Mono Light" :height 120)
+              (auto-fill-mode 1))))
 
 ;; MMorph programming
 (add-to-list 'auto-coding-alist

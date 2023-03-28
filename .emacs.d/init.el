@@ -211,6 +211,14 @@
   :bind (:map lsp-mode-map ("s-l g y" . lsp-java-type-hierarchy))
   :custom
   (tab-width 4)
+  :init
+  (setq lsp-java-vmargs (list
+                         "-Xmx1G"
+                         "-XX:+UseG1GC"
+                         "-XX:+UseStringDeduplication"
+                         "-javaagent:/Users/robert/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar")
+        ;; lsp-java-java-path "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/bin/java"
+        )
   :config
   (setq c-basic-offset 4))
 

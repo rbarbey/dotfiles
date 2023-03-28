@@ -25,8 +25,12 @@
 (setq initial-major-mode 'fundamental-mode) ; changes *scratch* buffer mode
 (setq initial-scratch-message "# This buffer is for notes you don't want to save\n\n")
 (setq mac-right-option-modifier nil) ;; for mac-style umlaut input
-;; show column numbers
-(column-number-mode)
+
+;; column numbers and auto fill
+(use-package simple
+  :config
+  (column-number-mode 1)
+  (auto-fill-mode 1))
 
 ;; use nice SF
 (set-face-attribute 'default nil :font "SF Mono Light" :height 120)

@@ -28,6 +28,7 @@
 
 ;; column numbers and auto fill
 (use-package simple
+  :ensure nil
   :config
   (column-number-mode 1)
   (auto-fill-mode 1))

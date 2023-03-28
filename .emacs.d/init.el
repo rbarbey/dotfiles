@@ -16,7 +16,6 @@
 
 (setq inhibit-startup-message t) ;; No startup screen please
 (scroll-bar-mode -1)             ;; no scroll bar
-(tool-bar-mode -1)               ;; no tool bar
 (tooltip-mode -1)                ;; no tooltips
 (set-fringe-mode 10)             ;; ?
 (menu-bar-mode -1)               ;; no menu bar
@@ -32,6 +31,11 @@
   :config
   (column-number-mode 1)
   (auto-fill-mode 1))
+
+;; no tool bar
+(use-package tool-bar
+  :ensure nil
+  :config (tool-bar-mode -1))
 
 ;; use nice SF
 (set-face-attribute 'default nil :font "SF Mono Light" :height 120)

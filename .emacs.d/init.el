@@ -76,6 +76,20 @@
 (global-set-key (kbd "M-<up>") 'rb/move-line-up)
 (global-set-key (kbd "M-<down>") 'rb/move-line-down)
 
+;; get Eclipse like line duplication
+(defun rb/duplicate-line ()
+  "Duplicates current line and appends under the current one."
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+  (yank)
+  )
+
+(global-set-key (kbd "M-s-<down>") 'rb/duplicate-line)
+
 ;; A nice theme is Tango Dark
 ;; (load-theme 'tango-dark)
 ;; Another nice theme is wombat

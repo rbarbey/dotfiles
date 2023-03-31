@@ -238,7 +238,9 @@
         ;; lsp-java-java-path "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/bin/java"
         )
   :config
-  (setq c-basic-offset 4))
+  (setq c-basic-offset 4
+        lsp-java-format-settings-url (concat "file://" (file-truename (locate-user-emacs-file "eclipse-formatter.xml"))))
+  )
 
 (use-package go-mode
   :mode ("\\.go" . go-mode)

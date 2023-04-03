@@ -168,7 +168,7 @@
   :custom ((projectile-completion-system 'ivy))
   :bind-keymap ("s-p" . projectile-command-map)
   :init
-  (setq projectile-switch-project-action #'projectile-dired)
+  ;; (setq projectile-switch-project-action #'projectile-dired)
   (setq projectile-create-missing-test-files t)
   )
 

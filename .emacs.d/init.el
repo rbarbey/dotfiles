@@ -226,7 +226,9 @@
 
 (use-package lsp-java
   :hook (java-mode . lsp-deferred)
-  :bind (:map lsp-mode-map ("s-l g y" . lsp-java-type-hierarchy))
+  :bind (:map lsp-mode-map
+              ("s-l g y" . lsp-java-type-hierarchy)
+              ("s-1" . lsp-execute-code-action))
   :custom
   (tab-width 4)
   :init

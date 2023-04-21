@@ -224,6 +224,16 @@
 (use-package yasnippet
   :config (yas-global-mode))
 
+(use-package dap-mode
+  :custom
+  (dap-auto-configure-features '(locals controls tooltip expressions))
+  :config
+  (add-hook 'dap-session-created-hook
+            (lambda (session) (set-frame-size (selected-frame) 167 60)))
+  (add-hook 'dap-terminated-hook
+            (lambda (session) (set-frame-size (selected-frame) 99 60)))
+  )
+
 (use-package lsp-java
   :hook (java-mode . lsp-deferred)
   :bind (:map lsp-mode-map
@@ -242,6 +252,7 @@
   :config
   (setq c-basic-offset 4
         lsp-java-format-settings-url (concat "file://" (file-truename (locate-user-emacs-file "eclipse-formatter.xml"))))
+  (require 'dap-java)
   )
 
 (use-package go-mode

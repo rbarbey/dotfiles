@@ -232,6 +232,10 @@
             (lambda (session) (set-frame-size (selected-frame) 167 60)))
   (add-hook 'dap-terminated-hook
             (lambda (session) (set-frame-size (selected-frame) 99 60)))
+  (bind-key (kbd "<f5>") #'dap-step-in dap-mode-map)
+  (bind-key (kbd "<f6>") #'dap-next dap-mode-map)
+  (bind-key (kbd "<f7>") #'dap-step-out dap-mode-map)
+  (bind-key (kbd "<f8>") #'dap-continue dap-mode-map)
   )
 
 (use-package lsp-java

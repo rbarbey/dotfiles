@@ -58,7 +58,7 @@
 ;; delete until beginning of line
 (defun rb/kill-to-beginning-of-line ()
   (interactive)
-  (kill-region (point-at-bol) (point)))
+  (kill-region (point-at-bol) (point-at-eol)))
 
 (global-set-key (kbd "s-<backspace>") #'rb/kill-to-beginning-of-line)
 

@@ -272,6 +272,7 @@
     (add-hook 'before-save-hook #'lsp-format-buffer t t)
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
   (add-hook 'go-mode-hook 'rb-go-mode-hook)
+  (add-hook 'go-mode-hook (lambda () (add-to-list 'company-backends '(company-capf :with company-yasnippet))))
   (require 'dap-dlv-go))
 
 (use-package nxml-mode

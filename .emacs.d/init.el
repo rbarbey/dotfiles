@@ -271,7 +271,8 @@
     "Basic Go mode setup"
     (add-hook 'before-save-hook #'lsp-format-buffer t t)
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
-  (add-hook 'go-mode-hook 'rb-go-mode-hook))
+  (add-hook 'go-mode-hook 'rb-go-mode-hook)
+  (require 'dap-dlv-go))
 
 (use-package nxml-mode
   :ensure nil

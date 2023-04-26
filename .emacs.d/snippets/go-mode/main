@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: main function
+# key: main
+# --
+func main() {
+	$0
+}

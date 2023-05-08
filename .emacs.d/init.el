@@ -288,6 +288,9 @@
   (:map yaml-mode-map
         ("\C-m" . 'newline-and-indent)))
 
+(use-package typescript-mode
+  :custom (typescript-indent-level 2))
+
 (use-package terraform-mode
   :hook (terraform-mode . lsp-deferred)
   :init (company-terraform-init))

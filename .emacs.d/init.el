@@ -11,6 +11,7 @@
 ;; Basic visual setting
 
 (global-whitespace-mode 1)
+(global-subword-mode 1)
 (setq whitespace-style
   '(spaces tabs newline space-mark tab-mark face trailing empty))
 

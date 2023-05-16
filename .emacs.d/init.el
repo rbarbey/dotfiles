@@ -26,6 +26,7 @@
 (setq initial-scratch-message "# This buffer is for notes you don't want to save\n\n")
 (setq mac-right-option-modifier nil) ;; for mac-style umlaut input
 (setq tags-table-list '("~/.emacs.d/.cache"))
+(delete-selection-mode 1)
 
 ;; column numbers and auto fill
 (use-package simple

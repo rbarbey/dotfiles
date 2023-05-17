@@ -293,7 +293,9 @@
   :custom (typescript-indent-level 2))
 
 (use-package terraform-mode
-  :hook (terraform-mode . lsp-deferred)
+  :hook
+  (terraform-mode . lsp-deferred)
+  (terraform-mode . terraform-format-on-save-mode)
   :init (company-terraform-init))
 
 (use-package company-terraform

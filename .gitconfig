@@ -12,6 +12,7 @@
 [core]
   # make `git rebase` safe on macOS (e.g. if )
   trustctime = false
+  excludesfile = ~/.gitignore.global
 
 [diff]
   # Detect copied as well as renames

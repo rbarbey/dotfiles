@@ -291,7 +291,7 @@
 (use-package lsp-java
   :hook (java-mode . lsp-deferred)
   :bind (:map lsp-mode-map
-              ("s-l g y" ("type hierarchy" . lsp-java-type-hierarchy))
+              ("s-l g y". lsp-java-type-hierarchy)
               ("s-1" . lsp-execute-code-action))
   :custom
   (tab-width 4)
@@ -300,7 +300,7 @@
                          "-Xmx1G"
                          "-XX:+UseG1GC"
                          "-XX:+UseStringDeduplication"
-                         "-javaagent:/Users/robert/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar")
+                         "-javaagent:/Users/robert/.m2/repository/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar")
         ;; lsp-java-java-path "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/bin/java"
         )
   :config

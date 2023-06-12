@@ -292,6 +292,10 @@
 (use-package typescript-mode
   :custom (typescript-indent-level 2))
 
+(use-package js
+  :ensure nil
+  :custom (js-indent-level 2))
+
 (use-package terraform-mode
   :hook
   (terraform-mode . lsp-deferred)

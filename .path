@@ -12,7 +12,7 @@ if [ -d /opt/homebrew/bin ]; then
 fi
 
 # JAVA_HOME
-export JAVA_HOME=`/usr/libexec/java_home -v 11`
+export JAVA_HOME=`/usr/libexec/java_home -v 17`
 
 # Update PATH if Google Cloud SDK is installed
 if [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc ]; then

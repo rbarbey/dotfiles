@@ -216,6 +216,12 @@
 (use-package lsp-ivy
   :after lsp-mode)
 
+(use-package lsp-sonarlint
+  :after lsp-mode
+  :config
+  (require 'lsp-sonarlint-java)
+  (setq lsp-sonarlint-java-enabled t))
+
 (use-package company
   :after lsp-mode
   :hook (prog-mode . company-mode)

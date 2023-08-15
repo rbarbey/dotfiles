@@ -94,6 +94,13 @@
 
 (global-set-key (kbd "M-s-<down>") 'rb/duplicate-line)
 
+;; for getting GITLAB token
+(defun rb/lookup-password (&rest keys)
+  (let ((result (apply #'auth-source-search keys)))
+    (if result
+        (funcall (plist-get (car result) :secret))
+      nil)))
+
 ;; A nice theme is Tango Dark
 ;; (load-theme 'tango-dark)
 ;; Another nice theme is wombat
@@ -318,6 +325,15 @@
             (lambda ()
               (set-face-attribute 'markdown-code-face nil :font "SF Mono Light" :height 120)
               (auto-fill-mode 1))))
+
+;; GitLab
+
+(use-package gitlab-ci-mode)
+
+(use-package gitlab-ci-mode-flycheck
+  :after flycheck gitlab-ci-mode
+  :init (gitlab-ci-mode-flycheck-enable)
+  :custom (gitlab-ci-api-token (rb/lookup-password :host "gitlab.com")))
 
 ;; MMorph programming
 (add-to-list 'auto-coding-alist

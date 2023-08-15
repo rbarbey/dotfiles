@@ -319,6 +319,16 @@
 (use-package company-terraform
   :defer t)
 
+;; tree-sitter
+(with-eval-after-load 'treesit
+  (dolist (lang-sources
+           '((go "https://github.com/tree-sitter/tree-sitter-go")
+             (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
+             (java "https://github.com/tree-sitter/tree-sitter-java")
+             (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+             (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+    (add-to-list 'treesit-language-source-alist lang-sources)))
+
 ;; Restclient
 (use-package restclient
   :mode ("\\.http" . restclient-mode))

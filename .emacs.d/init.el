@@ -27,6 +27,7 @@
 (setq mac-right-option-modifier nil) ;; for mac-style umlaut input
 (setq tags-table-list '("~/.emacs.d/.cache"))
 (delete-selection-mode 1)
+(setq read-process-output-max (* 1024 1024 8))
 
 ;; column numbers and auto fill
 (use-package simple

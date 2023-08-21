@@ -41,7 +41,17 @@
   :config (tool-bar-mode -1))
 
 ;; use nice SF
-(set-face-attribute 'default nil :font "SF Mono Light" :height 120)
+(defun rb/set-font-faces ()
+  (message "Setting font faces")
+  (set-face-attribute 'default nil :font "SF Mono Light" :height 120))
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (with-selected-frame frame
+                  ;; (setq doom-modeline-icon t)
+                  (rb/set-font-faces))))
+  (rb/set-font-faces))
 
 ;; initial size
 (when window-system

@@ -57,24 +57,17 @@
   ;; set initial size of frame
   (set-frame-size frame 99 60))
 
-(if (daemonp)
+(when (daemonp)
     (add-hook 'after-make-frame-functions
               (lambda (frame)
-                (with-selected-frame frame
-                  ;; (setq doom-modeline-icon t)
-                  (rb/set-font-faces))))
-  (rb/set-font-faces))
-
-
-;; initial size
-(if (daemonp)
-    (add-hook 'after-make-frame-functions
-              (lambda (frame)
-                (message "Set frame size")
+                (rb/set-font-faces)
                 (when (display-graphic-p frame)
-                  (message "It's a graphic frame")
-                  (rb/set-frame-size frame))))
+                  (rb/set-frame-size frame)))))
+
+(unless (daemonp)
+  (rb/set-font-faces)
   (rb/set-frame-size (selected-frame)))
+
 
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
 

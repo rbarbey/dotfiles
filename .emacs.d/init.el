@@ -53,9 +53,8 @@
                   (rb/set-font-faces))))
   (rb/set-font-faces))
 
-;; initial size
-(when window-system
-  ;; position frame slightly off center
+;; position frame slightly off center
+(defun rb/set-frame-size ()
   (let* ((workarea (frame-monitor-workarea (selected-frame)))
          (width (caddr workarea))
          (height (cadddr workarea)))
@@ -65,6 +64,17 @@
 
   ;; set initial size of frame
   (set-frame-size (selected-frame) 99 60))
+
+;; initial size
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (message "Set frame size")
+                (when (display-graphic-p frame)
+                  (message "It's a graphic frame")
+                  (with-selected-frame frame
+                    (rb/set-frame-size)))))
+  (rb/set-frame-size))
 
 (global-set-key (kbd "s-/") 'comment-or-uncomment-region)
 

@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # real programmers
-export EDITOR=emacs
-export GIT_EDITOR="emacs -nw"
-export KUBE_EDITOR="emacs -nw"
+export EDITOR="emacsclient -c -a emacs"
+export GIT_EDITOR="emacsclient -nw"
+export KUBE_EDITOR="emacsclient -nw"
 
 # history!
 export HISTSIZE=50000

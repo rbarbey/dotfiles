@@ -43,7 +43,9 @@
 ;; use nice SF
 (defun rb/set-font-faces ()
   (message "Setting font faces")
-  (set-face-attribute 'default nil :font "SF Mono Light" :height 120))
+  (set-face-attribute 'default nil :font "SF Mono Light" :height 120)
+  (set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 120)
+  (set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 120))
 
 ;; position frame slightly off center
 (defun rb/set-frame-size (frame)
@@ -352,7 +354,6 @@
   :config
   (add-hook 'markdown-mode-hook
             (lambda ()
-              (set-face-attribute 'markdown-code-face nil :font "SF Mono Light" :height 120)
               (auto-fill-mode 1))))
 
 ;; GitLab

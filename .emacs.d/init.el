@@ -208,7 +208,11 @@
                            '(1 "-o" "Skip CI pipeline" "-o ci.skip")))
 
 ;; Org mode
+(defun rb/init-org-mode ()
+  (org-indent-mode))
+
 (use-package org
+  :hook (org . rb/init-org-mode)
   :config
   (setq org-ellipsis " ↓")
   (setq org-todo-keywords

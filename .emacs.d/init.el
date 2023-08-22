@@ -215,9 +215,8 @@
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
-  (setq org-qagenda-files
-        '("~/Documents/journal"))
-  )
+  (setq org-agenda-files
+        '("~/devel/agenda")))
 
 ;; Programming languages
 (use-package lsp-mode

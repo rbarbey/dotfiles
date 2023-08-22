@@ -210,6 +210,7 @@
 ;; Org mode
 (use-package org
   :config
+  (setq org-ellipsis " ↓")
   (setq org-todo-keywords
         (quote ((sequence "TODO" "DOING" "|" "DONE"))))
   (setq org-agenda-start-with-log-mode t)

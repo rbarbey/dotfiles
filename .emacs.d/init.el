@@ -97,7 +97,7 @@
 
 ;; get Eclipse like line duplication
 (defun rb/duplicate-line ()
-  "Duplicates current line and appends under the current one."
+  "Duplicate current line and append under the current one."
   (interactive)
   (move-beginning-of-line 1)
   (kill-line)

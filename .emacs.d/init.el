@@ -212,7 +212,7 @@
   (org-indent-mode))
 
 (use-package org
-  :hook (org . rb/init-org-mode)
+  :hook (org-mode . rb/init-org-mode)
   :config
   (setq org-ellipsis " ↓")
   (setq org-todo-keywords

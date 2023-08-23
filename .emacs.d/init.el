@@ -220,6 +220,7 @@
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
+  (setq org-archive-location (concat "archive.org::" "* Archived Tasks"))
   (setq org-agenda-files
         '("~/devel/agenda"
           "~/Documents/journal")))

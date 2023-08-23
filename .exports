@@ -25,6 +25,11 @@ fi
 # set KUBECONFIG if respective lima vm is there
 if [ -f $HOME/.lima/k3s/conf/kubeconfig.yaml ]; then
     export KUBECONFIG="$HOME/.lima/k3s/conf/kubeconfig.yaml"
+
+    # if we have a Teleport kubeconfig file, add it
+    if [ -f $HOME/.kube/teleport-kubeconfig.yaml ]; then
+        export KUBECONFIG="$HOME/.kube/teleport-kubeconfig.yaml:$KUBECONFIG"
+    fi
 fi
 
 # if GCloud is installed, we need to enable GKE auth plugin

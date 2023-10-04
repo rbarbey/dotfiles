@@ -165,9 +165,9 @@
 
 ;; Add icons to mode line
 ;; After this package got installed, you need to run the following command manually
-;; M-x all-the-icons-install-fonts
+;; M-x nerd-icons-install-fonts
 ;; Need to research whether there is an automatic way to do this.
-(use-package all-the-icons)
+(use-package nerd-icons)
 
 ;; Have a nice mode line
 (use-package doom-modeline

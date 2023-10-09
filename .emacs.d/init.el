@@ -109,6 +109,18 @@
 
 (global-set-key (kbd "M-s-<down>") 'rb/duplicate-line)
 
+;; point-to-register-to-point
+(defun rb/point-excursion-toggle ()
+  "Save position of point and return to previous point"
+  (interactive)
+  (cond ((get-register 0)
+         (jump-to-register 0)
+         (set-register 0 nil))
+        (t(point-to-register 0)
+          (message "Save point %d" (point)))))
+
+(global-set-key (kbd "C-c c") #'rb/point-excursion-toggle)
+
 ;; for getting GITLAB token
 (defun rb/lookup-password (&rest keys)
   (let ((result (apply #'auth-source-search keys)))

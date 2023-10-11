@@ -59,3 +59,8 @@ rurl() {
     # redirect stderr to be able to grep curl output
     (set -o pipefail && curl -L "$1" 2>&1 | egrep "^[<>] (Location:|Host:|GET)")
 }
+
+remacs() {
+    emacsclient -e "(kill-emacs)"
+    emacs --daemon
+}

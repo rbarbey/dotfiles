@@ -1,43 +1,42 @@
 [alias]
+    # View abbreviated SHA, desc, and history graph of latest 100 commits
+    l = log --pretty='format:%C(yellow)%h %Cblue%>(16,trunc)%ad %Creset %Cgreen%<(20,trunc)%aN%C(auto)%d %Creset%s' --date=relative --graph
 
-  # View abbreviated SHA, desc, and history graph of latest 100 commits
-  l = log --pretty='format:%C(yellow)%h %Cblue%>(16,trunc)%ad %Creset %Cgreen%<(20,trunc)%aN%C(auto)%d %Creset%s' --date=relative --graph
+    # View current working tree status in short format
+    s = status -s
 
-  # View current working tree status in short format
-  s = status -s
-
-  # What have I done since yesterday
-  standup = log --pretty='format:%C(yellow)%h %Cblue%>(14)%ad%C(auto)%d %Creset%s' --date=relative --graph --author=robert.barbey --since 'yesterday'
+    # What have I done since yesterday
+    standup = log --pretty='format:%C(yellow)%h %Cblue%>(14)%ad%C(auto)%d %Creset%s' --date=relative --graph --author=robert.barbey --since 'yesterday'
 
 [core]
-  # make `git rebase` safe on macOS (e.g. if )
-  trustctime = false
-  excludesfile = ~/.gitignore.global
+    # make `git rebase` safe on macOS (e.g. if )
+    trustctime = false
+    excludesfile = ~/.gitignore.global
 
 [diff]
   # Detect copied as well as renames
-  renames = copies
+    renames = copies
 
 [merge]
   # include summaries of merged commits in newly created merge commit messages
-  log = true
+    log = true
 
 [include]
     path = ~/.git/signingkey.conf
 
 [user]
-	name = Robert Barbey
-	email = robert.barbey@acrolinx.com
+    name = Robert Barbey
+    email = robert.barbey@acrolinx.com
 
 [gpg]
-	program = gpg
+    program = gpg
 [commit]
-	gpgsign = true
+    gpgsign = true
 [color]
-	ui = auto
+    ui = auto
 [pull]
-	rebase = true
+    rebase = true
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [rebase]
-	autoStash = true
+    autoStash = true

@@ -1,6 +1,16 @@
+;;; package --- Summary
+;; Personal Emacs config
+
+;;; Commentary:
+;; Emacs configuration setting up LSP mode for Java, custom keymap
+;; bindings, Magit, among other things.
+
+;;; Code:
+
 (setq gc-cons-threshold 100000000)
 
 (defun rb/display-startup-time ()
+  """Display startup time."""
   (message "Emacs loaded in %s with %d gcs"
            (format "%.2f seconds"
                    (float-time
@@ -111,7 +121,7 @@
 
 ;; point-to-register-to-point
 (defun rb/point-excursion-toggle ()
-  "Save position of point and return to previous point"
+  "Save position of point and return to previous point."
   (interactive)
   (cond ((get-register 0)
          (jump-to-register 0)
@@ -390,3 +400,5 @@
 ;; MMorph programming
 (add-to-list 'auto-coding-alist
              '("\\.mmo\\(rph\\)?$" . latin-9))
+
+;;; init.el ends here

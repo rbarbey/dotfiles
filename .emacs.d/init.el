@@ -246,6 +246,8 @@
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode))
 
+(use-package lsp-treemacs)
+
 (use-package lsp-ivy
   :after lsp-mode)
 
@@ -275,6 +277,7 @@
   :config (yas-global-mode))
 
 (use-package dap-mode
+  :after lsp-treemacs
   :custom
   (dap-auto-configure-features '(locals controls tooltip expressions))
   :config

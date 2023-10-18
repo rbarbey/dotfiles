@@ -313,7 +313,7 @@
   (tab-width 4)
   :init
   (setq lsp-java-vmargs (list
-                         "-Xmx1G"
+                         "-Xmx2G"
                          "-XX:+UseG1GC"
                          "-XX:+UseStringDeduplication"
                          )

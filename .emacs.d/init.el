@@ -316,7 +316,7 @@
                          "-Xmx1G"
                          "-XX:+UseG1GC"
                          "-XX:+UseStringDeduplication"
-                         "-javaagent:/Users/robert/.m2/repository/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar")
+                         )
         ;; lsp-java-java-path "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/bin/java"
         )
   (which-key-add-key-based-replacements "s-l g y" "type hierarchy")

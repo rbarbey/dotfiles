@@ -258,6 +258,8 @@
 
 (use-package lsp-treemacs)
 
+(use-package lsp-docker)
+
 (use-package lsp-ivy
   :after lsp-mode)
 

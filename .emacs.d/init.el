@@ -305,7 +305,7 @@
 (use-package lsp-java
   :hook (java-mode . lsp-deferred)
   :bind (:map lsp-mode-map
-              ("s-l g y". lsp-java-type-hierarchy)
+              ("s-l g y" . lsp-java-type-hierarchy)
               ("s-1" . lsp-execute-code-action))
   :custom
   (tab-width 4)
@@ -317,6 +317,7 @@
                          "-javaagent:/Users/robert/.m2/repository/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar")
         ;; lsp-java-java-path "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/bin/java"
         )
+  (which-key-add-key-based-replacements "s-l g y" "type hierarchy")
   :config
   (setq c-basic-offset 4
         lsp-java-format-settings-url (concat "file://" (file-truename (locate-user-emacs-file "eclipse-formatter.xml"))))

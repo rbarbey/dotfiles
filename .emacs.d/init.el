@@ -233,6 +233,16 @@
 (defun rb/init-org-mode ()
   (org-indent-mode))
 
+(defun rb/org-archive-location ()
+  "Returns location for archived tasks.
+The string returns the filename where to store archived tasks. It
+  contains the year and the month, for example
+  `archive-2023-12.org`. The headline also contains month and year."
+  (concat "archive-"
+          (format-time-string "%Y-%m" (current-time))
+          ".org::* Archived Tasks "
+          (format-time-string "%B %Y" (current-time))))
+
 (use-package org
   :hook (org-mode . rb/init-org-mode)
   :config
@@ -242,7 +252,7 @@
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
-  (setq org-archive-location (concat "archive.org::" "* Archived Tasks"))
+  (setq org-archive-location (rb/org-archive-location))
   (setq org-agenda-files
         '("~/devel/agenda"
           "~/Documents/journal")))

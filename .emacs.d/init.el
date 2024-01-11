@@ -177,7 +177,9 @@
 (use-package ivy
   :diminish
   :bind (("C-s" . swiper))
-  :config (ivy-mode 1))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-selectable-prompt t))
 
 (use-package counsel
   :bind (("M-x" . counsel-M-x)))

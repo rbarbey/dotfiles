@@ -7,3 +7,6 @@
 
 # no Maven build dir
 --ignore-dir=target
+
+# no Gradle build dir
+--ignore-dir=build

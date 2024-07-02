@@ -30,9 +30,10 @@ eclipse() {
 
 # Decode Header and Payload of a JWT
 jwt() {
-    header=`parseJwtPart $1 1`
-    payload=`parseJwtPart $1 2`
-    printf "\nHeader\t%s\nPayload\t%s\n" "$header" "$payload"
+    if [[ -x $(command -v jq) ]]; then
+        jq -R 'split (".") | .[0],.[1] | @base64d | fromjson' <<< "${1}"
+        echo "Signature: $(echo "${1}" | awk -F'.' '{print $3}')"
+    fi
 }
 
 # Pad string from stdin so that it can be base64 decoded

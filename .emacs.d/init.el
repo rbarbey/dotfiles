@@ -225,6 +225,8 @@
   (setq projectile-create-missing-test-files t)
   )
 
+(use-package ripgrep)
+
 ;; follow compilation buffer
 (setq compilation-scroll-output 1)
 

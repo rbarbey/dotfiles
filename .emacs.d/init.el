@@ -196,7 +196,10 @@
 ;; Have a nice mode line
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-height 20)))
+  :custom
+  (doom-modeline-height 20)
+  (doom-modeline-buffer-file-name-style 'file-name-with-project)
+  (doom-modeline-percent-position nil))
 
 ;; Rainbow delimiters: display matching parens according to their
 ;; level of nesting in slightly different colours

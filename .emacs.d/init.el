@@ -80,8 +80,7 @@
   (rb/set-font-faces)
   (rb/set-frame-size (selected-frame)))
 
-
-(global-set-key (kbd "s-/") 'comment-or-uncomment-region)
+(global-set-key (kbd "s-/") 'comment-line)
 
 ;; delete until beginning of line
 (defun rb/kill-to-beginning-of-line ()

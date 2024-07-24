@@ -439,5 +439,22 @@ The string returns the filename where to store archived tasks. It
               (kill-buffer)))
       (message "Not a file visiting buffer"))))
 
+(defun rb/decode-jwt ()
+  "Decode JWT that is on the current line."
+  (interactive)
+  (let* ((data (split-string (thing-at-point 'filename) "\\."))
+         (header (car data))
+         (claims (cadr data)))
+    (with-temp-buffer
+      (insert (format "%s\n\n%s"
+                      (base64-decode-string header t)
+                      (base64-decode-string claims t)))
+      (json-pretty-print-buffer)
+      (with-output-to-temp-buffer "*JWT*"
+        (special-mode)
+        (princ (buffer-string)))))
+  t)
+
+(global-set-key (kbd "C-c j") 'rb/decode-jwt)
 
 ;;; init.el ends here

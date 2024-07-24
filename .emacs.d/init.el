@@ -281,11 +281,9 @@ The string returns the filename where to store archived tasks. It
 
 (use-package lsp-sonarlint
   :after lsp-mode
-  :config
-  (require 'lsp-sonarlint-java)
-  (setq lsp-sonarlint-java-enabled t)
-  (require 'lsp-sonarlint-go)
-  (setq lsp-sonarlint-go-enabled t))
+  :custom
+  (lsp-sonarlint-auto-download t)
+  (lsp-sonarlint-enabled-analyzers '("java" "go" "markdown" "elisp")))
 
 
 (use-package company

@@ -342,6 +342,9 @@ The string returns the filename where to store archived tasks. It
   :config
   (setq c-basic-offset 4
         lsp-java-format-settings-url (concat "file://" (file-truename (locate-user-emacs-file "eclipse-formatter.xml"))))
+  (setq lsp-java-completion-favorite-static-members
+        (vconcat (append lsp-java-completion-favorite-static-members nil)
+                 ["org.mockito.BDDMockito.*"]))
   (require 'dap-java)
   )
 

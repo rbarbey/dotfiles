@@ -472,4 +472,11 @@ The string returns the filename where to store archived tasks. It
   (interactive)
   (insert (string-trim (shell-command-to-string "uuidgen"))))
 
+(use-package string-inflection
+  :config
+  (add-hook 'java-mode-hook
+            (lambda ()
+              (local-set-key (kbd "C-c C-u") 'string-inflection-java-style-cycle)
+              (define-key minibuffer-local-map (kbd "C-c C-u") 'string-inflection-java-style-cycle))))
+
 ;;; init.el ends here

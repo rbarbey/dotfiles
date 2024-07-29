@@ -224,6 +224,19 @@
   (setq projectile-create-missing-test-files t)
   )
 
+(defun rb/projectile-kill-other-buffers ()
+  "Kill all buffers in current project except for current buffer."
+  (interactive)
+  (let* ((current-buffer (current-buffer))
+         (project-root (projectile-project-root))
+         (buffers (projectile-project-buffers)))
+    (dolist (buffer buffers)
+      (unless (eq buffer current-buffer)
+        (kill-buffer buffer)))
+    (message "Kill all buffers in project %s except %s"
+             (projectile-project-name)
+             (buffer-name current-buffer))))
+
 (use-package ripgrep)
 
 ;; follow compilation buffer

@@ -32,11 +32,6 @@ if [ -f $HOME/.lima/k3s/conf/kubeconfig.yaml ]; then
     fi
 fi
 
-# if GCloud is installed, we need to enable GKE auth plugin
-if [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc ]; then
-    export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-fi
-
 ## testcontainers
 # Since Docker is runing inside a VM on mac we need to tell
 # testcontainers the location of the Docker socket inside the

@@ -338,7 +338,10 @@ The string returns the filename where to store archived tasks. It
   :hook (java-mode . lsp-deferred)
   :bind (:map lsp-mode-map
               ("s-l g y" . lsp-java-type-hierarchy)
-              ("s-1" . lsp-execute-code-action))
+              ("s-1" . lsp-execute-code-action)
+              ("s-l t m" . dap-java-run-test-method)
+              ("s-l t c" . dap-java-run-test-class)
+              ("s-l t d" . dap-java-debug-test-method))
   :custom
   (tab-width 4)
   :init
@@ -349,7 +352,12 @@ The string returns the filename where to store archived tasks. It
                          )
         ;; lsp-java-java-path "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/bin/java"
         )
-  (which-key-add-key-based-replacements "s-l g y" "type hierarchy")
+  (which-key-add-key-based-replacements
+    "s-l g y" "type hierarchy"
+    "s-l t" "tests"
+    "s-l t m" "run test method"
+    "s-l t c" "run test class"
+    "s-l t d" "debug test method")
   :config
   (setq c-basic-offset 4
         lsp-java-format-settings-url (concat "file://" (file-truename (locate-user-emacs-file "eclipse-formatter.xml"))))

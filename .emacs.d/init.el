@@ -176,8 +176,8 @@
   (ivy-mode 1)
   (setq ivy-use-selectable-prompt t))
 
-(use-package counsel
-  :bind (("M-x" . counsel-M-x)))
+;; (use-package counsel
+;;   :bind (("M-x" . counsel-M-x)))
 
 (use-package ivy-rich
   :init (ivy-rich-mode 1))

@@ -327,9 +327,12 @@ The string returns the filename where to store archived tasks. It
 (use-package lsp-sonarlint
   :after lsp-mode
   :custom
+  (lsp-sonarlint-download-url "https://github.com/SonarSource/sonarlint-vscode/releases/download/4.12.0%2B76892/sonarlint-vscode-darwin-x64-4.12.0.vsix")
   (lsp-sonarlint-auto-download t)
-  (lsp-sonarlint-enabled-analyzers '("java" "go" "markdown" "elisp")))
+  (lsp-sonarlint-enabled-analyzers '("java" "go" "markdown" "elisp"))
+  (lsp-sonarlint-test-file-pattern ""))
 
+(use-package cfrs)
 
 (use-package company
   :hook (after-init . global-company-mode)
@@ -377,11 +380,11 @@ The string returns the filename where to store archived tasks. It
   :custom
   (tab-width 4)
   :init
-  (setq lsp-java-vmargs (list
-                         "-Xmx2G"
-                         "-XX:+UseG1GC"
-                         "-XX:+UseStringDeduplication"
-                         )
+  ;(setq lsp-java-vmargs (list
+   ;                      "-Xms1G"
+    ;                     "-XX:+UseG1GC"
+     ;                    "-XX:+UseStringDeduplication"
+      ;                   )
         ;; lsp-java-java-path "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/bin/java"
         )
   (which-key-add-key-based-replacements
@@ -390,6 +393,7 @@ The string returns the filename where to store archived tasks. It
     "s-l t m" "run test method"
     "s-l t c" "run test class"
     "s-l t d" "debug test method")
+
   :config
   (setq c-basic-offset 4
         lsp-java-format-settings-url (concat "file://" (file-truename (locate-user-emacs-file "eclipse-formatter.xml"))))
@@ -433,6 +437,8 @@ The string returns the filename where to store archived tasks. It
 (use-package js
   :ensure nil
   :custom (js-indent-level 2))
+
+(use-package web-mode)
 
 (use-package terraform-mode
   :hook
@@ -511,7 +517,7 @@ The string returns the filename where to store archived tasks. It
 
 (defun generate-uuid ()
   (interactive)
-  (insert (string-trim (shell-command-to-string "uuidgen"))))
+  (insert (downcase (string-trim (shell-command-to-string "uuidgen")))))
 
 (use-package string-inflection
   :config

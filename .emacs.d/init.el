@@ -1,5 +1,4 @@
-;;; package --- Summary
-;; Personal Emacs config
+;;; init.el --- Emacs Config
 
 ;;; Commentary:
 ;; Emacs configuration setting up LSP mode for Java, custom keymap

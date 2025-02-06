@@ -36,7 +36,6 @@
 (setq mac-right-option-modifier nil) ;; for mac-style umlaut input
 (setq tags-table-list '("~/.emacs.d/.cache"))
 (delete-selection-mode 1)
-(setq read-process-output-max (* 1024 1024 8))
 
 ;; Initialize package management
 (require 'package)
@@ -280,10 +279,15 @@ The string returns the filename where to store archived tasks. It
 ;; Programming languages
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-  :config
-  (lsp-enable-which-key-integration t))
+  :hook
+  ((lsp . lsp-lens-mode)
+   (lsp-mode . lsp-enable-which-key-integration))
+  :custom
+  (lsp-modeline-code-actions-enable nil)
+  (read-process-output-max (* 1024 1024 8)))
 
 (use-package lsp-ui
+  :after lsp-mode
   :hook (lsp-mode . lsp-ui-mode))
 
 (use-package lsp-treemacs)

@@ -6,7 +6,7 @@
 
 ;;; Code:
 
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold most-positive-fixnum)
 
 (defun rb/display-startup-time ()
   """Display startup time."""

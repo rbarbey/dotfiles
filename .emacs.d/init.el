@@ -38,6 +38,24 @@
 (delete-selection-mode 1)
 (setq read-process-output-max (* 1024 1024 8))
 
+;; Initialize package management
+(require 'package)
+
+;; Add package repositories
+(setq package-archives'(("melpa" . "https://melpa.org/packages/")
+                         ("org" .  "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+
 ;; column numbers and auto fill
 (use-package simple
   :ensure nil
@@ -144,23 +162,7 @@
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-;; Initialize package management
-(require 'package)
 
-;; Add package repositories
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" .  "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
-
-(package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
-(require 'use-package)
-(setq use-package-always-ensure t)
 
 ;; custom file
 (setq custom-file "~/.emacs.d/custom.el")

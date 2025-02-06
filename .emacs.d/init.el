@@ -301,17 +301,15 @@ The string returns the filename where to store archived tasks. It
 
 
 (use-package company
-  :after lsp-mode
-  :hook (prog-mode . company-mode)
+  :hook (after-init . global-company-mode)
   :bind
   (:map company-active-map
         ("<tab>" . company-complete-selection)
         ("<escape>" . company-abort))
-  (:map lsp-mode-map
-        ("<tab>" . company-indent-or-complete-common))
   :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0))
+  (company-minimum-prefix-length 3)
+  (company-idle-delay 0.2)
+  (company-tooltip-limit-20))
 
 (use-package flycheck
   :config (global-flycheck-mode))

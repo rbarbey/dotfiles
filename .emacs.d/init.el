@@ -248,6 +248,15 @@
   (transient-append-suffix 'magit-push "-u"
                            '(1 "-o" "Skip CI pipeline" "-o ci.skip")))
 
+;; show inline git history
+(use-package sideline-blame
+  :init
+  (setq sideline-backends-right '((sideline-blame . up)))
+  :custom
+  (sideline-blame-author-format "%s, ")
+  (sideline-blame-datetime-format "%Y-%m-%d %H:%M ")
+  (sideline-blame-commit-format "• %s"))
+
 ;; Org mode
 (defun rb/init-org-mode ()
   (org-indent-mode))

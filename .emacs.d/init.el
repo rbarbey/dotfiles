@@ -328,6 +328,8 @@ The string returns the filename where to store archived tasks. It
   :config (global-flycheck-mode))
 
 (use-package yasnippet
+  :custom
+  (yas-verbosity 1)
   :config (yas-global-mode))
 
 (use-package dap-mode

@@ -285,6 +285,19 @@ The string returns the filename where to store archived tasks. It
         '("~/devel/agenda"
           "~/Documents/journal")))
 
+;; org-roam
+(use-package org-roam
+  :custom
+  (org-roam-directory "~/devel/org-roam")
+  (org-roam-complete-everywhere t)
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         :map org-mode-map
+         ("C-M-i"   . completion-at-point))
+  :config
+  (org-roam-db-autosync-mode))
+
 ;; Programming languages
 (use-package lsp-mode
   :commands (lsp lsp-deferred)

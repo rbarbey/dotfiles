@@ -162,6 +162,7 @@
   (load custom-file))
 
 ;; load theme after custom file so that changes are trusted
+(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 (load-theme 'wombat)
 
 ;; Enable hiding of minor modes from mode line

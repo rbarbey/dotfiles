@@ -196,7 +196,7 @@
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
   :custom
-  (doom-modeline-height 20)
+  (doom-modeline-height 24)
   (doom-modeline-buffer-file-name-style 'file-name-with-project)
   (doom-modeline-percent-position nil))
 

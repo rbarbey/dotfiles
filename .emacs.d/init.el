@@ -153,21 +153,16 @@
         (funcall (plist-get (car result) :secret))
       nil)))
 
-;; A nice theme is Tango Dark
-;; (load-theme 'tango-dark)
-;; Another nice theme is wombat
-(load-theme 'wombat)
-
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
-
 
 ;; custom file
 (setq custom-file "~/.emacs.d/custom.el")
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; load theme after custom file so that changes are trusted
+(load-theme 'wombat)
 
 ;; Enable hiding of minor modes from mode line
 (use-package diminish)

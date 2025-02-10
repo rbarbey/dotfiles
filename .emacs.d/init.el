@@ -288,7 +288,7 @@ The string returns the filename where to store archived tasks. It
   (org-roam-dailies-directory "journal/")
   (org-roam-dailies-capture-templates
    '(("d" "default" entry "* %? (%<%R>)"
-      :if-new (file+head "%<%Y-%m-%d>.org" "#:title: Journal Entry for %<%a, %d %b %Y>"))))
+      :if-new (file+head "%<%Y-%m-%d>.org" "#+title: Journal Entry for %<%a, %d %b %Y>"))))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)

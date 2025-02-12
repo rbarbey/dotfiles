@@ -10,6 +10,11 @@ unset file
 
 shopt -s histappend
 
+# start Emacs
+if ! pgrep Emacs > /dev/null; then
+    emacs &
+fi
+
 # auto-complete
 if [ -f /usr/local/etc/bash_completion ]; then
   source /usr/local/etc/bash_completion

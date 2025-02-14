@@ -78,17 +78,18 @@
   (set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 120)
   (set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 120))
 
-;; position frame slightly off center
 (defun rb/set-frame-size (frame)
   (let* ((workarea (frame-monitor-workarea frame))
          (width (caddr workarea))
          (height (cadddr workarea)))
-  (set-frame-position frame
-                      (* (/ width 100) 50)
-                      (/ (- height (frame-pixel-height frame)) 3)))
 
-  ;; set initial size of frame
-  (set-frame-size frame 99 60))
+    ;; set initial size of frame
+    (set-frame-size frame 99 60)
+
+    ;; position frame slightly off center
+    (set-frame-position frame
+                        (* (/ width 100) 50)
+                        (/ (- height (frame-pixel-height frame)) 2))))
 
 (when (daemonp)
     (add-hook 'after-make-frame-functions

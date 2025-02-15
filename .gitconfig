@@ -14,11 +14,11 @@
     excludesfile = ~/.gitignore.global
 
 [diff]
-  # Detect copied as well as renames
+    # Detect copied as well as renames
     renames = copies
 
 [merge]
-  # include summaries of merged commits in newly created merge commit messages
+    # include summaries of merged commits in newly created merge commit messages
     log = true
 
 [include]
@@ -40,3 +40,5 @@
     defaultBranch = main
 [rebase]
     autoStash = true
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/

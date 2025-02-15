@@ -386,13 +386,9 @@ The string returns the filename where to store archived tasks. It
   :custom
   (tab-width 4)
   :init
-  ;(setq lsp-java-vmargs (list
-   ;                      "-Xms1G"
-    ;                     "-XX:+UseG1GC"
-     ;                    "-XX:+UseStringDeduplication"
-      ;                   )
-        ;; lsp-java-java-path "/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home/bin/java"
-        )
+  (setq lsp-java-vmargs (list
+                        "-XX:+UseG1GC"
+                        "-XX:+UseStringDeduplication"))
   (which-key-add-key-based-replacements
     "s-l g y" "type hierarchy"
     "s-l t" "tests"

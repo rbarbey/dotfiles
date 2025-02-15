@@ -12,7 +12,7 @@ shopt -s histappend
 
 # start Emacs
 if ! pgrep Emacs > /dev/null; then
-    emacs &
+    emacs --bg-daemon > /dev/null 2>&1 &
 fi
 
 # auto-complete

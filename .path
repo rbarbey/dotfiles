@@ -12,7 +12,7 @@ if [ -d /opt/homebrew/bin ]; then
 fi
 
 # JAVA_HOME
-export JAVA_HOME=`/usr/libexec/java_home -v 17`
+export JAVA_HOME=`/usr/libexec/java_home -v 21`
 
 # Add krew to path if installed
 if [ -d ${HOME}/.krew/bin ]; then

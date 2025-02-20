@@ -23,7 +23,7 @@ if [ -S $HOME/.lima/docker/sock/docker.sock ]; then
 fi
 
 # set KUBECONFIG if respective lima vm is there
-if [ -f $HOME/.lima/k3s/conf/kubeconfig.yaml ]; then
+if [ -L $HOME/.lima/k3s/conf/kubeconfig.yaml ]; then
     export KUBECONFIG="$HOME/.lima/k3s/conf/kubeconfig.yaml"
 
     # if we have a Teleport kubeconfig file, add it

@@ -196,6 +196,20 @@
   (projectile-completion-system 'ivy)
   (projectile-create-missing-test-files t))
 
+;; completion
+(use-package yasnippet
+  :hook ((lsp-mode . yas-minor-mode)))
+
+(use-package company
+  :hook (after-init . global-company-mode)
+  :bind
+  (:map company-active-map
+        ("<tab>" . company-complete-selection)
+        ("<escape>" . company-abort))
+  :custom
+  (company-minimum-prefix-length 0)
+  (company-idle-delay 0.2)
+  (company-tooltip-limit-20))
 
 
 ;; ;; (use-package counsel

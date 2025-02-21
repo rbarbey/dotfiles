@@ -211,6 +211,11 @@
   (company-idle-delay 0.2)
   (company-tooltip-limit-20))
 
+;; It's Magit!
+(use-package magit
+  :config
+  (transient-append-suffix 'magit-push "-u"
+                           '(1 "-o" "Skip CI pipeline" "-o ci.skip")))
 
 ;; ;; (use-package counsel
 ;; ;;   :bind (("M-x" . counsel-M-x)))

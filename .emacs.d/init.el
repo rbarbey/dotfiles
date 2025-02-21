@@ -223,19 +223,19 @@
 ;; (use-package ivy-rich
 ;;   :init (ivy-rich-mode 1))
 
-;; ;; Add icons to mode line
-;; ;; After this package got installed, you need to run the following command manually
-;; ;; M-x nerd-icons-install-fonts
-;; ;; Need to research whether there is an automatic way to do this.
-;; (use-package nerd-icons)
+;; Add icons to mode line
+;; After this package got installed, you need to run the following command manually
+;; M-x nerd-icons-install-fonts
+;; Need to research whether there is an automatic way to do this.
+(use-package nerd-icons)
 
-;; ;; Have a nice mode line
-;; (use-package doom-modeline
-;;   :init (doom-modeline-mode 1)
-;;   :custom
-;;   (doom-modeline-height 24)
-;;   (doom-modeline-buffer-file-name-style 'file-name-with-project)
-;;   (doom-modeline-percent-position nil))
+;; Have a nice mode line
+(use-package doom-modeline
+  :init (doom-modeline-mode 1)
+  :custom
+  (doom-modeline-height 24)
+  (doom-modeline-buffer-file-name-style 'file-name-with-project)
+  (doom-modeline-percent-position nil))
 
 ;; ;; Rainbow delimiters: display matching parens according to their
 ;; ;; level of nesting in slightly different colours

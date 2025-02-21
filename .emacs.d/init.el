@@ -402,8 +402,10 @@ The string returns the filename where to store archived tasks. It
         lsp-java-format-settings-url (concat "file://" (file-truename (locate-user-emacs-file "eclipse-formatter.xml"))))
   (setq lsp-java-jdt-download-url "https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/1.43.0/jdt-language-server-1.43.0-202412191447.tar.gz")
   (setq lsp-java-completion-favorite-static-members
-        (vconcat (append lsp-java-completion-favorite-static-members nil)
-                 ["org.mockito.BDDMockito.*"]))
+        (vconcat lsp-java-completion-favorite-static-members
+                 '("org.mockito.BDDMockito.*"
+                   "org.hamcrest.MatcherAssert.*"
+                   "org.hamcrest.Matchers.*")))
   (require 'dap-java)
   )
 

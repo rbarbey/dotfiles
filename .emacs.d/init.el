@@ -175,360 +175,366 @@
 ;; Enable hiding of minor modes from mode line
 (use-package diminish)
 
+(use-package swiper)
+
 ;; set up Ivy
 (use-package ivy
   :diminish
   :bind (("C-s" . swiper))
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-selectable-prompt t))
-
-;; (use-package counsel
-;;   :bind (("M-x" . counsel-M-x)))
-
-(use-package ivy-rich
-  :init (ivy-rich-mode 1))
-
-;; Add icons to mode line
-;; After this package got installed, you need to run the following command manually
-;; M-x nerd-icons-install-fonts
-;; Need to research whether there is an automatic way to do this.
-(use-package nerd-icons)
-
-;; Have a nice mode line
-(use-package doom-modeline
-  :init (doom-modeline-mode 1)
+  :init
+  (ivy-mode)
   :custom
-  (doom-modeline-height 24)
-  (doom-modeline-buffer-file-name-style 'file-name-with-project)
-  (doom-modeline-percent-position nil))
-
-;; Rainbow delimiters: display matching parens according to their
-;; level of nesting in slightly different colours
-;; not sure yet if I want to keep this
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
-
-;; show all available completions of a shortcuts
-;; helpful but can also be annoying
-(use-package which-key
-  :init (which-key-mode)
-  :diminish which-key-mode
-  :config (setq which-key-idle-delay 1))
+  ;; (ivy-mode 1)
+  (ivy-use-selectable-prompt t))
 
 ;; Project management using Projectile
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
-  :custom ((projectile-completion-system 'ivy))
   :bind-keymap ("s-p" . projectile-command-map)
-  :init
-  ;; (setq projectile-switch-project-action #'projectile-dired)
-  (setq projectile-create-missing-test-files t)
-  )
-
-(defun rb/projectile-kill-other-buffers ()
-  "Kill all buffers in current project except for current buffer."
-  (interactive)
-  (let* ((current-buffer (current-buffer))
-         (project-root (projectile-project-root))
-         (buffers (projectile-project-buffers)))
-    (dolist (buffer buffers)
-      (unless (eq buffer current-buffer)
-        (kill-buffer buffer)))
-    (message "Kill all buffers in project %s except %s"
-             (projectile-project-name)
-             (buffer-name current-buffer))))
-
-(use-package ripgrep)
-
-;; follow compilation buffer
-(setq compilation-scroll-output 1)
-
-;; It's Magit!
-(use-package magit
-  :config
-  (transient-append-suffix 'magit-push "-u"
-                           '(1 "-o" "Skip CI pipeline" "-o ci.skip")))
-
-;; show inline git history
-(use-package sideline-blame
-  :init
-  (setq sideline-backends-right '((sideline-blame . up)))
   :custom
-  (sideline-blame-author-format "%s, ")
-  (sideline-blame-datetime-format "%Y-%m-%d %H:%M ")
-  (sideline-blame-commit-format "• %s"))
+  (projectile-completion-system 'ivy)
+  (projectile-create-missing-test-files t))
 
-;; Org mode
-(defun rb/init-org-mode ()
-  (org-indent-mode))
 
-(defun rb/org-archive-location ()
-  "Returns location for archived tasks.
-The string returns the filename where to store archived tasks. It
-  contains the year and the month, for example
-  `archive-2023-12.org`. The headline also contains month and year."
-  (concat "archive-"
-          (format-time-string "%Y-%m" (current-time))
-          ".org::* Archived Tasks "
-          (format-time-string "%B %Y" (current-time))))
 
-(use-package org
-  :hook (org-mode . rb/init-org-mode)
-  :config
-  (setq org-ellipsis " ↓")
-  (setq org-todo-keywords
-        '((sequence "TODO" "DOING" "|" "DONE")))
-  (setq org-agenda-start-with-log-mode t)
-  (setq org-log-done 'time)
-  (setq org-log-into-drawer t)
-  (setq org-archive-location (rb/org-archive-location))
-  (setq org-agenda-files
-        '("~/devel/agenda")))
+;; ;; (use-package counsel
+;; ;;   :bind (("M-x" . counsel-M-x)))
 
-;; org-roam
-(use-package org-roam
-  :custom
-  (org-roam-directory "~/devel/org-roam")
-  (org-roam-complete-everywhere t)
-  (org-roam-dailies-directory "journal/")
-  (org-roam-dailies-capture-templates
-   '(("d" "default" entry "* %? (%<%R>)"
-      :if-new (file+head "%<%Y-%m-%d>.org" "#+title: Journal Entry for %<%a, %d %b %Y>"))))
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert)
-         :map org-mode-map
-         ("C-M-i"   . completion-at-point)
-         :map org-roam-dailies-map
-         ("Y" . org-roam-dailies-capture-yesterday)
-         ("T" . org-roam-dailies-capture-tomorrow))
-  :bind-keymap
-  ("C-c n d" . org-roam-dailies-map)
-  :config
-  (require 'org-roam-dailies)
-  (org-roam-db-autosync-mode))
+;; (use-package ivy-rich
+;;   :init (ivy-rich-mode 1))
 
-;; Programming languages
-(use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :hook
-  ((lsp . lsp-lens-mode)
-   (lsp-mode . lsp-enable-which-key-integration))
-  :custom
-  (lsp-modeline-code-actions-enable nil)
-  (read-process-output-max (* 1024 1024 8)))
+;; ;; Add icons to mode line
+;; ;; After this package got installed, you need to run the following command manually
+;; ;; M-x nerd-icons-install-fonts
+;; ;; Need to research whether there is an automatic way to do this.
+;; (use-package nerd-icons)
 
-(use-package lsp-ui
-  :after lsp-mode
-  :hook (lsp-mode . lsp-ui-mode))
+;; ;; Have a nice mode line
+;; (use-package doom-modeline
+;;   :init (doom-modeline-mode 1)
+;;   :custom
+;;   (doom-modeline-height 24)
+;;   (doom-modeline-buffer-file-name-style 'file-name-with-project)
+;;   (doom-modeline-percent-position nil))
 
-(use-package lsp-treemacs)
+;; ;; Rainbow delimiters: display matching parens according to their
+;; ;; level of nesting in slightly different colours
+;; ;; not sure yet if I want to keep this
+;; (use-package rainbow-delimiters
+;;   :hook (prog-mode . rainbow-delimiters-mode))
 
-(use-package lsp-docker)
+;; ;; show all available completions of a shortcuts
+;; ;; helpful but can also be annoying
+;; (use-package which-key
+;;   :init (which-key-mode)
+;;   :diminish which-key-mode
+;;   :config (setq which-key-idle-delay 1))
 
-(use-package lsp-ivy
-  :after lsp-mode)
 
-(use-package lsp-sonarlint
-  :after lsp-mode
-  :custom
-  (lsp-sonarlint-download-url "https://github.com/SonarSource/sonarlint-vscode/releases/download/4.12.0%2B76892/sonarlint-vscode-darwin-x64-4.12.0.vsix")
-  (lsp-sonarlint-auto-download t)
-  (lsp-sonarlint-enabled-analyzers '("java" "go" "markdown" "elisp"))
-  (lsp-sonarlint-test-file-pattern ""))
 
-(use-package cfrs)
+;; (defun rb/projectile-kill-other-buffers ()
+;;   "Kill all buffers in current project except for current buffer."
+;;   (interactive)
+;;   (let* ((current-buffer (current-buffer))
+;;          (project-root (projectile-project-root))
+;;          (buffers (projectile-project-buffers)))
+;;     (dolist (buffer buffers)
+;;       (unless (eq buffer current-buffer)
+;;         (kill-buffer buffer)))
+;;     (message "Kill all buffers in project %s except %s"
+;;              (projectile-project-name)
+;;              (buffer-name current-buffer))))
 
-(use-package company
-  :hook (after-init . global-company-mode)
-  :bind
-  (:map company-active-map
-        ("<tab>" . company-complete-selection)
-        ("<escape>" . company-abort))
-  :custom
-  (company-minimum-prefix-length 3)
-  (company-idle-delay 0.2)
-  (company-tooltip-limit-20))
+;; (use-package ripgrep)
 
-(use-package flycheck
-  :config (global-flycheck-mode))
+;; ;; follow compilation buffer
+;; (setq compilation-scroll-output 1)
 
-(use-package yasnippet
-  :custom
-  (yas-verbosity 1)
-  :config (yas-global-mode))
+;; ;; It's Magit!
+;; (use-package magit
+;;   :config
+;;   (transient-append-suffix 'magit-push "-u"
+;;                            '(1 "-o" "Skip CI pipeline" "-o ci.skip")))
 
-(use-package dap-mode
-  :after lsp-treemacs
-  :bind (:map dap-mode-map
-              ("<f5>" . dap-step-in)
-              ("<f6>" . dap-next)
-              ("<f7>" . dap-step-out)
-              ("<f8>" . dap-continue))
-  :custom
-  (dap-auto-configure-features '(locals controls tooltip expressions))
-  :config
-  (add-hook 'dap-session-created-hook
-            (lambda (session) (set-frame-size (selected-frame) 167 60)))
-  (add-hook 'dap-terminated-hook
-            (lambda (session) (set-frame-size (selected-frame) 99 60)))
-  )
+;; ;; show inline git history
+;; (use-package sideline-blame
+;;   :init
+;;   (setq sideline-backends-right '((sideline-blame . up)))
+;;   :custom
+;;   (sideline-blame-author-format "%s, ")
+;;   (sideline-blame-datetime-format "%Y-%m-%d %H:%M ")
+;;   (sideline-blame-commit-format "• %s"))
 
-(use-package lsp-java
-  :hook (java-mode . lsp-deferred)
-  :bind (:map lsp-mode-map
-              ("s-l g y" . lsp-java-type-hierarchy)
-              ("s-1" . lsp-execute-code-action)
-              ("s-l t m" . dap-java-run-test-method)
-              ("s-l t c" . dap-java-run-test-class)
-              ("s-l t d" . dap-java-debug-test-method))
-  :custom
-  (tab-width 4)
-  :init
-  (setq lsp-java-vmargs (list
-                        "-XX:+UseG1GC"
-                        "-XX:+UseStringDeduplication"))
-  (which-key-add-key-based-replacements
-    "s-l g y" "type hierarchy"
-    "s-l t" "tests"
-    "s-l t m" "run test method"
-    "s-l t c" "run test class"
-    "s-l t d" "debug test method")
+;; ;; Org mode
+;; (defun rb/init-org-mode ()
+;;   (org-indent-mode))
 
-  :config
-  (setq c-basic-offset 4
-        lsp-java-format-settings-url (concat "file://" (file-truename (locate-user-emacs-file "eclipse-formatter.xml"))))
-  (setq lsp-java-jdt-download-url "https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/1.43.0/jdt-language-server-1.43.0-202412191447.tar.gz")
-  (setq lsp-java-completion-favorite-static-members
-        (vconcat lsp-java-completion-favorite-static-members
-                 '("org.mockito.BDDMockito.*"
-                   "org.hamcrest.MatcherAssert.*"
-                   "org.hamcrest.Matchers.*")))
-  (require 'dap-java)
-  )
+;; (defun rb/org-archive-location ()
+;;   "Returns location for archived tasks.
+;; The string returns the filename where to store archived tasks. It
+;;   contains the year and the month, for example
+;;   `archive-2023-12.org`. The headline also contains month and year."
+;;   (concat "archive-"
+;;           (format-time-string "%Y-%m" (current-time))
+;;           ".org::* Archived Tasks "
+;;           (format-time-string "%B %Y" (current-time))))
 
-(use-package go-mode
-  :mode ("\\.go" . go-mode)
-  :init
-  :hook (go-mode . lsp-deferred)
-  :custom
-  (tab-width 4)
-  :config
-  (defun rb-go-mode-hook ()
-    "Basic Go mode setup"
-    (add-hook 'before-save-hook #'lsp-format-buffer t t)
-    (add-hook 'before-save-hook #'lsp-organize-imports t t))
-  (add-hook 'go-mode-hook 'rb-go-mode-hook)
-  (add-hook 'go-mode-hook (lambda () (add-to-list 'company-backends '(company-capf :with company-yasnippet))))
-  (require 'dap-dlv-go))
+;; (use-package org
+;;   :hook (org-mode . rb/init-org-mode)
+;;   :config
+;;   (setq org-ellipsis " ↓")
+;;   (setq org-todo-keywords
+;;         '((sequence "TODO" "DOING" "|" "DONE")))
+;;   (setq org-agenda-start-with-log-mode t)
+;;   (setq org-log-done 'time)
+;;   (setq org-log-into-drawer t)
+;;   (setq org-archive-location (rb/org-archive-location))
+;;   (setq org-agenda-files
+;;         '("~/devel/agenda")))
 
-(use-package nxml-mode
-  :ensure nil
-  :hook (nxml-mode . lsp-deferred)
-  :config
-  (setq nxml-attribute-indent 4
-        nxml-child-indent 4))
+;; ;; org-roam
+;; (use-package org-roam
+;;   :custom
+;;   (org-roam-directory "~/devel/org-roam")
+;;   (org-roam-complete-everywhere t)
+;;   (org-roam-dailies-directory "journal/")
+;;   (org-roam-dailies-capture-templates
+;;    '(("d" "default" entry "* %? (%<%R>)"
+;;       :if-new (file+head "%<%Y-%m-%d>.org" "#+title: Journal Entry for %<%a, %d %b %Y>"))))
+;;   :bind (("C-c n l" . org-roam-buffer-toggle)
+;;          ("C-c n f" . org-roam-node-find)
+;;          ("C-c n i" . org-roam-node-insert)
+;;          :map org-mode-map
+;;          ("C-M-i"   . completion-at-point)
+;;          :map org-roam-dailies-map
+;;          ("Y" . org-roam-dailies-capture-yesterday)
+;;          ("T" . org-roam-dailies-capture-tomorrow))
+;;   :bind-keymap
+;;   ("C-c n d" . org-roam-dailies-map)
+;;   :config
+;;   (require 'org-roam-dailies)
+;;   (org-roam-db-autosync-mode))
 
-(use-package yaml-mode
-  :bind
-  (:map yaml-mode-map
-        ("\C-m" . 'newline-and-indent)))
+;; ;; Programming languages
+;; (use-package lsp-mode
+;;   :commands (lsp lsp-deferred)
+;;   :hook
+;;   ((lsp . lsp-lens-mode)
+;;    (lsp-mode . lsp-enable-which-key-integration))
+;;   :custom
+;;   (lsp-modeline-code-actions-enable nil)
+;;   (read-process-output-max (* 1024 1024 8)))
 
-(use-package typescript-mode
-  :custom (typescript-indent-level 2))
+;; (use-package lsp-ui
+;;   :after lsp-mode
+;;   :hook (lsp-mode . lsp-ui-mode))
 
-(use-package js
-  :ensure nil
-  :custom (js-indent-level 2))
+;; (use-package lsp-treemacs)
 
-(use-package web-mode)
+;; (use-package lsp-docker)
 
-(use-package terraform-mode
-  :hook
-  (terraform-mode . lsp-deferred)
-  (terraform-mode . terraform-format-on-save-mode)
-  :init (company-terraform-init))
+;; (use-package lsp-ivy
+;;   :after lsp-mode)
 
-(use-package company-terraform
-  :defer t)
+;; (use-package lsp-sonarlint
+;;   :after lsp-mode
+;;   :custom
+;;   (lsp-sonarlint-download-url "https://github.com/SonarSource/sonarlint-vscode/releases/download/4.12.0%2B76892/sonarlint-vscode-darwin-x64-4.12.0.vsix")
+;;   (lsp-sonarlint-auto-download t)
+;;   (lsp-sonarlint-enabled-analyzers '("java" "go" "markdown" "elisp"))
+;;   (lsp-sonarlint-test-file-pattern ""))
 
-;; tree-sitter
-(with-eval-after-load 'treesit
-  (dolist (lang-sources
-           '((go "https://github.com/tree-sitter/tree-sitter-go")
-             (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
-             (java "https://github.com/tree-sitter/tree-sitter-java")
-             (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-             (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
-    (add-to-list 'treesit-language-source-alist lang-sources)))
+;; (use-package cfrs)
 
-;; Restclient
-(use-package restclient
-  :mode ("\\.http" . restclient-mode))
+;; (use-package company
+;;   :hook (after-init . global-company-mode)
+;;   :bind
+;;   (:map company-active-map
+;;         ("<tab>" . company-complete-selection)
+;;         ("<escape>" . company-abort))
+;;   :custom
+;;   (company-minimum-prefix-length 0)
+;;   (company-idle-delay 0.2)
+;;   (company-tooltip-limit-20))
 
-;; Markdown
-(use-package markdown-mode
-  :ensure nil
-  :config
-  (add-hook 'markdown-mode-hook
-            (lambda ()
-              (auto-fill-mode 1))))
+;; (use-package flycheck
+;;   :config (global-flycheck-mode))
 
-;; GitLab
+;; (use-package yasnippet
+;;   :custom
+;;   (yas-verbosity 1)
+;;   :config (yas-global-mode))
 
-(use-package gitlab-ci-mode)
+;; (use-package dap-mode
+;;   :after lsp-treemacs
+;;   :bind (:map dap-mode-map
+;;               ("<f5>" . dap-step-in)
+;;               ("<f6>" . dap-next)
+;;               ("<f7>" . dap-step-out)
+;;               ("<f8>" . dap-continue))
+;;   :custom
+;;   (dap-auto-configure-features '(locals controls tooltip expressions))
+;;   :config
+;;   (add-hook 'dap-session-created-hook
+;;             (lambda (session) (set-frame-size (selected-frame) 167 60)))
+;;   (add-hook 'dap-terminated-hook
+;;             (lambda (session) (set-frame-size (selected-frame) 99 60)))
+;;   )
 
-(use-package gitlab-ci-mode-flycheck
-  :after flycheck gitlab-ci-mode
-  :init (gitlab-ci-mode-flycheck-enable)
-  :custom (gitlab-ci-api-token (rb/lookup-password :host "gitlab.com")))
+;; (use-package lsp-java
+;;   :hook (java-mode . lsp-deferred)
+;;   :bind (:map lsp-mode-map
+;;               ("s-l g y" . lsp-java-type-hierarchy)
+;;               ("s-1" . lsp-execute-code-action)
+;;               ("s-l t m" . dap-java-run-test-method)
+;;               ("s-l t c" . dap-java-run-test-class)
+;;               ("s-l t d" . dap-java-debug-test-method))
+;;   :custom
+;;   (tab-width 4)
+;;   :init
+;;   (setq lsp-java-vmargs (list
+;;                         "-XX:+UseG1GC"
+;;                         "-XX:+UseStringDeduplication"))
+;;   (which-key-add-key-based-replacements
+;;     "s-l g y" "type hierarchy"
+;;     "s-l t" "tests"
+;;     "s-l t m" "run test method"
+;;     "s-l t c" "run test class"
+;;     "s-l t d" "debug test method")
 
-;; MMorph programming
-(add-to-list 'auto-coding-alist
-             '("\\.mmo\\(rph\\)?$" . latin-9))
-(defun rb/delete-current-buffer ()
-  "Kill the current buffer and deletes the file it is visiting."
-  (interactive)
-  (let ((filename (buffer-file-name)))
-    (if filename
-        (if (y-or-n-p (concat "Do you really want to delete file"
-                              filename
-                              "?"))
-            (progn
-              (delete-file filename)
-              (message "Deleted file %s." filename)
-              (kill-buffer)))
-      (message "Not a file visiting buffer"))))
+;;   :config
+;;   (setq c-basic-offset 4
+;;         lsp-java-format-settings-url (concat "file://" (file-truename (locate-user-emacs-file "eclipse-formatter.xml"))))
+;;   (setq lsp-java-jdt-download-url "https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/1.43.0/jdt-language-server-1.43.0-202412191447.tar.gz")
+;;   (setq lsp-java-completion-favorite-static-members
+;;         (vconcat lsp-java-completion-favorite-static-members
+;;                  '("org.mockito.BDDMockito.*"
+;;                    "org.hamcrest.MatcherAssert.*"
+;;                    "org.hamcrest.Matchers.*")))
+;;   (require 'dap-java)
+;;   )
 
-(defun rb/decode-jwt ()
-  "Decode JWT that is on the current line."
-  (interactive)
-  (let* ((data (split-string (thing-at-point 'filename) "\\."))
-         (header (car data))
-         (claims (cadr data)))
-    (with-temp-buffer
-      (insert (format "%s\n\n%s"
-                      (base64-decode-string header t)
-                      (base64-decode-string claims t)))
-      (json-pretty-print-buffer)
-      (with-output-to-temp-buffer "*JWT*"
-        (special-mode)
-        (princ (buffer-string)))))
-  t)
+;; (use-package go-mode
+;;   :mode ("\\.go" . go-mode)
+;;   :init
+;;   :hook (go-mode . lsp-deferred)
+;;   :custom
+;;   (tab-width 4)
+;;   :config
+;;   (defun rb-go-mode-hook ()
+;;     "Basic Go mode setup"
+;;     (add-hook 'before-save-hook #'lsp-format-buffer t t)
+;;     (add-hook 'before-save-hook #'lsp-organize-imports t t))
+;;   (add-hook 'go-mode-hook 'rb-go-mode-hook)
+;;   (add-hook 'go-mode-hook (lambda () (add-to-list 'company-backends '(company-capf :with company-yasnippet))))
+;;   (require 'dap-dlv-go))
 
-(global-set-key (kbd "C-c j") 'rb/decode-jwt)
+;; (use-package nxml-mode
+;;   :ensure nil
+;;   :hook (nxml-mode . lsp-deferred)
+;;   :config
+;;   (setq nxml-attribute-indent 4
+;;         nxml-child-indent 4))
 
-(defun generate-uuid ()
-  (interactive)
-  (insert (downcase (string-trim (shell-command-to-string "uuidgen")))))
+;; (use-package yaml-mode
+;;   :bind
+;;   (:map yaml-mode-map
+;;         ("\C-m" . 'newline-and-indent)))
 
-(use-package string-inflection
-  :config
-  (add-hook 'java-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c C-u") 'string-inflection-java-style-cycle)
-              (define-key minibuffer-local-map (kbd "C-c C-u") 'string-inflection-java-style-cycle))))
+;; (use-package typescript-mode
+;;   :custom (typescript-indent-level 2))
+
+;; (use-package js
+;;   :ensure nil
+;;   :custom (js-indent-level 2))
+
+;; (use-package web-mode)
+
+;; (use-package terraform-mode
+;;   :hook
+;;   (terraform-mode . lsp-deferred)
+;;   (terraform-mode . terraform-format-on-save-mode)
+;;   :init (company-terraform-init))
+
+;; (use-package company-terraform
+;;   :defer t)
+
+;; ;; tree-sitter
+;; (with-eval-after-load 'treesit
+;;   (dolist (lang-sources
+;;            '((go "https://github.com/tree-sitter/tree-sitter-go")
+;;              (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
+;;              (java "https://github.com/tree-sitter/tree-sitter-java")
+;;              (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+;;              (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+;;     (add-to-list 'treesit-language-source-alist lang-sources)))
+
+;; ;; Restclient
+;; (use-package restclient
+;;   :mode ("\\.http" . restclient-mode))
+
+;; ;; Markdown
+;; (use-package markdown-mode
+;;   :ensure nil
+;;   :config
+;;   (add-hook 'markdown-mode-hook
+;;             (lambda ()
+;;               (auto-fill-mode 1))))
+
+;; ;; GitLab
+
+;; (use-package gitlab-ci-mode)
+
+;; (use-package gitlab-ci-mode-flycheck
+;;   :after flycheck gitlab-ci-mode
+;;   :init (gitlab-ci-mode-flycheck-enable)
+;;   :custom (gitlab-ci-api-token (rb/lookup-password :host "gitlab.com")))
+
+;; ;; MMorph programming
+;; (add-to-list 'auto-coding-alist
+;;              '("\\.mmo\\(rph\\)?$" . latin-9))
+;; (defun rb/delete-current-buffer ()
+;;   "Kill the current buffer and deletes the file it is visiting."
+;;   (interactive)
+;;   (let ((filename (buffer-file-name)))
+;;     (if filename
+;;         (if (y-or-n-p (concat "Do you really want to delete file"
+;;                               filename
+;;                               "?"))
+;;             (progn
+;;               (delete-file filename)
+;;               (message "Deleted file %s." filename)
+;;               (kill-buffer)))
+;;       (message "Not a file visiting buffer"))))
+
+;; (defun rb/decode-jwt ()
+;;   "Decode JWT that is on the current line."
+;;   (interactive)
+;;   (let* ((data (split-string (thing-at-point 'filename) "\\."))
+;;          (header (car data))
+;;          (claims (cadr data)))
+;;     (with-temp-buffer
+;;       (insert (format "%s\n\n%s"
+;;                       (base64-decode-string header t)
+;;                       (base64-decode-string claims t)))
+;;       (json-pretty-print-buffer)
+;;       (with-output-to-temp-buffer "*JWT*"
+;;         (special-mode)
+;;         (princ (buffer-string)))))
+;;   t)
+
+;; (global-set-key (kbd "C-c j") 'rb/decode-jwt)
+
+;; (defun generate-uuid ()
+;;   (interactive)
+;;   (insert (downcase (string-trim (shell-command-to-string "uuidgen")))))
+
+;; (use-package string-inflection
+;;   :config
+;;   (add-hook 'java-mode-hook
+;;             (lambda ()
+;;               (local-set-key (kbd "C-c C-u") 'string-inflection-java-style-cycle)
+;;               (define-key minibuffer-local-map (kbd "C-c C-u") 'string-inflection-java-style-cycle))))
 
 ;;; init.el ends here

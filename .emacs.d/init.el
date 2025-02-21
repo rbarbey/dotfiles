@@ -243,12 +243,11 @@
 ;; (use-package rainbow-delimiters
 ;;   :hook (prog-mode . rainbow-delimiters-mode))
 
-;; ;; show all available completions of a shortcuts
-;; ;; helpful but can also be annoying
-;; (use-package which-key
-;;   :init (which-key-mode)
-;;   :diminish which-key-mode
-;;   :config (setq which-key-idle-delay 1))
+;; show all available completions of a shortcuts
+;; helpful but can also be annoying
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode)
 
 
 

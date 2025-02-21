@@ -249,7 +249,21 @@
   :init (which-key-mode)
   :diminish which-key-mode)
 
+;; Programming languages
+(use-package lsp-mode
+  ;; :commands (lsp lsp-deferred)
+  :hook
+  ((lsp . lsp-lens-mode)
+   (lsp-mode . lsp-enable-which-key-integration))
+  :preface (setq lsp-use-plists t)
+  :custom
+  (lsp-modeline-code-actions-enable nil)
+  ;; (lsp-completion-enable-additional-text-edit nil)
+  (read-process-output-max (* 1024 1024 8)))
 
+(use-package lsp-ui
+  :after lsp-mode
+  :hook (lsp-mode . lsp-ui-mode))
 
 ;; (defun rb/projectile-kill-other-buffers ()
 ;;   "Kill all buffers in current project except for current buffer."

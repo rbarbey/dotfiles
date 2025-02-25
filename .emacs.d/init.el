@@ -258,6 +258,56 @@
   :init (which-key-mode)
   :diminish which-key-mode)
 
+;; Org mode
+(defun rb/init-org-mode ()
+  (org-indent-mode))
+
+(defun rb/org-archive-location ()
+  "Returns location for archived tasks.
+The string returns the filename where to store archived tasks. It
+  contains the year and the month, for example
+  `archive-2023-12.org`. The headline also contains month and year."
+  (concat "archive-"
+          (format-time-string "%Y-%m" (current-time))
+          ".org::* Archived Tasks "
+          (format-time-string "%B %Y" (current-time))))
+
+(use-package org
+  :hook (org-mode . rb/init-org-mode)
+  :config
+  (setq org-ellipsis " ↓")
+  (setq org-todo-keywords
+        '((sequence "TODO" "DOING" "|" "DONE")))
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  (setq org-log-into-drawer t)
+  (setq org-archive-location (rb/org-archive-location))
+  (setq org-agenda-files
+        '("~/devel/agenda")))
+
+;; org-roam
+(use-package org-roam
+  :custom
+  (org-roam-directory "~/devel/org-roam")
+  (org-roam-complete-everywhere t)
+  (org-roam-dailies-directory "journal/")
+  (org-roam-dailies-capture-templates
+   '(("d" "default" entry "* %? (%<%R>)"
+      :if-new (file+head "%<%Y-%m-%d>.org" "#+title: Journal Entry for %<%a, %d %b %Y>"))))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         :map org-mode-map
+         ("C-M-i"   . completion-at-point)
+         :map org-roam-dailies-map
+         ("Y" . org-roam-dailies-capture-yesterday)
+         ("T" . org-roam-dailies-capture-tomorrow))
+  :bind-keymap
+  ("C-c n d" . org-roam-dailies-map)
+  :config
+  (require 'org-roam-dailies)
+  (org-roam-db-autosync-mode))
+
 ;; Programming languages
 (use-package lsp-mode
   ;; :commands (lsp lsp-deferred)

@@ -172,6 +172,14 @@
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 (load-theme 'wombat)
 
+;; line numbers
+(use-package display-line-numbers
+  :config
+  (global-display-line-numbers-mode t)
+  :custom
+  (display-line-numbers-width-start 3))
+
+
 ;; Enable hiding of minor modes from mode line
 (use-package diminish)
 

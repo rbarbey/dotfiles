@@ -385,11 +385,7 @@ The string returns the filename where to store archived tasks. It
 ;; ;; follow compilation buffer
 ;; (setq compilation-scroll-output 1)
 
-;; ;; It's Magit!
-;; (use-package magit
-;;   :config
-;;   (transient-append-suffix 'magit-push "-u"
-;;                            '(1 "-o" "Skip CI pipeline" "-o ci.skip")))
+
 
 ;; ;; show inline git history
 ;; (use-package sideline-blame
@@ -400,105 +396,25 @@ The string returns the filename where to store archived tasks. It
 ;;   (sideline-blame-datetime-format "%Y-%m-%d %H:%M ")
 ;;   (sideline-blame-commit-format "• %s"))
 
-;; ;; Org mode
-;; (defun rb/init-org-mode ()
-;;   (org-indent-mode))
 
-;; (defun rb/org-archive-location ()
-;;   "Returns location for archived tasks.
-;; The string returns the filename where to store archived tasks. It
-;;   contains the year and the month, for example
-;;   `archive-2023-12.org`. The headline also contains month and year."
-;;   (concat "archive-"
-;;           (format-time-string "%Y-%m" (current-time))
-;;           ".org::* Archived Tasks "
-;;           (format-time-string "%B %Y" (current-time))))
 
-;; (use-package org
-;;   :hook (org-mode . rb/init-org-mode)
-;;   :config
-;;   (setq org-ellipsis " ↓")
-;;   (setq org-todo-keywords
-;;         '((sequence "TODO" "DOING" "|" "DONE")))
-;;   (setq org-agenda-start-with-log-mode t)
-;;   (setq org-log-done 'time)
-;;   (setq org-log-into-drawer t)
-;;   (setq org-archive-location (rb/org-archive-location))
-;;   (setq org-agenda-files
-;;         '("~/devel/agenda")))
 
-;; ;; org-roam
-;; (use-package org-roam
-;;   :custom
-;;   (org-roam-directory "~/devel/org-roam")
-;;   (org-roam-complete-everywhere t)
-;;   (org-roam-dailies-directory "journal/")
-;;   (org-roam-dailies-capture-templates
-;;    '(("d" "default" entry "* %? (%<%R>)"
-;;       :if-new (file+head "%<%Y-%m-%d>.org" "#+title: Journal Entry for %<%a, %d %b %Y>"))))
-;;   :bind (("C-c n l" . org-roam-buffer-toggle)
-;;          ("C-c n f" . org-roam-node-find)
-;;          ("C-c n i" . org-roam-node-insert)
-;;          :map org-mode-map
-;;          ("C-M-i"   . completion-at-point)
-;;          :map org-roam-dailies-map
-;;          ("Y" . org-roam-dailies-capture-yesterday)
-;;          ("T" . org-roam-dailies-capture-tomorrow))
-;;   :bind-keymap
-;;   ("C-c n d" . org-roam-dailies-map)
-;;   :config
-;;   (require 'org-roam-dailies)
-;;   (org-roam-db-autosync-mode))
 
-;; ;; Programming languages
-;; (use-package lsp-mode
-;;   :commands (lsp lsp-deferred)
-;;   :hook
-;;   ((lsp . lsp-lens-mode)
-;;    (lsp-mode . lsp-enable-which-key-integration))
-;;   :custom
-;;   (lsp-modeline-code-actions-enable nil)
-;;   (read-process-output-max (* 1024 1024 8)))
 
-;; (use-package lsp-ui
-;;   :after lsp-mode
-;;   :hook (lsp-mode . lsp-ui-mode))
-
-;; (use-package lsp-treemacs)
 
 ;; (use-package lsp-docker)
 
 ;; (use-package lsp-ivy
 ;;   :after lsp-mode)
 
-;; (use-package lsp-sonarlint
-;;   :after lsp-mode
-;;   :custom
-;;   (lsp-sonarlint-download-url "https://github.com/SonarSource/sonarlint-vscode/releases/download/4.12.0%2B76892/sonarlint-vscode-darwin-x64-4.12.0.vsix")
-;;   (lsp-sonarlint-auto-download t)
-;;   (lsp-sonarlint-enabled-analyzers '("java" "go" "markdown" "elisp"))
-;;   (lsp-sonarlint-test-file-pattern ""))
+
 
 ;; (use-package cfrs)
 
-;; (use-package company
-;;   :hook (after-init . global-company-mode)
-;;   :bind
-;;   (:map company-active-map
-;;         ("<tab>" . company-complete-selection)
-;;         ("<escape>" . company-abort))
-;;   :custom
-;;   (company-minimum-prefix-length 0)
-;;   (company-idle-delay 0.2)
-;;   (company-tooltip-limit-20))
+
 
 ;; (use-package flycheck
 ;;   :config (global-flycheck-mode))
-
-;; (use-package yasnippet
-;;   :custom
-;;   (yas-verbosity 1)
-;;   :config (yas-global-mode))
 
 ;; (use-package dap-mode
 ;;   :after lsp-treemacs

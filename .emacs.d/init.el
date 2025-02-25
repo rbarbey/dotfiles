@@ -243,6 +243,7 @@
   :custom
   (doom-modeline-height 24)
   (doom-modeline-buffer-file-name-style 'file-name-with-project)
+  (doom-modeline-position-column-line-format nil)
   (doom-modeline-percent-position nil))
 
 ;; ;; Rainbow delimiters: display matching parens according to their

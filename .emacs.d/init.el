@@ -324,6 +324,49 @@ The string returns the filename where to store archived tasks. It
   :after lsp-mode
   :hook (lsp-mode . lsp-ui-mode))
 
+(use-package lsp-treemacs
+  ;; :after (lsp-mode treemacs)
+  :init
+  (treemacs-resize-icons 14)
+  :custom
+  (lsp-treemacs-error-list-current-project-only t))
+
+(use-package lsp-java
+  :hook (java-mode . lsp-deferred)
+  :after (lsp-mode company lsp-treemacs)
+  :bind (:map lsp-mode-map
+              ("s-l g y" . lsp-java-type-hierarchy)
+              ("s-1" . lsp-execute-code-action)
+              ;; ("s-l t m" . dap-java-run-test-method)
+              ;; ("s-l t c" . dap-java-run-test-class)
+              ;; ("s-l t d" . dap-java-debug-test-method)
+              )
+  :custom
+  (tab-width 4)
+  :init
+  (setq lsp-java-vmargs (list
+                        "-XX:+UseG1GC"
+                        "-XX:+UseStringDeduplication"))
+  (which-key-add-key-based-replacements
+    "s-l g y" "type hierarchy"
+    ;; "s-l t" "tests"
+    ;; "s-l t m" "run test method"
+    ;; "s-l t c" "run test class"
+    ;; "s-l t d" "debug test method"
+    )
+
+  :config
+  (setq c-basic-offset 4
+        lsp-java-format-settings-url (concat "file://" (file-truename (locate-user-emacs-file "eclipse-formatter.xml"))))
+  (setq lsp-java-jdt-download-url "https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/1.43.0/jdt-language-server-1.43.0-202412191447.tar.gz")
+  (setq lsp-java-completion-favorite-static-members
+        (vconcat lsp-java-completion-favorite-static-members
+                 '("org.mockito.BDDMockito.*"
+                   "org.hamcrest.MatcherAssert.*"
+                   "org.hamcrest.Matchers.*")))
+  ;; (require 'dap-java)
+  )
+
 ;; (defun rb/projectile-kill-other-buffers ()
 ;;   "Kill all buffers in current project except for current buffer."
 ;;   (interactive)

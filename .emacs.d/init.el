@@ -207,6 +207,8 @@
   (projectile-completion-system 'ivy)
   (projectile-create-missing-test-files t))
 
+(use-package ripgrep)
+
 ;; completion
 (use-package yasnippet
   :hook ((lsp-mode . yas-minor-mode)))
@@ -375,6 +377,8 @@ The string returns the filename where to store archived tasks. It
 (use-package dap-mode
   :after lsp-mode)
 
+(use-package yaml-mode)
+
 ;; (defun rb/projectile-kill-other-buffers ()
 ;;   "Kill all buffers in current project except for current buffer."
 ;;   (interactive)
@@ -528,9 +532,9 @@ The string returns the filename where to store archived tasks. It
 ;;              (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 ;;     (add-to-list 'treesit-language-source-alist lang-sources)))
 
-;; ;; Restclient
-;; (use-package restclient
-;;   :mode ("\\.http" . restclient-mode))
+;; Restclient
+(use-package restclient
+  :mode ("\\.http" . restclient-mode))
 
 ;; ;; Markdown
 ;; (use-package markdown-mode

@@ -364,8 +364,13 @@ The string returns the filename where to store archived tasks. It
                  '("org.mockito.BDDMockito.*"
                    "org.hamcrest.MatcherAssert.*"
                    "org.hamcrest.Matchers.*")))
-  ;; (require 'dap-java)
   )
+
+(use-package lsp-docker
+  :after lsp-mode)
+
+(use-package dap-mode
+  :after lsp-mode)
 
 ;; (defun rb/projectile-kill-other-buffers ()
 ;;   "Kill all buffers in current project except for current buffer."

@@ -42,6 +42,9 @@
 (setq tags-table-list '("~/.emacs.d/.cache"))
 (delete-selection-mode 1)
 
+;; follow compilation buffer
+(setq compilation-scroll-output 1)
+
 ;; Initialize package management
 (require 'package)
 

@@ -325,7 +325,7 @@ The string returns the filename where to store archived tasks. It
   :hook (lsp-mode . lsp-ui-mode))
 
 (use-package lsp-treemacs
-  ;; :after (lsp-mode treemacs)
+  :after (lsp-mode treemacs)
   :init
   (treemacs-resize-icons 14)
   :custom

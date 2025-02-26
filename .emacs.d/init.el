@@ -85,7 +85,7 @@
          (height (cadddr workarea)))
 
     ;; set initial size of frame
-    (set-frame-size frame 99 60)
+    (set-frame-size frame 103 60)
 
     ;; position frame slightly off center
     (set-frame-position frame

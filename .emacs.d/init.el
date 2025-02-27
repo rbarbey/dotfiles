@@ -367,7 +367,21 @@ The string returns the filename where to store archived tasks. It
 
 (use-package yaml-mode)
 
-(use-package typescript-mode)
+(use-package typescript-mode
+  :custom
+  (typescript-indent-level 2))
+
+(use-package nxml-mode
+  :ensure nil
+  :hook (nxml-mode . lsp-deferred)
+  :config
+  (setq nxml-attribute-indent 4
+        nxml-child-indent 4))
+
+;; Restclient
+(use-package restclient
+  :mode ("\\.http" . restclient-mode))
+
 
 ;; (defun rb/projectile-kill-other-buffers ()
 ;;   "Kill all buffers in current project except for current buffer."

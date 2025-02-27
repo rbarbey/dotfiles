@@ -379,6 +379,8 @@ The string returns the filename where to store archived tasks. It
 
 (use-package yaml-mode)
 
+(use-package typescript-mode)
+
 ;; (defun rb/projectile-kill-other-buffers ()
 ;;   "Kill all buffers in current project except for current buffer."
 ;;   (interactive)

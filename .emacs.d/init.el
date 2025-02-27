@@ -384,9 +384,6 @@ The string returns the filename where to store archived tasks. It
 
 ;; (use-package ripgrep)
 
-;; ;; follow compilation buffer
-;; (setq compilation-scroll-output 1)
-
 
 
 ;; ;; show inline git history
@@ -398,13 +395,6 @@ The string returns the filename where to store archived tasks. It
 ;;   (sideline-blame-datetime-format "%Y-%m-%d %H:%M ")
 ;;   (sideline-blame-commit-format "• %s"))
 
-
-
-
-
-
-
-;; (use-package lsp-docker)
 
 ;; (use-package lsp-ivy
 ;;   :after lsp-mode)
@@ -430,39 +420,6 @@ The string returns the filename where to store archived tasks. It
 ;;             (lambda (session) (set-frame-size (selected-frame) 99 60)))
 ;;   )
 
-;; (use-package lsp-java
-;;   :hook (java-mode . lsp-deferred)
-;;   :bind (:map lsp-mode-map
-;;               ("s-l g y" . lsp-java-type-hierarchy)
-;;               ("s-1" . lsp-execute-code-action)
-;;               ("s-l t m" . dap-java-run-test-method)
-;;               ("s-l t c" . dap-java-run-test-class)
-;;               ("s-l t d" . dap-java-debug-test-method))
-;;   :custom
-;;   (tab-width 4)
-;;   :init
-;;   (setq lsp-java-vmargs (list
-;;                         "-XX:+UseG1GC"
-;;                         "-XX:+UseStringDeduplication"))
-;;   (which-key-add-key-based-replacements
-;;     "s-l g y" "type hierarchy"
-;;     "s-l t" "tests"
-;;     "s-l t m" "run test method"
-;;     "s-l t c" "run test class"
-;;     "s-l t d" "debug test method")
-
-;;   :config
-;;   (setq c-basic-offset 4
-;;         lsp-java-format-settings-url (concat "file://" (file-truename (locate-user-emacs-file "eclipse-formatter.xml"))))
-;;   (setq lsp-java-jdt-download-url "https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/1.43.0/jdt-language-server-1.43.0-202412191447.tar.gz")
-;;   (setq lsp-java-completion-favorite-static-members
-;;         (vconcat lsp-java-completion-favorite-static-members
-;;                  '("org.mockito.BDDMockito.*"
-;;                    "org.hamcrest.MatcherAssert.*"
-;;                    "org.hamcrest.Matchers.*")))
-;;   (require 'dap-java)
-;;   )
-
 ;; (use-package go-mode
 ;;   :mode ("\\.go" . go-mode)
 ;;   :init
@@ -478,20 +435,7 @@ The string returns the filename where to store archived tasks. It
 ;;   (add-hook 'go-mode-hook (lambda () (add-to-list 'company-backends '(company-capf :with company-yasnippet))))
 ;;   (require 'dap-dlv-go))
 
-;; (use-package nxml-mode
-;;   :ensure nil
-;;   :hook (nxml-mode . lsp-deferred)
-;;   :config
-;;   (setq nxml-attribute-indent 4
-;;         nxml-child-indent 4))
 
-;; (use-package yaml-mode
-;;   :bind
-;;   (:map yaml-mode-map
-;;         ("\C-m" . 'newline-and-indent)))
-
-;; (use-package typescript-mode
-;;   :custom (typescript-indent-level 2))
 
 ;; (use-package js
 ;;   :ensure nil

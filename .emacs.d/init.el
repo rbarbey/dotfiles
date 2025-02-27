@@ -230,12 +230,6 @@
   (transient-append-suffix 'magit-push "-u"
                            '(1 "-o" "Skip CI pipeline" "-o ci.skip")))
 
-;; ;; (use-package counsel
-;; ;;   :bind (("M-x" . counsel-M-x)))
-
-;; (use-package ivy-rich
-;;   :init (ivy-rich-mode 1))
-
 ;; Add icons to mode line
 ;; After this package got installed, you need to run the following command manually
 ;; M-x nerd-icons-install-fonts
@@ -250,12 +244,6 @@
   (doom-modeline-buffer-file-name-style 'file-name-with-project)
   (doom-modeline-position-column-line-format nil)
   (doom-modeline-percent-position nil))
-
-;; ;; Rainbow delimiters: display matching parens according to their
-;; ;; level of nesting in slightly different colours
-;; ;; not sure yet if I want to keep this
-;; (use-package rainbow-delimiters
-;;   :hook (prog-mode . rainbow-delimiters-mode))
 
 ;; show all available completions of a shortcuts
 ;; helpful but can also be annoying
@@ -423,10 +411,6 @@ The string returns the filename where to store archived tasks. It
 
 
 
-;; (use-package cfrs)
-
-
-
 ;; (use-package flycheck
 ;;   :config (global-flycheck-mode))
 
@@ -514,29 +498,6 @@ The string returns the filename where to store archived tasks. It
 ;;   :custom (js-indent-level 2))
 
 ;; (use-package web-mode)
-
-;; (use-package terraform-mode
-;;   :hook
-;;   (terraform-mode . lsp-deferred)
-;;   (terraform-mode . terraform-format-on-save-mode)
-;;   :init (company-terraform-init))
-
-;; (use-package company-terraform
-;;   :defer t)
-
-;; ;; tree-sitter
-;; (with-eval-after-load 'treesit
-;;   (dolist (lang-sources
-;;            '((go "https://github.com/tree-sitter/tree-sitter-go")
-;;              (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
-;;              (java "https://github.com/tree-sitter/tree-sitter-java")
-;;              (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-;;              (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
-;;     (add-to-list 'treesit-language-source-alist lang-sources)))
-
-;; Restclient
-(use-package restclient
-  :mode ("\\.http" . restclient-mode))
 
 ;; ;; Markdown
 ;; (use-package markdown-mode

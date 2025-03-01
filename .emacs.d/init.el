@@ -33,7 +33,7 @@
 (scroll-bar-mode -1)             ;; no scroll bar
 (tooltip-mode -1)                ;; no tooltips
 (set-fringe-mode 10)             ;; ?
-(menu-bar-mode -1)               ;; no menu bar
+;; (menu-bar-mode -1)               ;; no menu bar
 (setq visible-bell nil)          ;; no visual bell
 (setq-default indent-tabs-mode nil)
 (setq initial-major-mode 'fundamental-mode) ; changes *scratch* buffer mode
@@ -70,10 +70,10 @@
   :config
   (column-number-mode 1))
 
-;; no tool bar
-(use-package tool-bar
-  :ensure nil
-  :config (tool-bar-mode -1))
+;; ;; no tool bar
+;; (use-package tool-bar
+;;   :ensure nil
+;;   :config (tool-bar-mode -1))
 
 ;; use nice SF
 (defun rb/set-font-faces ()

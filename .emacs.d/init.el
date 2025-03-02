@@ -6,13 +6,6 @@
 
 ;;; Code:
 
-;; Temporarily increase gc during startup
-(setq gc-cons-threshold most-positive-fixnum)
-
-;; Restore to normal value after startup
-(add-hook 'emacs-startup-hook
-          (lambda () (setq gc-cons-threshold (* 16 1024 1024))))
-
 (defun rb/display-startup-time ()
   """Display startup time."""
   (message "Emacs loaded in %s with %d gcs"

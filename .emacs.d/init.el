@@ -35,6 +35,11 @@
 (setq tags-table-list '("~/.emacs.d/.cache"))
 (delete-selection-mode 1)
 
+;; put backup, auto save and lock files into temp directory
+(setq backup-directory-alist '(("." . "/tmp")))
+;; (setq auto-save-file-name-transforms `((".*" "/tmp/" t)))
+(setq lock-file-name-transforms '(("\\`/.*/\\([^/]+\\)\\'" "/tmp/\\1" t)))
+
 ;; follow compilation buffer
 (setq compilation-scroll-output 1)
 

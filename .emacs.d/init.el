@@ -85,6 +85,7 @@
 (set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 120)
 (set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 120)
 
+;; Compute frame size and position
 (defun rb/set-frame-size (frame)
   (let* ((workarea (frame-monitor-workarea frame))
          (width (caddr workarea))
@@ -98,6 +99,7 @@
                         (* (/ width 100) 50)
                         (/ (- height (frame-pixel-height frame)) 2))))
 
+;; Set frame size depending on whether we are a normal or daemon Emacs
 (when (daemonp)
     (add-hook 'after-make-frame-functions
               (lambda (frame)

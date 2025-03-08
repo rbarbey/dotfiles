@@ -78,12 +78,12 @@
 ;; follow compilation buffer
 (setq compilation-scroll-output 1)
 
-;; use nice SF
-(defun rb/set-font-faces ()
-  (message "Setting font faces")
-  (set-face-attribute 'default nil :font "SF Mono Light" :height 120)
-  (set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 120)
-  (set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 120))
+;; Use San Francisco as font. Either copy it out of the Terminal app
+;; and install it with FontBook or get it from here:
+;; https://developer.apple.com/fonts/
+(set-face-attribute 'default nil :font "SF Mono Light" :height 120)
+(set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 120)
+(set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 120)
 
 (defun rb/set-frame-size (frame)
   (let* ((workarea (frame-monitor-workarea frame))
@@ -101,12 +101,10 @@
 (when (daemonp)
     (add-hook 'after-make-frame-functions
               (lambda (frame)
-                (rb/set-font-faces)
                 (when (display-graphic-p frame)
                   (rb/set-frame-size frame)))))
 
 (unless (daemonp)
-  (rb/set-font-faces)
   (rb/set-frame-size (selected-frame)))
 
 (global-set-key (kbd "s-/") 'comment-line)

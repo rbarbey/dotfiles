@@ -264,10 +264,9 @@ The string returns the filename where to store archived tasks. It
   :bind (:map lsp-mode-map
               ("s-l g y" . lsp-java-type-hierarchy)
               ("s-1" . lsp-execute-code-action)
-              ;; ("s-l t m" . dap-java-run-test-method)
-              ;; ("s-l t c" . dap-java-run-test-class)
-              ;; ("s-l t d" . dap-java-debug-test-method)
-              )
+              ("s-l t m" . dap-java-run-test-method)
+              ("s-l t c" . dap-java-run-test-class)
+              ("s-l t d" . dap-java-debug-test-method))
   :custom
   (tab-width 4)
   :init
@@ -276,11 +275,10 @@ The string returns the filename where to store archived tasks. It
                         "-XX:+UseStringDeduplication"))
   (which-key-add-key-based-replacements
     "s-l g y" "type hierarchy"
-    ;; "s-l t" "tests"
-    ;; "s-l t m" "run test method"
-    ;; "s-l t c" "run test class"
-    ;; "s-l t d" "debug test method"
-    )
+    "s-l t" "tests"
+    "s-l t m" "run test method"
+    "s-l t c" "run test class"
+    "s-l t d" "debug test method")
 
   :config
   (setq c-basic-offset 4

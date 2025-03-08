@@ -109,65 +109,6 @@
 (unless (daemonp)
   (rb/set-frame-size (selected-frame)))
 
-(global-set-key (kbd "s-/") 'comment-line)
-
-;; delete until beginning of line
-(defun rb/kill-to-beginning-of-line ()
-  (interactive)
-  (kill-region (pos-bol) (pos-eol)))
-
-(global-set-key (kbd "s-<backspace>") #'rb/kill-to-beginning-of-line)
-
-;; get Eclipse like line moving
-(defun rb/move-line-up ()
-  (interactive)
-  (transpose-lines 1)
-  (forward-line -2))
-
-(defun rb/move-line-down ()
-  (interactive)
-  (forward-line 1)
-  (transpose-lines 1)
-  (forward-line -1))
-
-(global-set-key (kbd "M-<up>") 'rb/move-line-up)
-(global-set-key (kbd "M-<down>") 'rb/move-line-down)
-
-;; get Eclipse like line duplication
-(defun rb/duplicate-line ()
-  "Duplicate current line and append under the current one."
-  (interactive)
-  (move-beginning-of-line 1)
-  (kill-line)
-  (yank)
-  (open-line 1)
-  (next-line 1)
-  (yank)
-  )
-
-(global-set-key (kbd "M-s-<down>") 'rb/duplicate-line)
-
-;; point-to-register-to-point
-(defun rb/point-excursion-toggle ()
-  "Save position of point and return to previous point."
-  (interactive)
-  (cond ((get-register 0)
-         (jump-to-register 0)
-         (set-register 0 nil))
-        (t(point-to-register 0)
-          (message "Save point %d" (point)))))
-
-(global-set-key (kbd "C-c c") #'rb/point-excursion-toggle)
-
-;; for getting GITLAB token
-(defun rb/lookup-password (&rest keys)
-  (let ((result (apply #'auth-source-search keys)))
-    (if result
-        (funcall (plist-get (car result) :secret))
-      nil)))
-
-;; Make ESC quit prompts
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; custom file
 (setq custom-file "~/.emacs.d/custom.el")
@@ -177,9 +118,6 @@
 ;; load theme after custom file so that changes are trusted
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 (load-theme 'wombat)
-
-
-
 
 ;; Enable hiding of minor modes from mode line
 (use-package diminish)
@@ -536,6 +474,72 @@ The string returns the filename where to store archived tasks. It
 ;; Restclient
 (use-package restclient
   :mode ("\\.http" . restclient-mode))
+
+;; Custom functions and key bindings
+
+;; comment everything
+(global-set-key (kbd "s-/") 'comment-line)
+
+;; Make ESC quit prompts
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+;; delete until beginning of line
+(defun rb/kill-to-beginning-of-line ()
+  (interactive)
+  (kill-region (pos-bol) (pos-eol)))
+
+(global-set-key (kbd "s-<backspace>") #'rb/kill-to-beginning-of-line)
+
+;; get Eclipse like line moving
+(defun rb/move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2))
+
+(global-set-key (kbd "M-<up>") 'rb/move-line-up)
+
+(defun rb/move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1))
+
+(global-set-key (kbd "M-<down>") 'rb/move-line-down)
+
+;; get Eclipse like line duplication
+(defun rb/duplicate-line ()
+  "Duplicate current line and append under the current one."
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+  (yank))
+
+(global-set-key (kbd "M-s-<down>") 'rb/duplicate-line)
+
+;; point-to-register-to-point
+(defun rb/point-excursion-toggle ()
+  "Save position of point and return to previous point."
+  (interactive)
+  (cond ((get-register 0)
+         (jump-to-register 0)
+         (set-register 0 nil))
+        (t(point-to-register 0)
+          (message "Save point %d" (point)))))
+
+(global-set-key (kbd "C-c c") #'rb/point-excursion-toggle)
+
+;; for getting GITLAB token
+(defun rb/lookup-password (&rest keys)
+  (let ((result (apply #'auth-source-search keys)))
+    (if result
+        (funcall (plist-get (car result) :secret))
+      nil)))
+
+
+
 
 ;; ;; Markdown
 ;; (use-package markdown-mode

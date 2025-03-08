@@ -187,12 +187,6 @@
   (doom-modeline-position-column-line-format nil)
   (doom-modeline-percent-position nil))
 
-;; ;; Rainbow delimiters: display matching parens according to their
-;; ;; level of nesting in slightly different colours
-;; ;; not sure yet if I want to keep this
-;; (use-package rainbow-delimiters
-;;   :hook (prog-mode . rainbow-delimiters-mode))
-
 ;; show all available completions of a shortcuts
 ;; helpful but can also be annoying
 (use-package which-key

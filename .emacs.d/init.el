@@ -302,18 +302,6 @@ The string returns the filename where to store archived tasks. It
   :hook (typescript-mode . lsp-deferred)
   :custom (typescript-indent-level 2))
 
-;; (defun rb/projectile-kill-other-buffers ()
-;;   "Kill all buffers in current project except for current buffer."
-;;   (interactive)
-;;   (let* ((current-buffer (current-buffer))
-;;          (project-root (projectile-project-root))
-;;          (buffers (projectile-project-buffers)))
-;;     (dolist (buffer buffers)
-;;       (unless (eq buffer current-buffer)
-;;         (kill-buffer buffer)))
-;;     (message "Kill all buffers in project %s except %s"
-;;              (projectile-project-name)
-;;              (buffer-name current-buffer))))
 
 ;; (use-package ripgrep)
 
@@ -515,6 +503,28 @@ The string returns the filename where to store archived tasks. It
 
 (global-set-key (kbd "C-c c") #'rb/point-excursion-toggle)
 
+;; JWTs
+(defun rb/decode-jwt ()
+  "Decode JWT that is on the current line."
+  (interactive)
+  (let* ((data (split-string (thing-at-point 'filename) "\\."))
+         (header (car data))
+         (claims (cadr data)))
+    (with-temp-buffer
+      (insert (format "%s\n\n%s"
+                      (base64-decode-string header t)
+                      (base64-decode-string claims t)))
+      (json-pretty-print-buffer)
+      (with-output-to-temp-buffer "*JWT*"
+        (special-mode)
+        (princ (buffer-string))))) t)
+
+(global-set-key (kbd "C-c j") 'rb/decode-jwt)
+
+(defun rb/generate-uuid ()
+  (interactive)
+  (insert (downcase (string-trim (shell-command-to-string "uuidgen")))))
+
 ;; for getting GITLAB token
 (defun rb/lookup-password (&rest keys)
   (let ((result (apply #'auth-source-search keys)))
@@ -522,16 +532,32 @@ The string returns the filename where to store archived tasks. It
         (funcall (plist-get (car result) :secret))
       nil)))
 
+(defun rb/projectile-kill-other-buffers ()
+  "Kill all buffers in current project except for current buffer."
+  (interactive)
+  (let* ((current-buffer (current-buffer))
+         (project-root (projectile-project-root))
+         (buffers (projectile-project-buffers)))
+    (dolist (buffer buffers)
+      (unless (eq buffer current-buffer)
+        (kill-buffer buffer)))
+    (message "Kill all buffers in project %s except %s"
+             (projectile-project-name)
+             (buffer-name current-buffer))))
 
-
-
-;; ;; Markdown
-;; (use-package markdown-mode
-;;   :ensure nil
-;;   :config
-;;   (add-hook 'markdown-mode-hook
-;;             (lambda ()
-;;               (auto-fill-mode 1))))
+(defun rb/delete-current-buffer ()
+  "Kill the current buffer and deletes the file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if filename
+        (if (y-or-n-p (concat "Do you really want to delete file"
+                              filename
+                              "?"))
+            (progn
+              (delete-file filename)
+              (message "Deleted file %s." filename)
+              (kill-buffer)))
+      (message "Not a file visiting buffer"))))
 
 ;; ;; GitLab
 
@@ -545,41 +571,7 @@ The string returns the filename where to store archived tasks. It
 ;; ;; MMorph programming
 ;; (add-to-list 'auto-coding-alist
 ;;              '("\\.mmo\\(rph\\)?$" . latin-9))
-;; (defun rb/delete-current-buffer ()
-;;   "Kill the current buffer and deletes the file it is visiting."
-;;   (interactive)
-;;   (let ((filename (buffer-file-name)))
-;;     (if filename
-;;         (if (y-or-n-p (concat "Do you really want to delete file"
-;;                               filename
-;;                               "?"))
-;;             (progn
-;;               (delete-file filename)
-;;               (message "Deleted file %s." filename)
-;;               (kill-buffer)))
-;;       (message "Not a file visiting buffer"))))
 
-;; (defun rb/decode-jwt ()
-;;   "Decode JWT that is on the current line."
-;;   (interactive)
-;;   (let* ((data (split-string (thing-at-point 'filename) "\\."))
-;;          (header (car data))
-;;          (claims (cadr data)))
-;;     (with-temp-buffer
-;;       (insert (format "%s\n\n%s"
-;;                       (base64-decode-string header t)
-;;                       (base64-decode-string claims t)))
-;;       (json-pretty-print-buffer)
-;;       (with-output-to-temp-buffer "*JWT*"
-;;         (special-mode)
-;;         (princ (buffer-string)))))
-;;   t)
-
-;; (global-set-key (kbd "C-c j") 'rb/decode-jwt)
-
-;; (defun generate-uuid ()
-;;   (interactive)
-;;   (insert (downcase (string-trim (shell-command-to-string "uuidgen")))))
 
 ;; (use-package string-inflection
 ;;   :config

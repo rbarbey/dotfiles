@@ -236,6 +236,10 @@ The string returns the filename where to store archived tasks. It
   (org-roam-db-autosync-mode))
 
 ;; Programming languages
+
+(use-package flycheck
+  :config (global-flycheck-mode))
+
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :hook
@@ -250,6 +254,10 @@ The string returns the filename where to store archived tasks. It
 (use-package lsp-ui
   :after lsp-mode
   :hook (lsp-mode . lsp-ui-mode))
+
+;; search for workspace symbols
+(use-package lsp-ivy
+  :after lsp-mode)
 
 (use-package lsp-treemacs
   :after (lsp-mode treemacs)
@@ -291,10 +299,21 @@ The string returns the filename where to store archived tasks. It
                    "org.hamcrest.Matchers.*")))
   )
 
-(use-package dockerfile-mode)
-
 (use-package dap-mode
   :after lsp-mode)
+
+(use-package go-mode
+  :mode ("\\.go" . go-mode)
+  :hook (go-mode . lsp-deferred)
+  :custom (tab-width 4)
+  :config
+  (defun rb-go-mode-hook ()
+    "Basic Go mode setup"
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook 'rb-go-mode-hook)
+  ;; (add-hook 'go-mode-hook (lambda () (add-to-list 'company-backends '(company-capf :with company-yasnippet))))
+  )
 
 (use-package yaml-mode)
 
@@ -302,11 +321,13 @@ The string returns the filename where to store archived tasks. It
   :hook (typescript-mode . lsp-deferred)
   :custom (typescript-indent-level 2))
 
+(use-package js
+  :ensure nil
+  :custom (js-indent-level 2))
+
+(use-package dockerfile-mode)
 
 ;; (use-package ripgrep)
-
-;; ;; follow compilation buffer
-;; (setq compilation-scroll-output 1)
 
 
 
@@ -320,128 +341,13 @@ The string returns the filename where to store archived tasks. It
 ;;   (sideline-blame-commit-format "• %s"))
 
 
+(use-package nxml-mode
+  :ensure nil
+  :hook (nxml-mode . lsp-deferred)
+  :config
+  (setq nxml-attribute-indent 4
+        nxml-child-indent 4))
 
-
-
-
-
-;; (use-package lsp-docker)
-
-;; (use-package lsp-ivy
-;;   :after lsp-mode)
-
-
-
-;; (use-package cfrs)
-
-
-
-;; (use-package flycheck
-;;   :config (global-flycheck-mode))
-
-;; (use-package dap-mode
-;;   :after lsp-treemacs
-;;   :bind (:map dap-mode-map
-;;               ("<f5>" . dap-step-in)
-;;               ("<f6>" . dap-next)
-;;               ("<f7>" . dap-step-out)
-;;               ("<f8>" . dap-continue))
-;;   :custom
-;;   (dap-auto-configure-features '(locals controls tooltip expressions))
-;;   :config
-;;   (add-hook 'dap-session-created-hook
-;;             (lambda (session) (set-frame-size (selected-frame) 167 60)))
-;;   (add-hook 'dap-terminated-hook
-;;             (lambda (session) (set-frame-size (selected-frame) 99 60)))
-;;   )
-
-;; (use-package lsp-java
-;;   :hook (java-mode . lsp-deferred)
-;;   :bind (:map lsp-mode-map
-;;               ("s-l g y" . lsp-java-type-hierarchy)
-;;               ("s-1" . lsp-execute-code-action)
-;;               ("s-l t m" . dap-java-run-test-method)
-;;               ("s-l t c" . dap-java-run-test-class)
-;;               ("s-l t d" . dap-java-debug-test-method))
-;;   :custom
-;;   (tab-width 4)
-;;   :init
-;;   (setq lsp-java-vmargs (list
-;;                         "-XX:+UseG1GC"
-;;                         "-XX:+UseStringDeduplication"))
-;;   (which-key-add-key-based-replacements
-;;     "s-l g y" "type hierarchy"
-;;     "s-l t" "tests"
-;;     "s-l t m" "run test method"
-;;     "s-l t c" "run test class"
-;;     "s-l t d" "debug test method")
-
-;;   :config
-;;   (setq c-basic-offset 4
-;;         lsp-java-format-settings-url (concat "file://" (file-truename (locate-user-emacs-file "eclipse-formatter.xml"))))
-;;   (setq lsp-java-jdt-download-url "https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/1.43.0/jdt-language-server-1.43.0-202412191447.tar.gz")
-;;   (setq lsp-java-completion-favorite-static-members
-;;         (vconcat lsp-java-completion-favorite-static-members
-;;                  '("org.mockito.BDDMockito.*"
-;;                    "org.hamcrest.MatcherAssert.*"
-;;                    "org.hamcrest.Matchers.*")))
-;;   (require 'dap-java)
-;;   )
-
-;; (use-package go-mode
-;;   :mode ("\\.go" . go-mode)
-;;   :init
-;;   :hook (go-mode . lsp-deferred)
-;;   :custom
-;;   (tab-width 4)
-;;   :config
-;;   (defun rb-go-mode-hook ()
-;;     "Basic Go mode setup"
-;;     (add-hook 'before-save-hook #'lsp-format-buffer t t)
-;;     (add-hook 'before-save-hook #'lsp-organize-imports t t))
-;;   (add-hook 'go-mode-hook 'rb-go-mode-hook)
-;;   (add-hook 'go-mode-hook (lambda () (add-to-list 'company-backends '(company-capf :with company-yasnippet))))
-;;   (require 'dap-dlv-go))
-
-;; (use-package nxml-mode
-;;   :ensure nil
-;;   :hook (nxml-mode . lsp-deferred)
-;;   :config
-;;   (setq nxml-attribute-indent 4
-;;         nxml-child-indent 4))
-
-;; (use-package yaml-mode
-;;   :bind
-;;   (:map yaml-mode-map
-;;         ("\C-m" . 'newline-and-indent)))
-
-;; (use-package typescript-mode
-;;   :custom (typescript-indent-level 2))
-
-;; (use-package js
-;;   :ensure nil
-;;   :custom (js-indent-level 2))
-
-;; (use-package web-mode)
-
-;; (use-package terraform-mode
-;;   :hook
-;;   (terraform-mode . lsp-deferred)
-;;   (terraform-mode . terraform-format-on-save-mode)
-;;   :init (company-terraform-init))
-
-;; (use-package company-terraform
-;;   :defer t)
-
-;; ;; tree-sitter
-;; (with-eval-after-load 'treesit
-;;   (dolist (lang-sources
-;;            '((go "https://github.com/tree-sitter/tree-sitter-go")
-;;              (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
-;;              (java "https://github.com/tree-sitter/tree-sitter-java")
-;;              (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-;;              (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
-;;     (add-to-list 'treesit-language-source-alist lang-sources)))
 
 ;; Restclient
 (use-package restclient

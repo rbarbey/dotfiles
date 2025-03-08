@@ -15,34 +15,6 @@
            gcs-done))
 (add-hook 'emacs-startup-hook #'rb/display-startup-time)
 
-;; Basic visual setting
-
-(global-whitespace-mode 1)
-(global-subword-mode 1)
-(setq whitespace-style
-  '(spaces tabs newline space-mark tab-mark face trailing empty))
-
-(setq inhibit-startup-message t) ;; No startup screen please
-(scroll-bar-mode -1)             ;; no scroll bar
-(tooltip-mode -1)                ;; no tooltips
-(set-fringe-mode 10)             ;; ?
-;; (menu-bar-mode -1)               ;; no menu bar
-(setq visible-bell nil)          ;; no visual bell
-(setq-default indent-tabs-mode nil)
-(setq initial-major-mode 'fundamental-mode) ; changes *scratch* buffer mode
-(setq initial-scratch-message "# This buffer is for notes you don't want to save\n\n")
-(setq mac-right-option-modifier nil) ;; for mac-style umlaut input
-(setq tags-table-list '("~/.emacs.d/.cache"))
-(delete-selection-mode 1)
-
-;; put backup, auto save and lock files into temp directory
-(setq backup-directory-alist '(("." . "/tmp")))
-;; (setq auto-save-file-name-transforms `((".*" "/tmp/" t)))
-(setq lock-file-name-transforms '(("\\`/.*/\\([^/]+\\)\\'" "/tmp/\\1" t)))
-
-;; follow compilation buffer
-(setq compilation-scroll-output 1)
-
 ;; Initialize package management
 (require 'package)
 
@@ -62,16 +34,49 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; column numbers and auto fill
-(use-package simple
-  :ensure nil
-  :config
-  (column-number-mode 1))
+;; put backup, auto save and lock files into temp directory
+(setq backup-directory-alist '(("." . "/tmp")))
+(setq auto-save-file-name-transforms `((".*" ,"/tmp/" t)))
+(setq lock-file-name-transforms '(("\\`/.*/\\([^/]+\\)\\'" "/tmp/\\1" t)))
 
-;; ;; no tool bar
-;; (use-package tool-bar
-;;   :ensure nil
-;;   :config (tool-bar-mode -1))
+;; No startup screen please
+(setq inhibit-startup-message t)
+
+;; whitespace settings
+(global-whitespace-mode 1)
+(global-subword-mode 1)
+(setq whitespace-style
+  '(spaces tabs newline space-mark tab-mark face trailing empty))
+(setq-default indent-tabs-mode nil)
+(delete-selection-mode 1)
+
+;; Basic visual setting
+(scroll-bar-mode -1)             ;; no scroll bar
+(tooltip-mode -1)                ;; no tooltips
+(set-fringe-mode 10)             ;; ?
+;; (menu-bar-mode -1)               ;; no menu bar
+(setq visible-bell nil)          ;; no visual bell
+
+;; line numbers
+(column-number-mode 1)
+(use-package display-line-numbers
+  :config
+  (global-display-line-numbers-mode t)
+  :custom
+  (display-line-numbers-width-start 3))
+
+; configure *scratch* buffer
+(setq initial-major-mode 'fundamental-mode)
+(setq initial-scratch-message "# This buffer is for notes you don't want to save\n\n")
+
+;; for mac-style umlaut input
+(setq mac-right-option-modifier nil)
+
+;; create TAGS file in .cache dir
+(setq tags-table-list '("~/.emacs.d/.cache"))
+
+;; follow compilation buffer
+(setq compilation-scroll-output 1)
 
 ;; use nice SF
 (defun rb/set-font-faces ()
@@ -173,12 +178,7 @@
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 (load-theme 'wombat)
 
-;; line numbers
-(use-package display-line-numbers
-  :config
-  (global-display-line-numbers-mode t)
-  :custom
-  (display-line-numbers-width-start 3))
+
 
 
 ;; Enable hiding of minor modes from mode line
@@ -313,7 +313,7 @@ The string returns the filename where to store archived tasks. It
 
 ;; Programming languages
 (use-package lsp-mode
-  ;; :commands (lsp lsp-deferred)
+  :commands (lsp lsp-deferred)
   :hook
   ((lsp . lsp-lens-mode)
    (lsp-mode . lsp-enable-which-key-integration))
@@ -369,15 +369,16 @@ The string returns the filename where to store archived tasks. It
                    "org.hamcrest.Matchers.*")))
   )
 
-(use-package lsp-docker
-  :after lsp-mode)
+(use-package dockerfile-mode)
 
 (use-package dap-mode
   :after lsp-mode)
 
 (use-package yaml-mode)
 
-(use-package typescript-mode)
+(use-package typescript-mode
+  :hook (typescript-mode . lsp-deferred)
+  :custom (typescript-indent-level 2))
 
 ;; (defun rb/projectile-kill-other-buffers ()
 ;;   "Kill all buffers in current project except for current buffer."

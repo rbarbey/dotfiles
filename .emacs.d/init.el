@@ -7,7 +7,7 @@
 ;;; Code:
 
 (defun rb/display-startup-time ()
-  """Display startup time."""
+  "Display startup time."
   (message "Emacs loaded in %s with %d gcs"
            (format "%.2f seconds"
                    (float-time

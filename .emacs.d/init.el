@@ -166,16 +166,8 @@
   (transient-append-suffix 'magit-push "-u"
                            '(1 "-o" "Skip CI pipeline" "-o ci.skip")))
 
-;; ;; (use-package counsel
-;; ;;   :bind (("M-x" . counsel-M-x)))
-
-;; (use-package ivy-rich
-;;   :init (ivy-rich-mode 1))
-
-;; Add icons to mode line
-;; After this package got installed, you need to run the following command manually
-;; M-x nerd-icons-install-fonts
-;; Need to research whether there is an automatic way to do this.
+;; Add icons to mode line. After this package got installed, you need
+;; to run the following command manually: M-x nerd-icons-install-fonts
 (use-package nerd-icons)
 
 ;; Have a nice mode line

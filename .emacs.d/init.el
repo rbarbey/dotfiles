@@ -49,6 +49,7 @@
   '(spaces tabs newline space-mark tab-mark face trailing empty))
 (setq-default indent-tabs-mode nil)
 (delete-selection-mode 1)
+(setq sentence-end-double-space nil)
 
 ;; Basic visual setting
 (scroll-bar-mode -1)             ;; no scroll bar

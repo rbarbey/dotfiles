@@ -68,7 +68,26 @@
 
 ; configure *scratch* buffer
 (setq initial-major-mode 'fundamental-mode)
-(setq initial-scratch-message "# This buffer is for notes you don't want to save\n\n")
+
+(defun rb/c64-scratch-banner ()
+  "Generate a C64-style startup message for the *scratch* buffer."
+  (let* ((emacs-version (format "GNU EMACS %s" emacs-version))
+         (total-mem (/ (string-to-number
+                          (shell-command-to-string "sysctl -n hw.memsize")) 1024))
+         (free-mem (* (string-to-number
+                         (shell-command-to-string "vm_stat | awk '/Pages free/ {print $3}' | tr -d '.'"))
+                        16384))
+         (mem-str (format "%dK RAM SYSTEM  %d BASIC BYTES FREE"
+                          total-mem ;; Convert MB to KB
+                          free-mem))) ;; Convert MB to bytes
+    (concat ";;;         **** " emacs-version " BASIC V2 ****\n"
+            ";;;  " mem-str "\n"
+            ";;;\n"
+            ";;; READY.\n")))
+
+(setq initial-scratch-message (rb/c64-scratch-banner))
+
+;; (setq initial-scratch-message "# This buffer is for notes you don't want to save\n\n")
 
 ;; for mac-style umlaut input
 (setq mac-right-option-modifier nil)

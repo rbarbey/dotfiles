@@ -61,8 +61,8 @@
 ;; line numbers
 (column-number-mode 1)
 (use-package display-line-numbers
+  :hook (prog-mode-hook . display-line-numbers-mode)
   :config
-  (global-display-line-numbers-mode t)
   :custom
   (display-line-numbers-width-start 3))
 

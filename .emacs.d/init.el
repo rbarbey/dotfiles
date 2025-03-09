@@ -210,7 +210,7 @@
   (org-indent-mode))
 
 (defun rb/org-archive-location ()
-  "Returns location for archived tasks.
+  "Return location for archived tasks.
 The string returns the filename where to store archived tasks. It
   contains the year and the month, for example
   `archive-2023-12.org`. The headline also contains month and year."

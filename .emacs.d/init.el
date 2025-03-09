@@ -1,4 +1,4 @@
-;;; init.el --- Emacs Config
+;;; init.el ---- -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;; Emacs configuration setting up LSP mode for Java, custom keymap

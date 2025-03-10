@@ -73,13 +73,14 @@
   "Generate a C64-style startup message for the *scratch* buffer."
   (let* ((emacs-version (format "GNU EMACS %s" emacs-version))
          (total-mem (/ (string-to-number
-                          (shell-command-to-string "sysctl -n hw.memsize")) 1024))
+                        (shell-command-to-string "sysctl -n hw.memsize")) 1024))
+         (page-size (string-to-number (shell-command-to-string "vm_stat | awk '/page size of/ {print $8}'")))
          (free-mem (* (string-to-number
                          (shell-command-to-string "vm_stat | awk '/Pages free/ {print $3}' | tr -d '.'"))
-                        16384))
+                        page-size))
          (mem-str (format "%dK RAM SYSTEM  %d BASIC BYTES FREE"
-                          total-mem ;; Convert MB to KB
-                          free-mem))) ;; Convert MB to bytes
+                          total-mem
+                          free-mem)))
     (concat ";;;         **** " emacs-version " BASIC V2 ****\n"
             ";;;  " mem-str "\n"
             ";;;\n"

@@ -102,9 +102,10 @@
 ;; Use San Francisco as font. Either copy it out of the Terminal app
 ;; and install it with FontBook or get it from here:
 ;; https://developer.apple.com/fonts/
-(set-face-attribute 'default nil :font "SF Mono Light" :height 120)
-(set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 120)
-(set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 120)
+(defun rb/set-face-attrs ()
+  (set-face-attribute 'default nil :font "SF Mono Light" :height 120)
+  (set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 120)
+  (set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 120))
 
 ;; Compute frame size and position
 (defun rb/set-frame-size (frame)
@@ -125,9 +126,11 @@
     (add-hook 'after-make-frame-functions
               (lambda (frame)
                 (when (display-graphic-p frame)
+                  (rb/set-face-attrs)
                   (rb/set-frame-size frame)))))
 
 (unless (daemonp)
+  (rb/set-face-attrs)
   (rb/set-frame-size (selected-frame)))
 
 

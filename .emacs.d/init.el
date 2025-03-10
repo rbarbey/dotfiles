@@ -174,7 +174,7 @@
   :hook ((lsp-mode . yas-minor-mode)))
 
 (use-package company
-  :hook (after-init . global-company-mode)
+  :hook (prog-mode . company-mode)
   :bind
   (:map company-active-map
         ("<tab>" . company-complete-selection)

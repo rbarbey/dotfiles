@@ -339,6 +339,11 @@ The string returns the filename where to store archived tasks. It
   ;; (add-hook 'go-mode-hook (lambda () (add-to-list 'company-backends '(company-capf :with company-yasnippet))))
   )
 
+(use-package markdown-mode
+  :mode ("\\.md\\'" "\\.apib\\'")
+  :hook ((markdown-mode . display-line-numbers-mode)
+         (markdown-mode . auto-fill-mode)))
+
 (use-package yaml-mode)
 
 (use-package typescript-mode

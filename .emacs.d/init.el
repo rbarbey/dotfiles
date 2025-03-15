@@ -427,7 +427,7 @@ The string returns the filename where to store archived tasks. It
   (kill-line)
   (yank)
   (open-line 1)
-  (next-line 1)
+  (forward-line 1)
   (yank))
 
 (global-set-key (kbd "M-s-<down>") 'rb/duplicate-line)

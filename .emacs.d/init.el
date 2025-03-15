@@ -103,12 +103,13 @@
 ;; and install it with FontBook or get it from here:
 ;; https://developer.apple.com/fonts/
 (defun rb/set-face-attrs ()
+  "Set fonts."
   (set-face-attribute 'default nil :font "SF Mono Light" :height 120)
   (set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 120)
   (set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 120))
 
-;; Compute frame size and position
 (defun rb/set-frame-size (frame)
+  "Compute size and position for FRAME."
   (let* ((workarea (frame-monitor-workarea frame))
          (width (caddr workarea))
          (height (cadddr workarea)))
@@ -211,6 +212,7 @@
 
 ;; Org mode
 (defun rb/init-org-mode ()
+  "Configure org mode."
   (org-indent-mode))
 
 (defun rb/org-archive-location ()
@@ -392,6 +394,7 @@ The string returns the filename where to store archived tasks. It
 
 ;; delete until beginning of line
 (defun rb/kill-to-beginning-of-line ()
+  "Delete current line and preceding newline char."
   (interactive)
   (kill-region (pos-bol) (pos-eol)))
 
@@ -399,6 +402,7 @@ The string returns the filename where to store archived tasks. It
 
 ;; get Eclipse like line moving
 (defun rb/move-line-up ()
+  "Move current line up."
   (interactive)
   (transpose-lines 1)
   (forward-line -2))
@@ -406,6 +410,7 @@ The string returns the filename where to store archived tasks. It
 (global-set-key (kbd "M-<up>") 'rb/move-line-up)
 
 (defun rb/move-line-down ()
+  "Move current line down."
   (interactive)
   (forward-line 1)
   (transpose-lines 1)
@@ -457,6 +462,7 @@ The string returns the filename where to store archived tasks. It
 (global-set-key (kbd "C-c j") 'rb/decode-jwt)
 
 (defun rb/generate-uuid ()
+  "Generate new UUID."
   (interactive)
   (insert (downcase (string-trim (shell-command-to-string "uuidgen")))))
 

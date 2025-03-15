@@ -466,13 +466,6 @@ The string returns the filename where to store archived tasks. It
   (interactive)
   (insert (downcase (string-trim (shell-command-to-string "uuidgen")))))
 
-;; for getting GITLAB token
-(defun rb/lookup-password (&rest keys)
-  (let ((result (apply #'auth-source-search keys)))
-    (if result
-        (funcall (plist-get (car result) :secret))
-      nil)))
-
 (defun rb/projectile-kill-other-buffers ()
   "Kill all buffers in current project except for current buffer."
   (interactive)
@@ -500,6 +493,13 @@ The string returns the filename where to store archived tasks. It
       (message "Not a file visiting buffer"))))
 
 ;; ;; GitLab
+
+;; ;; for getting GITLAB token
+;; (defun rb/lookup-password (&rest keys)
+;;   (let ((result (apply #'auth-source-search keys)))
+;;     (if result
+;;         (funcall (plist-get (car result) :secret))
+;;       nil)))
 
 ;; (use-package gitlab-ci-mode)
 

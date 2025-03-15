@@ -477,7 +477,6 @@ The string returns the filename where to store archived tasks. It
   "Kill all buffers in current project except for current buffer."
   (interactive)
   (let* ((current-buffer (current-buffer))
-         (project-root (projectile-project-root))
          (buffers (projectile-project-buffers)))
     (dolist (buffer buffers)
       (unless (eq buffer current-buffer)

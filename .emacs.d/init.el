@@ -265,7 +265,12 @@ The string returns the filename where to store archived tasks. It
 ;; Programming languages
 
 (use-package flycheck
-  :config (global-flycheck-mode))
+  :config (global-flycheck-mode)
+  :bind(:map flycheck-mode-map
+              ("C-c ! l" . (lambda ()
+                             (interactive)
+                             (flycheck-list-errors)
+                             (switch-to-buffer-other-window  "*Flycheck errors*")))))
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)

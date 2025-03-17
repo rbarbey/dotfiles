@@ -464,7 +464,7 @@ The string returns the filename where to store archived tasks. It
 (global-set-key (kbd "C-c j") 'rb/decode-jwt)
 
 (defun rb/generate-uuid ()
-  "Generate new UUID."
+  "Insert a generated UUID at point."
   (interactive)
   (insert (downcase (string-trim (shell-command-to-string "uuidgen")))))
 

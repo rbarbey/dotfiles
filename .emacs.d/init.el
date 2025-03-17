@@ -213,7 +213,8 @@
 ;; Org mode
 (defun rb/init-org-mode ()
   "Configure org mode."
-  (org-indent-mode))
+  (org-indent-mode)
+  (auto-fill-mode t))
 
 (defun rb/org-archive-location ()
   "Return location for archived tasks.

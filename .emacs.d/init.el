@@ -210,6 +210,11 @@
   :init (which-key-mode)
   :diminish which-key-mode)
 
+;; enable color-coded output in compilation buffer
+(use-package ansi-color
+  :ensure t
+  :hook (compilation-filter . ansi-color-compilation-filter))
+
 ;; Org mode
 (defun rb/init-org-mode ()
   "Configure org mode."

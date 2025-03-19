@@ -364,6 +364,10 @@ The string returns the filename where to store archived tasks. It
 
 (use-package dockerfile-mode)
 
+(use-package conf-mode
+  :ensure nil
+  :mode ("\\.env\\'" . conf-unix-mode))
+
 ;; (use-package ripgrep)
 
 

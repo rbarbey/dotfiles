@@ -389,7 +389,8 @@ The string returns the filename where to store archived tasks. It
 
 (use-package nxml-mode
   :ensure nil
-  :hook (nxml-mode . lsp-deferred)
+  :hook ((nxml-mode . lsp-deferred)
+         (nxml-mode . display-line-numbers-mode))
   :config
   (setq nxml-attribute-indent 4
         nxml-child-indent 4))

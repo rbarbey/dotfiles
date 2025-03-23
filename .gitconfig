@@ -42,3 +42,5 @@
     autoStash = true
 [url "git@gitlab.com:"]
     insteadOf = https://gitlab.com/
+[github]
+	user = rbarbey

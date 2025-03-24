@@ -191,7 +191,8 @@
   (transient-append-suffix 'magit-push "-u"
                            '(1 "-o" "Skip CI pipeline" "-o ci.skip")))
 
-(use-package forge)
+(use-package forge
+  :after magit)
 
 ;; Add icons to mode line. After this package got installed, you need
 ;; to run the following command manually: M-x nerd-icons-install-fonts

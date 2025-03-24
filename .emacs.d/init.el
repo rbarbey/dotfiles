@@ -307,7 +307,6 @@ The string returns the filename where to store archived tasks. It
 
 (use-package lsp-java
   :hook (java-mode . lsp-deferred)
-  :after (lsp-mode company lsp-treemacs)
   :bind (:map lsp-mode-map
               ("s-l g y" . lsp-java-type-hierarchy)
               ("s-1" . lsp-execute-code-action)
@@ -340,6 +339,9 @@ The string returns the filename where to store archived tasks. It
 
 (use-package dap-mode
   :after lsp-mode)
+
+(use-package dap-java
+  :ensure nil)
 
 (use-package go-mode
   :mode ("\\.go" . go-mode)

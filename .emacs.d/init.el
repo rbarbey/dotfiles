@@ -248,6 +248,10 @@ The string returns the filename where to store archived tasks. It
   (setq org-agenda-files
         '("~/devel/agenda")))
 
+(use-package org-tempo
+  :ensure nil
+  :demand t)
+
 ;; org-roam
 (use-package org-roam
   :custom

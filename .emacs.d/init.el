@@ -192,7 +192,8 @@
                            '(1 "-o" "Skip CI pipeline" "-o ci.skip")))
 
 (use-package forge
-  :after magit)
+  :after magit
+  :hook (forge-post-mode . (lambda () (auto-fill-mode -1))))
 
 ;; Add icons to mode line. After this package got installed, you need
 ;; to run the following command manually: M-x nerd-icons-install-fonts

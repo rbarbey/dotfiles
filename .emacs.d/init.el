@@ -530,6 +530,21 @@ The string returns the filename where to store archived tasks. It
                            (cadr word) (caddr word) current-location))))
 (global-set-key (kbd "C-c $") 'rb/add-word-at-point-to-dictionary)
 
+
+(defun rb/toggle-true-false ()
+  "Toggle the word at point between `true' and `false'."
+  (interactive)
+  (let ((bounds (bounds-of-thing-at-point 'word))
+        (case-fold-search nil)) ;; Make search case-sensitive
+    (when bounds
+      (let* ((start (car bounds))
+             (end (cdr bounds))
+             (word (buffer-substring-no-properties start end)))
+        (cond
+         ((string-equal word "true") (delete-region start end) (insert "false"))
+         ((string-equal word "false") (delete-region start end) (insert "true")))))))
+(global-set-key (kbd "C-c f") 'rb/toggle-true-false)
+
 ;; ;; GitLab
 
 ;; ;; for getting GITLAB token

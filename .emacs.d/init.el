@@ -519,6 +519,17 @@ The string returns the filename where to store archived tasks. It
               (kill-buffer)))
       (message "Not a file visiting buffer"))))
 
+(defun rb/add-word-at-point-to-dictionary ()
+  "Add word at point to dictionary without asking."
+  (interactive)
+  (let ((current-location (point))
+        (word (flyspell-get-word)))
+
+    (when (consp word)
+      (flyspell-do-correct 'save nil (car word) current-location
+                           (cadr word) (caddr word) current-location))))
+(global-set-key (kbd "C-c $") 'rb/add-word-at-point-to-dictionary)
+
 ;; ;; GitLab
 
 ;; ;; for getting GITLAB token

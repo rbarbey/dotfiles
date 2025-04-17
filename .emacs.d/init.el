@@ -371,7 +371,8 @@ The string returns the filename where to store archived tasks. It
   :hook ((markdown-mode . display-line-numbers-mode)
          (markdown-mode . auto-fill-mode)))
 
-(use-package yaml-mode)
+(use-package yaml-mode
+  :hook (yaml-mode . display-line-numbers-mode))
 
 (use-package typescript-mode
   :hook (typescript-mode . lsp-deferred)

@@ -416,7 +416,7 @@ The string returns the filename where to store archived tasks. It
 
 ;; Restclient
 (use-package restclient
-  :mode ("\\.http" . restclient-mode))
+  :mode ("\\.http$" . restclient-mode))
 
 ;; Custom functions and key bindings
 

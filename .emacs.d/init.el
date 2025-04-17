@@ -238,6 +238,7 @@ The string returns the filename where to store archived tasks. It
 (use-package org
   :hook (org-mode . rb/init-org-mode)
   :config
+  (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
   (setq org-ellipsis " ↓")
   (setq org-todo-keywords
         '((sequence "TODO" "DOING" "|" "DONE")))
@@ -274,6 +275,9 @@ The string returns the filename where to store archived tasks. It
   :config
   (require 'org-roam-dailies)
   (org-roam-db-autosync-mode))
+
+;; verb for org-mode
+(use-package verb)
 
 ;; Programming languages
 

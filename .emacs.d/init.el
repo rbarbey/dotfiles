@@ -553,6 +553,16 @@ The string returns the filename where to store archived tasks. It
          ((string-equal word "false") (delete-region start end) (insert "true")))))))
 (global-set-key (kbd "C-c f") 'rb/toggle-true-false)
 
+(defun rb/unix-timestamp-to-iso8601 ()
+  "Convert Unix timestamp at point to an ISO8601 formatted date and display in minibuffer."
+  (interactive)
+  (let* ((timestamp (thing-at-point 'number t))
+         (time (when timestamp (seconds-to-time timestamp))))
+    (if time
+        (message "ISO 8601 Date: %s" (format-time-string "%Y-%m-%dT%H:%M:%SZ" time t))
+      (message "No valid Unix timestamp found at point."))))
+(global-set-key (kbd "C-c t") 'rb/unix-timestamp-to-iso8601)
+
 ;; ;; GitLab
 
 ;; ;; for getting GITLAB token

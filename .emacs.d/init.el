@@ -52,6 +52,11 @@
 (setq sentence-end-double-space nil)
 
 ;; Basic visual setting
+
+;; configure scrolling behaviour
+(setopt scroll-bar-mode nil
+        scroll-preserve-screen-position nil)
+
 (scroll-bar-mode -1)             ;; no scroll bar
 (tooltip-mode -1)                ;; no tooltips
 (set-fringe-mode 10)             ;; ?

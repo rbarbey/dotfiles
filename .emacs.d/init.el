@@ -237,6 +237,7 @@ The string returns the filename where to store archived tasks. It
 
 (use-package org
   :hook (org-mode . rb/init-org-mode)
+  :bind ("C-c c" . org-capture)
   :config
   (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
   (setq org-ellipsis " ↓")
@@ -484,7 +485,6 @@ The string returns the filename where to store archived tasks. It
         (t(point-to-register 0)
           (message "Save point %d" (point)))))
 
-(global-set-key (kbd "C-c c") #'rb/point-excursion-toggle)
 
 ;; JWTs
 (defun rb/decode-jwt ()

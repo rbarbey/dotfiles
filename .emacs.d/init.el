@@ -248,7 +248,10 @@ The string returns the filename where to store archived tasks. It
   (setq org-log-into-drawer t)
   (setq org-archive-location (rb/org-archive-location))
   (setq org-agenda-files
-        '("~/devel/agenda")))
+        '("~/devel/agenda"))
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file+headline "~/devel/agenda/tasks.org" "Tasks")
+           "* TODO %?\n %U"))))
 
 (use-package org-tempo
   :ensure nil

@@ -18,3 +18,6 @@ export JAVA_HOME=`/usr/libexec/java_home -v 21`
 if [ -d ${HOME}/.krew/bin ]; then
   export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 fi
+
+# tell ripgrep where to find its config
+export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"

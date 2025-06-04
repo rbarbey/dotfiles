@@ -1,0 +1,13 @@
+# preview really long lines
+--max-columns=80
+--max-columns-preview
+
+# search hidden files like CI config
+--hidden
+
+# no git config
+--glob
+!*/.git/*
+
+# be smart about casing
+--smart-case

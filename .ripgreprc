@@ -9,5 +9,9 @@
 --glob
 !*/.git/*
 
+# no golang packages
+--glob
+!*golang/pkg/mod/*
+
 # be smart about casing
 --smart-case

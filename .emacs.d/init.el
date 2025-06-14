@@ -258,7 +258,8 @@ The string returns the filename where to store archived tasks. It
         '(("t" "Todo" entry (file+headline "~/devel/agenda/tasks.org" "Tasks")
            "* TODO %?\n %U")
           ("r" "Reddit" plain (file "~/devel/org-roam/20250301205444-reddit_articles_for_upvoting.org")
-           "\n%?\n")
+           "\n\n%?\n"
+           :empty-lines 1)
           )))
 
 (use-package org-tempo

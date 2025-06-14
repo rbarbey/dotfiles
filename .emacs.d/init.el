@@ -91,7 +91,24 @@
             ";;;\n"
             ";;; READY.\n")))
 
-(setq initial-scratch-message (rb/c64-scratch-banner))
+(setq initial-scratch-message (format ";; Welcome to
+;;
+;;  ███████╗███╗   ███╗ █████╗  ██████╗███████╗
+;;  ██╔════╝████╗ ████║██╔══██╗██╔════╝██╔════╝
+;;  █████╗  ██╔████╔██║███████║██║     ███████╗
+;;  ██╔══╝  ██║╚██╔╝██║██╔══██║██║     ╚════██║
+;;  ███████╗██║ ╚═╝ ██║██║  ██║╚██████╗███████║
+;;  ╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚══════╝
+;;
+;;      Loading time : %s
+;;      Packages     : %d
+;;
+
+"
+                                      (emacs-init-time)
+                                      (length package-activated-list)))
+
+
 
 ;; (setq initial-scratch-message "# This buffer is for notes you don't want to save\n\n")
 

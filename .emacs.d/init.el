@@ -260,6 +260,8 @@ The string returns the filename where to store archived tasks. It
           ("r" "Reddit" plain (file "~/devel/org-roam/20250301205444-reddit_articles_for_upvoting.org")
            "\n\n%?\n"
            :empty-lines 1)
+          ("l" "Reading list" plain (file "~/devel/org-roam/20250413125520-reading_list.org")
+           "- [ ] [[%^{url}][%^{desc}]]")
           )))
 
 (use-package org-tempo

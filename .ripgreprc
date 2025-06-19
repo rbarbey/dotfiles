@@ -7,7 +7,7 @@
 
 # no git config
 --glob
-!*/.git/*
+!*.git/*
 
 # no golang packages
 --glob

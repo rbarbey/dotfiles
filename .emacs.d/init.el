@@ -257,6 +257,16 @@ The string returns the filename where to store archived tasks. It
           ".org::* Archived Tasks "
           (format-time-string "%B %Y" (current-time))))
 
+(defun rb/delete-backward-to-slash ()
+  "Delete"
+  (interactive)
+  (let ((slash-pos (save-excursion
+                     (when (search-backward "/" nil t)
+                       (point)))))
+    (if slash-pos
+        (delete-region (+ slash-pos 1) (point))
+      (message "No / found before point."))))
+
 (use-package org
   :hook (org-mode . rb/init-org-mode)
   :bind ("C-c c" . org-capture)
@@ -276,7 +286,8 @@ The string returns the filename where to store archived tasks. It
            "* TODO %?\n %U")
           ("r" "Reddit" plain (file "~/devel/org-roam/20250301205444-reddit_articles_for_upvoting.org")
            "\n\n%?\n"
-           :empty-lines 1)
+           :empty-lines 1
+           :before-finalize rb/delete-backward-to-slash)
           ("l" "Reading list" plain (file "~/devel/org-roam/20250413125520-reading_list.org")
            "- [ ] [[%^{url}][%^{desc}]]")
           )))

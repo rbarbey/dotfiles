@@ -203,7 +203,7 @@
         ("<tab>" . company-complete-selection)
         ("<escape>" . company-abort))
   :custom
-  (company-minimum-prefix-length 0)
+  (company-minimum-prefix-length 1)
   (company-idle-delay 0.2)
   (company-tooltip-limit-20))
 

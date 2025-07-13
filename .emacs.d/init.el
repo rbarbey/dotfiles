@@ -402,11 +402,11 @@ The string returns the filename where to store archived tasks. It
   :hook ((go-mode . lsp-deferred)
          (go-mode . (lambda ()
                       (add-hook 'before-save-hook #'lsp-format-buffer nil t)
-                      (add-hook 'before-save-hook #'lsp-organize-imports nil t))))
-  :custom (tab-width 4)
-  :config
-  ;; (add-hook 'go-mode-hook (lambda () (add-to-list 'company-backends '(company-capf :with company-yasnippet))))
-  )
+                      (add-hook 'before-save-hook #'lsp-organize-imports nil t)
+                      (add-to-list 'company-backends '(company-capf :with company-yasnippet))
+                      )))
+  :custom (tab-width 4))
+
 
 (use-package markdown-mode
   :mode ("\\.md\\'" "\\.apib\\'")

@@ -194,7 +194,8 @@
 
 ;; completion
 (use-package yasnippet
-  :hook ((lsp-mode . yas-minor-mode)))
+  :config
+  (yas-global-mode 1))
 
 (use-package company
   :hook (prog-mode . company-mode)

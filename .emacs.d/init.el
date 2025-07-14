@@ -293,6 +293,8 @@ The string returns the filename where to store archived tasks. It
            "- [ ] [[%^{url}][%^{desc}]]")
           )))
 
+(global-set-key (kbd "C-c l") 'org-todo-list)
+
 (use-package org-tempo
   :ensure nil
   :demand t)

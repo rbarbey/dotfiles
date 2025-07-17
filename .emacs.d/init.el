@@ -400,7 +400,6 @@ The string returns the filename where to store archived tasks. It
   :ensure nil)
 
 (use-package go-mode
-  :mode ("\\.go" . go-mode)
   :hook ((go-mode . lsp-deferred)
          (go-mode . (lambda ()
                       (add-hook 'before-save-hook #'lsp-format-buffer nil t)

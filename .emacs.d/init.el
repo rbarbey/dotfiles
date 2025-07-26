@@ -127,9 +127,9 @@
 ;; https://developer.apple.com/fonts/
 (defun rb/set-face-attrs ()
   "Set fonts."
-  (set-face-attribute 'default nil :font "SF Mono Light" :height 120)
-  (set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 120)
-  (set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 120))
+  (set-face-attribute 'default nil :font "SF Mono Light" :height 130)
+  (set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 130)
+  (set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 130))
 
 (defun rb/set-frame-size (frame)
   "Compute size and position for FRAME."
@@ -138,7 +138,7 @@
          (height (cadddr workarea)))
 
     ;; set initial size of frame
-    (set-frame-size frame 103 60)
+    (set-frame-size frame 99 60)
 
     ;; position frame slightly off center
     (set-frame-position frame

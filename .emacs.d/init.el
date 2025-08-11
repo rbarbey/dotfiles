@@ -50,7 +50,7 @@
 (setq-default indent-tabs-mode nil)
 (delete-selection-mode 1)
 (setq sentence-end-double-space nil)
-(setq fill-column 78)
+(setq-default fill-column 78)
 
 ;; Basic visual setting
 

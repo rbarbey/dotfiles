@@ -472,21 +472,15 @@ The string returns the filename where to store archived tasks. It
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;; delete until beginning of line
-(defun rb/delete-to-beginning-of-line ()
-  "Delete current line and preceding newline char."
-  (interactive)
+(defun rb/delete-to-bol (delete-newline)
+  "Delete current line and preceding newline char if DELETE-NEWLINE is set."
+  (interactive "p")
   (delete-region (pos-bol) (pos-eol))
-  (delete-char -1))
+  (when delete-newline
+    (delete-char -1)))
 
-(global-set-key (kbd "s-<backspace>") #'rb/delete-to-beginning-of-line)
-
-;; delete until beginning of line
-(defun rb/delete-to-bol ()
-  "Delete current line and preceding newline char."
-  (interactive)
-  (delete-region (pos-bol) (pos-eol)))
-
-(global-set-key (kbd "s-S-<backspace>") #'rb/delete-to-bol)
+(global-set-key (kbd "s-<backspace>") (lambda () (interactive) (rb/delete-to-bol t)))
+(global-set-key (kbd "s-S-<backspace>") (lambda () (interactive) (rb/delete-to-bol nil)))
 
 ;; get Eclipse like line moving
 (defun rb/move-line-up ()

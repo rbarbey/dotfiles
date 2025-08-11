@@ -434,7 +434,7 @@ The string returns the filename where to store archived tasks. It
   :mode ("\\.env\\'" . conf-unix-mode))
 
 (use-package groovy-mode
-  :mode "\\.gradle")
+  :mode "\\.gradle\\'")
 
 ;; (use-package ripgrep)
 

@@ -70,7 +70,7 @@
   :hook (prog-mode-hook . display-line-numbers-mode)
   :config
   :custom
-  (display-line-numbers-width-start 4))
+  (display-line-numbers-width 3))
 
 ; configure *scratch* buffer
 (setq initial-major-mode 'fundamental-mode)

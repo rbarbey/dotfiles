@@ -436,6 +436,13 @@ The string returns the filename where to store archived tasks. It
 (use-package groovy-mode
   :mode "\\.gradle\\'")
 
+(use-package lsp-pyright
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp)))
+  :custom
+  (lsp-pyright-langserver-command "basedpyright"))
+
 ;; (use-package ripgrep)
 
 

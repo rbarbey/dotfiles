@@ -21,3 +21,6 @@ fi
 
 # tell ripgrep where to find its config
 export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"
+
+# homebrew should only auto-update once a day
+export HOMEBREW_AUTO_UPDATE_SECS=$((60 * 60 * 24))

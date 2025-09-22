@@ -231,6 +231,7 @@
   (doom-modeline-buffer-file-name-style 'file-name-with-project)
   (doom-modeline-position-column-line-format nil)
   (doom-modeline-buffer-encoding nil)
+  (doom-modeline-enable-buffer-pos t)
   (doom-modeline-percent-position nil))
 
 ;; show all available completions of a shortcuts

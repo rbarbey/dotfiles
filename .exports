@@ -17,9 +17,9 @@ export CLICOLOR=1
 # set GPG environment variable (cf https://stackoverflow.com/a/42265848/117912)
 export GPG_TTY=$(tty)
 
-# set DOCKER_HOST if respective lima vm is there
-if [ -S $HOME/.lima/docker/sock/docker.sock ]; then
-    export DOCKER_HOST="unix://$HOME/.lima/docker/sock/docker.sock"
+# set DOCKER_HOST if respective colima container is there
+if [ -S $HOME/.colima/default/docker.sock ]; then
+    export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 fi
 
 # set KUBECONFIG if respective lima vm is there

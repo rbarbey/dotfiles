@@ -338,6 +338,12 @@ The string returns the filename where to store archived tasks. It
                              (flycheck-list-errors)
                              (switch-to-buffer-other-window  "*Flycheck errors*")))))
 
+(flycheck-define-checker python-ruff
+  "Python syntyax and style checker using ruff."
+  :command ("ruff" "check" "--output-format" "json" source)
+  :error-parser flycheck-parse-checkstyle
+  :modes (python-mode))
+
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :hook
@@ -440,11 +446,19 @@ The string returns the filename where to store archived tasks. It
 (use-package lsp-pyright
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
-                         (lsp)))
+                         ;; (setq lsp-disabled-clients '(ruff))
+                         (lsp-deferred)))
   :custom
-  (lsp-pyright-langserver-command "basedpyright"))
+  (lsp-pyright-langserver-command "pyright")
+  (lsp-pyright-python-executable-cmd "python3")
+  (lsp-pyright-log-level "trace")
+  )
 
 ;; (use-package ripgrep)
+
+(use-package python-mode
+  :ensure nil
+  :hook (python-mode . lsp-deferred))
 
 
 

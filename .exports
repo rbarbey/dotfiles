@@ -18,9 +18,10 @@ export CLICOLOR=1
 export GPG_TTY=$(tty)
 
 # set DOCKER_HOST if respective colima container is there
-if [ -S $HOME/.colima/default/docker.sock ]; then
-    export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+if [ ! -S $HOME/.colima/default/docker.sock ]; then
+    colima start default > /dev/null 2>&1 &
 fi
+export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 
 # set KUBECONFIG if respective lima vm is there
 if [ -L $HOME/.lima/k3s/conf/kubeconfig.yaml ]; then

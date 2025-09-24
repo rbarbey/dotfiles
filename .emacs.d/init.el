@@ -641,6 +641,15 @@ The string returns the filename where to store archived tasks. It
       (message "No valid Unix timestamp found at point."))))
 (global-set-key (kbd "C-c t") 'rb/unix-timestamp-to-iso8601)
 
+(defun backward-kill-to-space ()
+  "Kill backward until encountering whitespace."
+  (interactive)
+  (let ((end (point)))
+    (re-search-backward "[ \t\n]" nil t)
+    ;; (forward-char)
+    (kill-region (point) end)))
+(global-set-key (kbd "M-DEL") 'backward-kill-to-space)
+
 ;; ;; GitLab
 
 ;; ;; for getting GITLAB token

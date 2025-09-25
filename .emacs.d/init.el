@@ -352,6 +352,9 @@ The string returns the filename where to store archived tasks. It
   :preface (setq lsp-use-plists t)
   :custom
   (lsp-modeline-code-actions-enable nil)
+  (lsp-eldoc-enable-hover t)
+  (lsp-signature-auto-activate t)
+  (lsp-signature-render-documentation t)
   ;; (lsp-completion-enable-additional-text-edit nil)
   (read-process-output-max (* 1024 1024 8)))
 

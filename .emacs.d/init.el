@@ -645,12 +645,14 @@ The string returns the filename where to store archived tasks. It
 (global-set-key (kbd "C-c t") 'rb/unix-timestamp-to-iso8601)
 
 (defun backward-kill-to-space ()
-  "Kill backward until encountering whitespace."
+  "Delete backward until encountering whitespace or punctuation, like Alt+Del in other editors."
   (interactive)
   (let ((end (point)))
-    (re-search-backward "[ \t\n]" nil t)
-    ;; (forward-char)
-    (kill-region (point) end)))
+    ;; Skip any whitespace/punctuation first
+    (skip-chars-backward "^[:alnum:]_")
+    ;; Then skip the word characters
+    (skip-chars-backward "[:alnum:]_")
+    (delete-region (point) end)))
 (global-set-key (kbd "M-DEL") 'backward-kill-to-space)
 
 ;; ;; GitLab

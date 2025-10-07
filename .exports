@@ -23,14 +23,9 @@ if [ ! -S $HOME/.colima/default/docker.sock ]; then
 fi
 export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 
-# set KUBECONFIG if respective lima vm is there
-if [ -L $HOME/.lima/k3s/conf/kubeconfig.yaml ]; then
-    export KUBECONFIG="$HOME/.lima/k3s/conf/kubeconfig.yaml"
-
-    # if we have a Teleport kubeconfig file, add it
-    if [ -f $HOME/.kube/teleport-kubeconfig.yaml ]; then
-        export KUBECONFIG="$HOME/.kube/teleport-kubeconfig.yaml:$KUBECONFIG"
-    fi
+# if we have a Teleport kubeconfig file, add it
+if [ -f $HOME/.kube/teleport-kubeconfig.yaml ]; then
+    export KUBECONFIG="$HOME/.kube/teleport-kubeconfig.yaml:$KUBECONFIG"
 fi
 
 ## testcontainers

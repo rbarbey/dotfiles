@@ -655,32 +655,4 @@ The string returns the filename where to store archived tasks. It
     (delete-region (point) end)))
 (global-set-key (kbd "M-DEL") 'backward-kill-to-space)
 
-;; ;; GitLab
-
-;; ;; for getting GITLAB token
-;; (defun rb/lookup-password (&rest keys)
-;;   (let ((result (apply #'auth-source-search keys)))
-;;     (if result
-;;         (funcall (plist-get (car result) :secret))
-;;       nil)))
-
-;; (use-package gitlab-ci-mode)
-
-;; (use-package gitlab-ci-mode-flycheck
-;;   :after flycheck gitlab-ci-mode
-;;   :init (gitlab-ci-mode-flycheck-enable)
-;;   :custom (gitlab-ci-api-token (rb/lookup-password :host "gitlab.com")))
-
-;; ;; MMorph programming
-;; (add-to-list 'auto-coding-alist
-;;              '("\\.mmo\\(rph\\)?$" . latin-9))
-
-
-;; (use-package string-inflection
-;;   :config
-;;   (add-hook 'java-mode-hook
-;;             (lambda ()
-;;               (local-set-key (kbd "C-c C-u") 'string-inflection-java-style-cycle)
-;;               (define-key minibuffer-local-map (kbd "C-c C-u") 'string-inflection-java-style-cycle))))
-
 ;;; init.el ends here

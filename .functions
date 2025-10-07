@@ -12,7 +12,42 @@ genpasswd() {
 
 # Determine disk usage for all files, also dotdirs
 dusch() {
-  du -sch .[!.]* * | sort -rh
+  local full_output=false
+  local num_lines=""
+
+  # Parse command line arguments
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -f)
+        full_output=true
+        shift
+        ;;
+      -n)
+        num_lines="$2"
+        shift 2
+        ;;
+      *)
+        echo "Usage: dusch [-f] [-n NUM]"
+        echo "  -f      Show full output (no truncation)"
+        echo "  -n NUM  Show only NUM lines"
+        return 1
+        ;;
+    esac
+  done
+
+  # Build the command
+  local cmd="du -sch .[!.]* * | sort -rh"
+
+  if [[ "$full_output" == true ]]; then
+    # Don't truncate
+    eval "$cmd"
+  elif [[ -n "$num_lines" ]]; then
+    # Use specific number of lines
+    eval "$cmd | head -n $num_lines"
+  else
+    # Default behavior (current behavior)
+    eval "$cmd | head"
+  fi
 }
 
 # Start an HTTP server from a directory, optionally specifying the port

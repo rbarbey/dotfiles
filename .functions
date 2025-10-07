@@ -12,11 +12,7 @@ genpasswd() {
 
 # Determine disk usage for all files, also dotdirs
 dusch() {
-  if ! hash gsort 2>/dev/null; then
-    (>&2 echo "This function relies on gsort which seems not to be installed.")
-    return 1
-  fi
-  du -sch .[!.]* * | gsort -rh
+  du -sch .[!.]* * | sort -rh
 }
 
 # Start an HTTP server from a directory, optionally specifying the port

@@ -635,7 +635,8 @@ The string returns the filename where to store archived tasks. It
 (global-set-key (kbd "C-c f") 'rb/toggle-true-false)
 
 (defun rb/unix-timestamp-to-iso8601 ()
-  "Convert Unix timestamp at point to an ISO8601 formatted date and display in minibuffer."
+  "Convert Unix timestamp at point to ISO8601 formatted date,
+and display in minibuffer."
   (interactive)
   (let* ((timestamp (thing-at-point 'number t))
          (time (when timestamp (seconds-to-time timestamp))))
@@ -645,7 +646,8 @@ The string returns the filename where to store archived tasks. It
 (global-set-key (kbd "C-c t") 'rb/unix-timestamp-to-iso8601)
 
 (defun backward-kill-to-space ()
-  "Delete backward until encountering whitespace or punctuation, like Alt+Del in other editors."
+  "Delete backward until encountering whitespace or punctuation,
+like Alt+Del in other editors."
   (interactive)
   (let ((end (point)))
     ;; Skip any whitespace/punctuation first

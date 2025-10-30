@@ -5,3 +5,5 @@ dotfiles /Users/robert/devel/dotfiles
 langsrv /Users/robert/devel/language-server
 gwt /Users/robert/devel/dashboard-gwt
 operator /Users/robert/devel/acrolinx-operator
+helios /Users/robert/devel/helios-core
+sls /Users/robert/devel/scalable-language-servers

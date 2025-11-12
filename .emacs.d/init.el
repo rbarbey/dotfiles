@@ -52,6 +52,9 @@
 (setq sentence-end-double-space nil)
 (setq-default fill-column 78)
 
+;; short answers
+(setopt use-short-answers t)
+
 ;; Basic visual setting
 
 ;; configure scrolling behaviour

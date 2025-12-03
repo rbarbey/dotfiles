@@ -17,11 +17,7 @@ export CLICOLOR=1
 # set GPG environment variable (cf https://stackoverflow.com/a/42265848/117912)
 export GPG_TTY=$(tty)
 
-# set DOCKER_HOST if respective colima container is there
-if [ ! -S $HOME/.colima/default/docker.sock ]; then
-    colima start default > /dev/null 2>&1 &
 fi
-export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 
 # if we have a Teleport kubeconfig file, add it
 if [ -f $HOME/.kube/teleport-kubeconfig.yaml ]; then

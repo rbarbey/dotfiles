@@ -17,6 +17,9 @@ export CLICOLOR=1
 # set GPG environment variable (cf https://stackoverflow.com/a/42265848/117912)
 export GPG_TTY=$(tty)
 
+# sometimes for whatever reason $TMPDIR is not writable
+if [ ! -w $TMPDIR ]; then
+    export TMPDIR=`mktemp -d`
 fi
 
 # if we have a Teleport kubeconfig file, add it

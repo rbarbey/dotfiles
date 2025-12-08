@@ -10,25 +10,30 @@ unset file
 
 shopt -s histappend
 
+start_services() {
+    # start colima sync
+    if ! colima status > /dev/null 2>&1; then
+        colima start default > /dev/null 2>&1
+    fi
+
+    # set DOCKER_HOST if respective colima container is there
+    if [ -S $HOME/.colima/default/docker.sock ]; then
+        export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+    fi
+
+    # start minikube
+    if ! minikube status > /dev/null 2>&1 ; then
+        minikube start > /dev/null 2>&1
+    fi
+}
+
 # start Emacs
 if ! pgrep Emacs > /dev/null; then
     emacs --bg-daemon > /dev/null 2>&1 &
 fi
 
-# start colima
-if [ ! colima status > /dev/null 2>&1 ]; then
-    colima start default > /dev/null 2>&1 &
-fi
-
-# set DOCKER_HOST if respective colima container is there
-if [ -S $HOME/.colima/default/docker.sock ]; then
-    export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
-fi
-
-# start minikube
-if ! minikube status > /dev/null 2>&1 ; then
-    minikube start
-fi
+# start slow services in the background
+start_services &
 
 # auto-complete
 if [ -f /usr/local/etc/bash_completion ]; then

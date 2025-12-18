@@ -293,6 +293,9 @@ The string returns the filename where to store archived tasks. It
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "~/devel/agenda/tasks.org" "Tasks")
            "* TODO %?\n %U")
+          ("p" "Project" entry (file+headline "~/devel/agenda/tasks.org" "Projects")
+           "* %?\n"
+           :empty-lines 1)
           ("r" "Reddit" plain (file "~/devel/org-roam/20250301205444-reddit_articles_for_upvoting.org")
            "\n\n%?\n"
            :empty-lines 1

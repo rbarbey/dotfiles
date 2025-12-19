@@ -471,6 +471,19 @@ The string returns the filename where to store archived tasks. It
   :ensure nil
   :hook (python-mode . lsp-deferred))
 
+(define-derived-mode tiltfile-mode
+    python-mode "Tiltfile"
+    "Major mode for Tilt Dev."
+    (setq-local case-fold-search nil)
+    (add-hook 'doom-modeline-after-update-env-hook
+              (lambda (args)
+                (message ">>>>>>>>>")
+                (message args)
+                (message "<<<<<<<<<")
+                (let ((version (substring (shell-command-to-string "tilt version") 1 7)))
+                  (setq doom-modeline-env--version version))))
+    )
+(add-to-list 'auto-mode-alist '("Tiltfile$" . tiltfile-mode))
 
 
 ;; ;; show inline git history

@@ -130,9 +130,11 @@
 ;; https://developer.apple.com/fonts/
 (defun rb/set-face-attrs ()
   "Set fonts."
+  (set-face-attribute 'hl-line nil :inherit nil :background "gray22")
   (set-face-attribute 'default nil :font "SF Mono Light" :height 120)
   (set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 120)
   (set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 120))
+(global-hl-line-mode 1)
 
 (defun rb/set-frame-size (frame)
   "Compute size and position for FRAME."

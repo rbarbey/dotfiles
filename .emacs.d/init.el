@@ -130,7 +130,9 @@
 ;; https://developer.apple.com/fonts/
 (defun rb/set-face-attrs ()
   "Set fonts."
-  (set-face-attribute 'hl-line nil :inherit nil :background "gray22")
+  (set-face-attribute 'hl-line nil :inherit nil :background "gray18")
+  ;; Match line number highlight to hl-line background
+  (set-face-attribute 'line-number-current-line nil :background "gray18")
   (set-face-attribute 'default nil :font "SF Mono Light" :height 120)
   (set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 120)
   (set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 120))

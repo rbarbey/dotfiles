@@ -134,7 +134,9 @@
   (set-face-attribute 'default nil :font "SF Mono Light" :height 120)
   (set-face-attribute 'fixed-pitch nil :font "SF Mono Light" :height 120)
   (set-face-attribute 'variable-pitch nil :font "SF Mono Light" :height 120))
-(global-hl-line-mode 1)
+
+;; Enable hl-line mode for programming modes and structured text files
+(add-hook 'prog-mode-hook 'hl-line-mode)
 
 (defun rb/set-frame-size (frame)
   "Compute size and position for FRAME."
@@ -435,10 +437,12 @@ The string returns the filename where to store archived tasks. It
 (use-package markdown-mode
   :mode ("\\.md\\'" "\\.apib\\'")
   :hook ((markdown-mode . display-line-numbers-mode)
-         (markdown-mode . auto-fill-mode)))
+         (markdown-mode . auto-fill-mode)
+         (markdown-mode . hl-line-mode)))
 
 (use-package yaml-mode
-  :hook (yaml-mode . display-line-numbers-mode))
+  :hook ((yaml-mode . display-line-numbers-mode)
+         (yaml-mode . hl-line-mode)))
 
 (use-package typescript-mode
   :hook (typescript-mode . lsp-deferred)
@@ -502,7 +506,8 @@ The string returns the filename where to store archived tasks. It
 (use-package nxml-mode
   :ensure nil
   :hook ((nxml-mode . lsp-deferred)
-         (nxml-mode . display-line-numbers-mode))
+         (nxml-mode . display-line-numbers-mode)
+         (nxml-mode . hl-line-mode))
   :config
   (setq nxml-attribute-indent 4
         nxml-child-indent 4))

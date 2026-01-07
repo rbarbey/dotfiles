@@ -339,7 +339,11 @@ The string returns the filename where to store archived tasks. It
 ;; Programming languages
 
 (use-package flycheck
-  :config (global-flycheck-mode)
+  :config
+  (global-flycheck-mode)
+  (setq resize-mini-windows t)
+  (setq max-mini-window-height 0.25)
+  (setq message-truncate-lines nil)
   :bind(:map flycheck-mode-map
               ("C-c ! l" . (lambda ()
                              (interactive)

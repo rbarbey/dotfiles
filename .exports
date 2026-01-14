@@ -22,6 +22,11 @@ if [ ! -w $TMPDIR ]; then
     export TMPDIR=`mktemp -d`
 fi
 
+# set DOCKER_HOST if respective colima container is there
+if [ -d $HOME/.colima/default ]; then
+    export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+fi
+
 # if we have a Teleport kubeconfig file, add it
 if [ -f $HOME/.kube/teleport-kubeconfig.yaml ]; then
     export KUBECONFIG="$HOME/.kube/teleport-kubeconfig.yaml:$KUBECONFIG"

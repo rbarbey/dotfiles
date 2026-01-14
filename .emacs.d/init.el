@@ -70,7 +70,9 @@
 ;; line numbers
 (column-number-mode 1)
 (use-package display-line-numbers
-  :hook (prog-mode-hook . display-line-numbers-mode)
+  :hook
+  (prog-mode . display-line-numbers-mode)
+  (conf-mode . display-line-numbers-mode)
   :config
   :custom
   (display-line-numbers-width 3))

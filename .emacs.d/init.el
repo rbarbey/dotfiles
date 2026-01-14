@@ -132,6 +132,8 @@
 ;; https://developer.apple.com/fonts/
 (defun rb/set-face-attrs ()
   "Set fonts."
+  ;; Require hl-line library to ensure the face is defined
+  (require 'hl-line nil t)
   (set-face-attribute 'hl-line nil :inherit nil :background "gray18")
   ;; Match line number highlight to hl-line background
   (set-face-attribute 'line-number-current-line nil :background "gray18")

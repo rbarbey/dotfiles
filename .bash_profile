@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -z "$LANG" ]; then
+    export LANG="en_US.UTF-8"
+fi
+
 # Load shell dotfiles previously "installed" via Makefile
 for file in ~/.{path,bash_prompt,aliases,functions,extra,exports}; do
     if [[ -r "$file" ]] && [[ -f "$file" ]]; then

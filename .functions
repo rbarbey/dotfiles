@@ -93,6 +93,23 @@ rurl() {
 }
 
 remacs() {
-    emacsclient -e "(kill-emacs)"
-    emacs --daemon
+    local has_emacsclient=0
+    if pgrep -x emacsclient >/dev/null 2>&1; then
+        has_emacsclient=1
+    fi
+
+    # Stop the daemon if it exists.
+    echo "Killing current Emacs daemon"
+    emacsclient -e "(kill-emacs)" >/dev/null 2>&1 || true
+
+    # Start a fresh daemon and wait until it's responsive.
+    echo "Starting new Emacs daemon"
+    emacs --daemon >/dev/null 2>&1
+
+
+    # If we didn't have any emacsclient process before, open one now (if available).
+    if [[ $has_emacsclient -eq 1 ]]; then
+        echo "Starting Emacs client"
+        em >/dev/null 2>&1
+    fi
 }

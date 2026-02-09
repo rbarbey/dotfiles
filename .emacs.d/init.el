@@ -404,6 +404,8 @@ The string returns the filename where to store archived tasks. It
               ("s-l t d" . dap-java-debug-test-method))
   :custom
   (tab-width 4)
+  ;; only show structure in headerline
+  (lsp-headerline-breadcrumb-segments '(symbols))
   :init
   (setq lsp-java-vmargs (list
                         "-XX:+UseG1GC"

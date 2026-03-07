@@ -376,6 +376,7 @@ The string returns the filename where to store archived tasks. It
   (lsp-eldoc-enable-hover t)
   (lsp-signature-auto-activate t)
   (lsp-signature-render-documentation t)
+  (lsp-headerline-breadcrumb-segments '(file symbols))
   ;; (lsp-completion-enable-additional-text-edit nil)
   (read-process-output-max (* 1024 1024 8)))
 
@@ -404,8 +405,6 @@ The string returns the filename where to store archived tasks. It
               ("s-l t d" . dap-java-debug-test-method))
   :custom
   (tab-width 4)
-  ;; only show structure in headerline
-  (lsp-headerline-breadcrumb-segments '(symbols))
   :init
   (setq lsp-java-vmargs (list
                         "-XX:+UseG1GC"

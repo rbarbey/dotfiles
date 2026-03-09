@@ -261,11 +261,6 @@
   :hook (compilation-filter . ansi-color-compilation-filter))
 
 ;; Org mode
-(defun rb/init-org-mode ()
-  "Configure org mode."
-  (org-indent-mode)
-  (auto-fill-mode t))
-
 (defun rb/org-archive-location ()
   "Return location for archived tasks.
 The string returns the filename where to store archived tasks. It
@@ -287,7 +282,10 @@ The string returns the filename where to store archived tasks. It
       (message "No / found before point."))))
 
 (use-package org
-  :hook (org-mode . rb/init-org-mode)
+  :hook
+  (org-mode . (lambda ()
+                (org-indent-mode)
+                (auto-fill-mode t)))
   :bind ("C-c c" . org-capture)
   :config
   (define-key org-mode-map (kbd "C-c C-r") verb-command-map)

@@ -412,8 +412,8 @@ The string returns the filename where to store archived tasks. It
   (which-key-add-key-based-replacements
     "s-l g y" "type hierarchy"
     "s-l t" "tests"
+    "s-l t t" "run all tests"
     "s-l t m" "run test method"
-    "s-l t c" "run test class"
     "s-l t d" "debug test method")
 
   :config

@@ -282,22 +282,22 @@ The string returns the filename where to store archived tasks. It
       (message "No / found before point."))))
 
 (use-package org
-  :hook
-  (org-mode . (lambda ()
-                (org-indent-mode)
-                (auto-fill-mode t)))
-  :bind ("C-c c" . org-capture)
+  :hook (org-mode . rb/init-org-mode)
+  :bind ("C-c SPC" . org-capture)
   :config
   (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
   (setq org-ellipsis " ↓")
   (setq org-todo-keywords
         '((sequence "TODO" "DOING" "|" "DONE")))
+  (setq org-todo-keyword-faces
+        '(("DOING" . (:foreground "#fac800" :weight bold))))
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
   (setq org-archive-location (rb/org-archive-location))
   (setq org-agenda-files
-        '("~/devel/agenda"))
+        '("~/devel/agenda/tasks.org"))
+  ;; (setq org-agenda-skip-archived-trees t)
   (setq org-capture-templates
         '(("t" "Todo" entry (file+headline "~/devel/agenda/tasks.org" "Tasks")
            "* TODO %?\n %U")

@@ -427,6 +427,18 @@ The string returns the filename where to store archived tasks. It
                    "org.hamcrest.Matchers.*")))
   )
 
+;; SonarLint diagnostics as an lsp-mode add-on. It registers as an
+;; :add-on? client, so its findings attach to the running jdtls session
+;; and surface through flycheck like any other lsp diagnostic. Kept lean
+;; on purpose: only the Java analyzer, and only in java-mode -- enabling
+;; every analyzer in every mode is what dragged the Java setup down.
+(use-package lsp-sonarlint
+  :after lsp-mode
+  :custom
+  (lsp-sonarlint-auto-download t)
+  (lsp-sonarlint-enabled-analyzers '("java"))
+  (lsp-sonarlint-modes-enabled '(java-mode)))
+
 (use-package dap-mode
   :after lsp-mode)
 

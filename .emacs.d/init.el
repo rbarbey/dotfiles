@@ -201,7 +201,8 @@
   :config (projectile-mode)
   :bind-keymap ("s-p" . projectile-command-map)
   :bind (:map projectile-command-map
-              ("Z" . rb/delete-current-buffer))
+              ("Z" . rb/delete-current-buffer)
+              ("C-k" . rb/projectile-kill-other-buffers))
   :custom
   (projectile-completion-system 'ivy)
   (projectile-create-missing-test-files t))

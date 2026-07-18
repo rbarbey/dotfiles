@@ -469,7 +469,9 @@ The string returns the filename where to store archived tasks. It
 
 (use-package typescript-mode
   :hook (typescript-mode . lsp-deferred)
-  :custom (typescript-indent-level 2))
+  :custom
+  (typescript-indent-level 2)
+  (lsp-tailwindcss-server-path '/opt/homebrew/bin/tailwindcss-language-server))
 
 (use-package js
   :ensure nil

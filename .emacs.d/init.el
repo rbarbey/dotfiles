@@ -607,6 +607,7 @@ The string returns the filename where to store archived tasks. It
          (set-register 0 nil))
         (t(point-to-register 0)
           (message "Save point %d" (point)))))
+;; (global-set-key (kbd "C-c c") #'rb/point-excursion-toggle)
 
 (defvar rb-jump-point nil "Stores last jump point")
 (defun rb/toggle-jump-point ()
@@ -617,7 +618,7 @@ The string returns the filename where to store archived tasks. It
         (goto-char rb-jump-point)
         (setq rb-jump-point tmp))
     (setq rb-jump-point (point))))
-(global-set-key (kbd "C-c SPC") 'rb/toggle-jump-point)
+;; (global-set-key (kbd "C-c SPC") 'rb/toggle-jump-point)
 
 ;; JWTs
 (defun rb/decode-jwt ()

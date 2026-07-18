@@ -489,7 +489,7 @@ The string returns the filename where to store archived tasks. It
 (use-package lsp-pyright
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
-                         ;; (setq lsp-disabled-clients '(ruff))
+                         (setq lsp-disabled-clients '(ruff))
                          (lsp-deferred)))
   :custom
   (lsp-pyright-langserver-command "pyright")

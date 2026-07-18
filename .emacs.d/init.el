@@ -537,6 +537,12 @@ The string returns the filename where to store archived tasks. It
   (setq nxml-attribute-indent 4
         nxml-child-indent 4))
 
+(use-package string-inflection
+  :config
+  :hook ((prog-mode . (lambda ()
+                        (local-set-key (kbd "C-c C-u") 'string-inflection-all-cycle)
+                        (define-key minibuffer-local-map (kbd "C-c C-u") 'string-inflection-all-cycle)))))
+
 
 ;; Restclient
 (use-package restclient
